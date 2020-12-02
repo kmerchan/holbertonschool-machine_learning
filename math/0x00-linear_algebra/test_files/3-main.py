@@ -1,4 +1,3 @@
-alexa@ubuntu-xenial:0x00-linear_algebra$ cat 3-main.py
 #!/usr/bin/env python3
 
 matrix_transpose = __import__('3-flip_me_over').matrix_transpose
