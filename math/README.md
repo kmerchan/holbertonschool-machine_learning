@@ -2,19 +2,19 @@
 This directory contains projects to build up the math skills needed for Machine Learning.
 
 ## 0x00-linear_algebra
-0. [Slice Me Up](/linear_algebra/0-slice_me_up.py)
+0. [Slice Me Up](/math/linear_algebra/0-slice_me_up.py)
 Complete given source code to slice an array into different sections within 8 lines of code.
 
-1. [Trim Me Down](/linear_algebra/1-trim_me_down.py)
+1. [Trim Me Down](/math/linear_algebra/1-trim_me_down.py)
 Complete given source code to trim a matrix down to just the 3rd and 4th columns.
 
-2. [Size Me Please](/linear_algebra/2-size_me_please.py)
+2. [Size Me Please](/math/linear_algebra/2-size_me_please.py)
 Write a function that calculates the shape of a matrix.
 
-3. [Flip Me Over](/linear_algebra/3-flip_me_over.py)
+3. [Flip Me Over](/math/linear_algebra/3-flip_me_over.py)
 Write a function that returns the transpose of a 2D matrix.
 
-4. [Line Up](/linear_algebra/4-line_up.py)
+4. [Line Up](/math/linear_algebra/4-line_up.py)
 Write a function that adds two arrays element-wise.
 
 5. Write a function that adds two matrices element-wise.
