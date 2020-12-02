@@ -3,6 +3,7 @@ This directory contains projects to build up the math skills needed for Machine 
 
 ## 0x00-linear_algebra
 This directory contains work with vectors and matrices:
+
 0. [Slice Me Up](/math/linear_algebra/0-slice_me_up.py)
 1. [Trim Me Down](/math/linear_algebra/1-trim_me_down.py)
 2. [Size Me Please](/math/linear_algebra/2-size_me_please.py)
