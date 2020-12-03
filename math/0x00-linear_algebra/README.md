@@ -39,7 +39,8 @@ This directory contains work with vectors and matrices:
 16. [The Whole Barn](/math/0x00-linear_algebra/101-the_whole_barn.py)
 * Write a function that adds two matrices of any dimensions as long as they are the same shape.
 17. [Squashed Like Sardines](/math/0x00-linear_algebra/102-squashed_like_sardines.py)
-Write a function that concatenates two matrices along a specific axis.
+* Write a function that concatenates two matrices along a specific axis.
 
-#### test_files directory
+
+### test_files directory
 The test_files directory contains all initially given source code for reference and all files used to test output locally.
