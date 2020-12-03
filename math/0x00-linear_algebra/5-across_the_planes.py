@@ -4,23 +4,13 @@
 
 def add_matrices2D(mat1, mat2):
     """ returns new matrix, the sum of two 2D matrices added element-wise """
-    mat1_shape = []
-    matrix = mat1
-    while (type(matrix) is list):
-        mat1_shape.append(len(matrix))
-        matrix = matrix[0]
-    mat2_shape = []
-    matrix = mat2
-    while (type(matrix) is list):
-        mat2_shape.append(len(matrix))
-        matrix = matrix[0]
-
-    if mat1_shape != mat2_shape:
+    if len(mat1) != len(mat2):
+        return None
+    if len(mat1[0]) != len(mat2[0]):
         return None
     sum_matrix = []
-    for index, dimension in enumerate(mat1_shape):
-        for idx, i in enumerate(range(dimension)):
-            if idx is 0:
-                sum_matrix.append([])
+    for index, row in enumerate(mat1):
+        sum_matrix.append([])
+        for i in range(len(row)):
             sum_matrix[index].append(mat1[index][i] + mat2[index][i])
     return sum_matrix
