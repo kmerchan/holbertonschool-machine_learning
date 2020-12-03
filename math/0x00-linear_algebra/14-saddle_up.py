@@ -4,4 +4,5 @@
 
 def np_matmul(mat1, mat2):
     """ performs matrix multiplication using numpy.ndarrays """
-    return (mat1 @ mat2)
+    import numpy as np
+    return (np.matmul(mat1, mat2))
