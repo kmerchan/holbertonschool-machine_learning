@@ -4,6 +4,8 @@ This repository contains work on project for the Holberton Machine Learning Spec
 ## math/
 This directory contains projects to build up the math skills needed for Machine Learning.
 * 0x00-linear_algebra
+* 0x01-plotting
+* 0x02-calculus
 
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
