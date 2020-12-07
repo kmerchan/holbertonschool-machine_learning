@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" plots x, y as a scatter plot """
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -8,4 +9,8 @@ np.random.seed(5)
 x, y = np.random.multivariate_normal(mean, cov, 2000).T
 y += 180
 
-# your code here
+plt.scatter(x, y, c='m')
+plt.xlabel('Height (in)')
+plt.ylabel('Weight (lbs)')
+plt.title("Men's Height vs Weight")
+plt.show()
