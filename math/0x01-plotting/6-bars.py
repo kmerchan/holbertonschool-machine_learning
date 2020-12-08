@@ -15,7 +15,7 @@ fruit_names = {
 }
 
 i = 0
-for name, color in fruit_names.items():
+for name, color in sorted(fruit_names.items()):
     bottom = 0
     for j in range(i):
         bottom += fruit[j]
