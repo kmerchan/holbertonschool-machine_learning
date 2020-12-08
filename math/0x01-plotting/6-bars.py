@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" plot a stacked bar chart for the amount and types of fruit people have """
 import numpy as np
 import matplotlib.pyplot as plt
 

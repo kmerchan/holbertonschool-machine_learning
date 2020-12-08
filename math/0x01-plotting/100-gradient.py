@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" plot mountain elevation as a scatter plot with colorbar """
 import numpy as np
 import matplotlib.pyplot as plt
 
