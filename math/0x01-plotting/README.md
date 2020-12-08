@@ -17,5 +17,11 @@ This directory contains work with plotting, primarily using matplotlib:
 6. [Stacking Bars](/math/0x01-plotting/6-bars.py)
 * Complete the given source code to plot a stacked bar graph.
 
+Advanced Tasks:
+7. [Gradient](/math/0x01-plotting/100-gradient.py)
+* Complete the given source code to create a scatter plot with colorbar representing different elevations on a mountain.
+8. [PCA](/math/0x01-plotting/101-pca.py)
+* Complete the given source code to create a 3D scatter plot for PCA (Principle Component Analysis) for Iris Dataset.
+
 ### source_code
-This directory contains all original source code for reference.
+This directory contains all original source code for reference and the data file (pca.npz) used to test advanced task 8.

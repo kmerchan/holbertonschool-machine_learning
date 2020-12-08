@@ -34,6 +34,8 @@ This directory contains work with plotting, primarily using matplotlib:
 4. [Frequency](/math/0x01-plotting/4-frequency.py)
 5. [All in One](/math/0x01-plotting/5-all_in_one.py)
 6. [Stacking Bars](/math/0x01-plotting/6-bars.py)
+7. [Gradient](/math/0x01-plotting/100-gradient.py)
+8. [PCA](/math/0x01-plotting/101-pca.py)
 
 
 ## 0x02-calculus
