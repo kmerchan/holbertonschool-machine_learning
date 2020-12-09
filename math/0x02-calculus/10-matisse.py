@@ -16,7 +16,7 @@ def poly_derivative(poly):
         [0], if the derivate is 0
         None, if poly is not valid
     """
-    if type(poly) is not list:
+    if type(poly) is not list or len(poly) < 1:
         return None
     for coefficient in poly:
         if type(coefficient) is not int and type(coefficient) is not float:
