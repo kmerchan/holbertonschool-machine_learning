@@ -8,6 +8,6 @@ def summation_i_squared(n):
         return None
     if n is 1:
         return (1)
-    sigma_sum = n**2
+    sigma_sum = pow(n, 2)
     sigma_sum += summation_i_squared(n - 1)
     return sigma_sum
