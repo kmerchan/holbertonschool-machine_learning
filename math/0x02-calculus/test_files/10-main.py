@@ -8,3 +8,5 @@ poly = 5
 print(poly_derivative(poly))
 poly = [5]
 print(poly_derivative(poly))
+poly = [0, 0, 0, 0]
+print(poly_derivative(poly))
