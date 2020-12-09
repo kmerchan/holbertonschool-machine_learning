@@ -3,11 +3,14 @@
 
 
 def summation_i_squared(n):
-    """ calculates summation of i^2 from i=1 to n """
+    """
+    calculates summation of i^2 from i=1 to n
+
+    utilizes Faulhaber's formula for power of 2:
+        sum of i^2 from i=1 to n = (n * (n + 1) * (2n + 1)) / 6
+                                   or ((n^3) / 3) + ((n^2) / 2) + (n / 6)
+    """
     if type(n) is not int or n < 1:
         return None
-    if n is 1:
-        return (1)
-    sigma_sum = pow(n, 2)
-    sigma_sum += summation_i_squared(n - 1)
-    return sigma_sum
+    sigma_sum = (n * (n + 1) * ((2 * n) + 1)) / 6
+    return int(sigma_sum)
