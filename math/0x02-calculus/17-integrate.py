@@ -18,7 +18,9 @@ def poly_integral(poly, C=0):
             if a coefficient is a whole number, it is represented by an int
         None, if poly or C are not valid
     """
-    if type(poly) is not list or (type(C) is not int and type(C) is not float):
+    if type(poly) is not list or len(poly) < 1:
+        return None
+    if type(C) is not int and type(C) is not float:
         return None
     for coefficient in poly:
         if type(coefficient) is not int and type(coefficient) is not float:
