@@ -29,9 +29,10 @@ def poly_integral(poly, C=0):
         C = int(C)
     integral = [C]
     for power, coefficient in enumerate(poly):
-        new_coefficient = ((1 / (power + 1)) * coefficient)
-        if new_coefficient.is_integer():
-            new_coefficient = int(new_coefficient)
+        if (coefficient % (power + 1)) is 0:
+            new_coefficient = coefficient // (power + 1)
+        else:
+            new_coefficient = coefficient / (power + 1)
         integral.append(new_coefficient)
     while integral[-1] is 0 and len(integral) > 1:
         integral = integral[:-1]
