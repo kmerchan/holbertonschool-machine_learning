@@ -59,3 +59,21 @@ This directory contains work with calculus concepts:
 15. [Winners are people with definite purpose in life](/math/0x02-calculus/15-definite)
 16. [Double whammy](/math/0x02-calculus/16-double)
 17. [Integrate](/math/0x02-calculus/17-integrate.py)
+
+
+## 0x03-probability
+This directory contains work with probability and distribution functions:
+
+0. [Initialize Poisson](/math/0x03-probability/poisson.py)
+1. [Poisson PMF](/math/0x03-probability/poisson.py)
+2. [Poisson CDF](/math/0x03-probability/poisson.py)
+3. [Initialize Exponential](/math/0x03-probability/exponential.py)
+4. [Exponential PDF](/math/0x03-probability/exponential.py)
+5. [Exponential CDF](/math/0x03-probability/exponential.py)
+6. [Initialize Normal](/math/0x03-probability/normal.py)
+7. [Normalize Normal](/math/0x03-probability/normal.py)
+8. [Normal PDF](/math/0x03-probability/normal.py)
+9. [Normal CDF](/math/0x03-probability/normal.py)
+10. [Initialize Binomial](/math/0x03-probability/binomial.py)
+11. [Binomial PMF](/math/0x03-probability/binomial.py)
+12. [Binomial CDF](/math/0x03-probability/binomial.py)
