@@ -45,9 +45,8 @@ class Poisson:
             elif len(data) is not >= 2:
                 raise ValueError("data must contain multiple values")
             else:
-                # Lambtha will be set based on calculation from data
-                # self.lambtha =
-                pass
+                lambtha = float(sum(data) / len(data))
+                self.lambtha = lambtha
 
     def pmf(self, k):
         """
