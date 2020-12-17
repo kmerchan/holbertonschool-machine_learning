@@ -77,7 +77,7 @@ class Exponential:
         return:
             the CDF value for x
         """
-        if x < 1:
+        if x < 0:
             return 0
         e = 2.7182818285
         lambtha = self.lambtha
