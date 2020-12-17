@@ -18,7 +18,7 @@ class Binomial:
         def cdf(self, k): calculates CDF for given number of successes
     """
 
-    def __init__(self, data=None, lambtha=1.):
+    def __init__(self, data=None, n=1, p=0.5):
         """
         class constructor
 
@@ -38,7 +38,7 @@ class Binomial:
             Raise ValueError if data does not contain at least two data points
         """
         if data is None:
-            if n is not >= 0:
+            if n < 1:
                 raise ValueError("n must be a positive value")
             else:
                 self.n = n
@@ -49,12 +49,20 @@ class Binomial:
         else:
             if type(data) is not list:
                 raise TypeError("data must be a list")
-            elif len(data) is not >= 2:
+            elif len(data) < 2:
                 raise ValueError("data must contain multiple values")
             else:
-                # n and p will be set based on calculation from data
-                # hint: calculate p first, then n, then recalculate p
-                pass
+                mean = float(sum(data) / len(data))
+                summation = 0
+                for x in data:
+                    summation += ((x - mean) ** 2)
+                variance = (summation / len(data))
+                q = variance / mean
+                p = -1 * (q - 1)
+                n = int(mean / p)
+                p = float(mean / n)
+                self.n = n
+                self.p = p
 
     def pmf(self, k):
         """
