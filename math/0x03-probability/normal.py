@@ -68,7 +68,10 @@ class Normal:
         return:
             z-score of x
         """
-        pass
+        mean = self.mean
+        stddev = self.stddev
+        z = (x - mean) / stddev
+        return z
 
     def x_value(self, z):
         """
@@ -80,7 +83,10 @@ class Normal:
         return:
             x-value of z
         """
-        pass
+        mean = self.mean
+        stddev = self.stddev
+        x = (z * stddev) + mean
+        return x
 
     def pdf(self, x):
         """
