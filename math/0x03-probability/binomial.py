@@ -59,7 +59,7 @@ class Binomial:
                 variance = (summation / len(data))
                 q = variance / mean
                 p = (1 - q)
-                n = int(mean / p)
+                n = round(mean / p)
                 p = float(mean / n)
                 self.n = n
                 self.p = p
