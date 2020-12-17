@@ -39,7 +39,7 @@ class Normal:
             Raise ValueError if data does not contain at least two data points
         """
         if data is None:
-            if stddev < 0:
+            if stddev < 1:
                 raise ValueError("stddev must be a positive value")
             else:
                 self.stddev = float(stddev)
