@@ -35,14 +35,14 @@ class Poisson:
             Raise ValueError if data does not contain at least two data points
         """
         if data is None:
-            if lambtha is not >= 0:
+            if lambtha < 0:
                 raise ValueError("lambtha must be a positive value")
             else:
                 self.lambtha = lambtha
         else:
             if type(data) is not list:
                 raise TypeError("data must be a list")
-            elif len(data) is not >= 2:
+            elif len(data) < 2:
                 raise ValueError("data must contain multiple values")
             else:
                 lambtha = float(sum(data) / len(data))
