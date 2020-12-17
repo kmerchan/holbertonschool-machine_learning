@@ -42,7 +42,7 @@ class Binomial:
                 raise ValueError("n must be a positive value")
             else:
                 self.n = n
-            if p < 0 or p > 1:
+            if p <= 0 or p >= 1:
                 raise ValueError("p must be greater than 0 and less than 1")
             else:
                 self.p = p
