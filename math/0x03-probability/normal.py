@@ -98,8 +98,14 @@ class Normal:
         return:
             the PDF value for x
         """
-        # calculates and returns the PDF
-        pass
+        mean = self.mean
+        stddev = self.stddev
+        e = 2.7182818285
+        pi = 3.1415926536
+        power = -0.5 * (self.z_score(x) ** 2)
+        coefficient = 1 / (stddev * ((2 * pi) ** (1 / 2)))
+        pdf = coefficient * (e ** power)
+        return pdf
 
     def cdf(self, x):
         """
