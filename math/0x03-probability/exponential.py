@@ -35,19 +35,18 @@ class Exponential:
             Raise ValueError if data does not contain at least two data points
         """
         if data is None:
-            if lambtha is not >= 0:
+            if lambtha < 1:
                 raise ValueError("lambtha must be a positive value")
             else:
-                self.lambtha = lambtha
+                self.lambtha = float(lambtha)
         else:
             if type(data) is not list:
                 raise TypeError("data must be a list")
-            elif len(data) is not >= 2:
+            elif len(data) < 2:
                 raise ValueError("data must contain multiple values")
             else:
-                # Lambtha will be set based on calculation from data
-                # self.lambtha =
-                pass
+                lambtha = float(len(data) / sum(data))
+                self.lambtha = lambtha
 
     def pdf(self, x):
         """
