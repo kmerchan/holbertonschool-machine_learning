@@ -35,7 +35,7 @@ class Poisson:
             Raise ValueError if data does not contain at least two data points
         """
         if data is None:
-            if lambtha < 0:
+            if lambtha < 1:
                 raise ValueError("lambtha must be a positive value")
             else:
                 self.lambtha = float(lambtha)
