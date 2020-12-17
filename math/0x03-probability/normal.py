@@ -39,18 +39,24 @@ class Normal:
             Raise ValueError if data does not contain at least two data points
         """
         if data is None:
-            if stddev is not >= 0:
+            if stddev < 0:
                 raise ValueError("stddev must be a positive value")
             else:
-                self.stddev = stddev
+                self.stddev = float(stddev)
+                self.mean = float(mean)
         else:
             if type(data) is not list:
                 raise TypeError("data must be a list")
-            elif len(data) is not >= 2:
+            elif len(data) < 2:
                 raise ValueError("data must contain multiple values")
             else:
-                # calculates mean and stddev of data
-                pass
+                mean = float(sum(data) / len(data))
+                self.mean = mean
+                summation = 0
+                for x in data:
+                    summation += ((x - mean) ** 2)
+                stddev = (summation / len(data)) ** (1 / 2)
+                self.stddev = stddev
 
     def z_score(self, x):
         """
