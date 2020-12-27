@@ -64,3 +64,6 @@ This directory contains work to build up skills needed to be able to build your 
 
 ### test_files directory
 The test_files directory contains all files used to test output locally.
+
+### data directory
+The data directory contains datasets to test the code with.
