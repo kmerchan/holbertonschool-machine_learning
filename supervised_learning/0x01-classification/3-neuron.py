@@ -22,6 +22,8 @@ class Neuron:
     public methods:
         def forward_prop(self, X):
             calculates the forward propagation of the neuron
+        def cost(self, Y, A):
+            calculates the cost of the model using logistic regression
     """
 
     def __init__(self, nx):
