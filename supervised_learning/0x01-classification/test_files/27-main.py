@@ -7,7 +7,7 @@ Deep = __import__('27-deep_neural_network').DeepNeuralNetwork
 one_hot_encode = __import__('24-one_hot_encode').one_hot_encode
 one_hot_decode = __import__('25-one_hot_decode').one_hot_decode
 
-lib= np.load('../data/MNIST.npz')
+lib= np.load('./data/MNIST.npz')
 X_train_3D = lib['X_train']
 Y_train = lib['Y_train']
 X_valid_3D = lib['X_valid']

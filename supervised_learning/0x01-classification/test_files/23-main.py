@@ -5,10 +5,10 @@ import numpy as np
 
 Deep = __import__('23-deep_neural_network').DeepNeuralNetwork
 
-lib_train = np.load('../data/Binary_Train.npz')
+lib_train = np.load('./data/Binary_Train.npz')
 X_train_3D, Y_train = lib_train['X'], lib_train['Y']
 X_train = X_train_3D.reshape((X_train_3D.shape[0], -1)).T
-lib_dev = np.load('../data/Binary_Dev.npz')
+lib_dev = np.load('./data/Binary_Dev.npz')
 X_dev_3D, Y_dev = lib_dev['X'], lib_dev['Y']
 X_dev = X_dev_3D.reshape((X_dev_3D.shape[0], -1)).T
 
