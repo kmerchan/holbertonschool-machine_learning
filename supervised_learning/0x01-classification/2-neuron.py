@@ -85,12 +85,12 @@ class Neuron:
         updates the private attribute __A using sigmoid activation function
         sigmoid function:
             __A = 1 / (1 + e^(-z))
-            z = sum of ((__Wi * __Xi) - __b) from i = 0 to nx
+            z = sum of ((__Wi * __Xi) + __b) from i = 0 to nx
 
         return:
             the updated private attribute __A
         """
-        z = np.matmul(self.W, X) - self.b
+        z = np.matmul(self.W, X) + self.b
         e = 2.7182818285
         self.__A = 1 / (1 + (e ** (-z)))
         return (self.A)
