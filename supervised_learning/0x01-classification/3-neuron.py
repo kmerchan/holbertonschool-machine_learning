@@ -100,7 +100,7 @@ class Neuron:
 
     def cost(self, Y, A):
         """
-        calculates the cose of the model using logistic regression
+        calculates the cost of the model using logistic regression
 
         parameters:
             Y [numpy.ndarray with shape (1, m)]:
