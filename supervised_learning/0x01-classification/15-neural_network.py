@@ -246,7 +246,7 @@ class NeuralNetwork:
         derivative of loss function with respect to __b2:
             d__b2 = (1 / m) * (sum of dz2 over axis 1)
         derivative of loss function with respect to z1:
-            dz1 = (__W2 transpose dot dz2) * A1
+            dz1 = (__W2 transpose dot dz2) * A1(1 - A1)
         derivative of loss function with respect to __W1:
             d__W1 = (1 / m) * (dz dot X transpose)
 
@@ -260,7 +260,7 @@ class NeuralNetwork:
         d__b2 = (1 / m) * (np.sum(dz2, axis=1, keepdims=True))
         self.__W2 = self.W2 - (alpha * d__W2)
         self.__b2 = self.b2 - (alpha * d__b2)
-        dz1 = (np.matmul(self.W2.transpose(), dz2)) * A1
+        dz1 = (np.matmul(self.W2.transpose(), dz2)) * (A1 * (1 - A1))
         d__W1 = (1 / m) * (np.matmul(dz1, X.transpose()))
         d__b1 = (1 / m) * (np.sum(dz1, axis=1, keepdims=True))
         self.__W1 = self.W1 - (alpha * d__W1)
