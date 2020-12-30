@@ -119,9 +119,8 @@ class Neuron:
             the calculated cost
         """
         m = Y.shape[1]
-        term1 = np.matmul(Y, np.log(A).transpose())[0][0]
-        term2 = np.matmul(1 - Y, np.log(1.0000001 - A).transpose())[0][0]
-        cost = (1 / m) * (-(term1 + term2))
+        m_loss = np.sum((Y * np.log(A)) + ((1 - Y) * np.log(1.0000001 - A)))
+        cost = (1 / m) * (-(m_loss))
         return (cost)
 
     def evaluate(self, X, Y):
@@ -143,7 +142,6 @@ class Neuron:
                 0 if the output of the network is < 0.5
         """
         z = np.matmul(self.W, X) + self.b
-        e = 2.7182818285
         A = 1 / (1 + (np.exp(-z)))
         cost = self.cost(Y, A)
         prediction = np.where(A >= 0.5, 1, 0)
