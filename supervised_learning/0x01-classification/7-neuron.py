@@ -263,15 +263,12 @@ class Neuron:
                 points.append(cost)
             self.gradient_descent(X, Y, A, alpha)
         itr += 1
-        # if verbose and (itr % step) != 0:
         if verbose:
             cost = self.cost(Y, A)
             print("Cost after " + str(itr) + " iterations: " + str(cost))
-        # if graph and (itr % step) != 0:
         if graph:
             cost = self.cost(Y, A)
             points.append(cost)
-        if graph:
             y_points = np.asarray(points)
             plt.plot(x_points, y_points, 'b')
             plt.xlabel("iteration")
