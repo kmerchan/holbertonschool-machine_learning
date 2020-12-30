@@ -190,11 +190,10 @@ class NeuralNetwork:
             label values should be 1 if the output of the network is >= 0.5,
                 0 if the output of the network is < 0.5
         """
-        e = 2.7182818285
         z1 = np.matmul(self.W1, X) + self.b1
-        A1 = 1 / (1 + (e ** (-z1)))
+        A1 = 1 / (1 + (np.exp(-z1)))
         z2 = np.matmul(self.W2, A1) + self.b2
-        A2 = 1 / (1 + (e ** (-z2)))
+        A2 = 1 / (1 + (np.exp(-z2)))
         cost = self.cost(Y, A2)
         prediction = np.where(A2 >= 0.5, 1, 0)
         return (prediction, cost)
