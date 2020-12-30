@@ -141,11 +141,10 @@ class NeuralNetwork:
         return:
             the updated private attributes __A1 and __A2, respectively
         """
-        e = 2.7182818285
         z1 = np.matmul(self.W1, X) + self.b1
-        self.__A1 = 1 / (1 + (e ** (-z1)))
+        self.__A1 = 1 / (1 + (np.exp(-z1)))
         z2 = np.matmul(self.W2, self.__A1) + self.b2
-        self.__A2 = 1 / (1 + (e ** (-z2)))
+        self.__A2 = 1 / (1 + (np.exp(-z2)))
         return (self.A1, self.A2)
 
     def cost(self, Y, A):
