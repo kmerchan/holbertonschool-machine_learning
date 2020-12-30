@@ -149,7 +149,7 @@ class Neuron:
         """
         z = np.matmul(self.W, X) + self.b
         e = 2.7182818285
-        A = 1 / (1 + (e ** (-z)))
+        A = 1 / (1 + (np.exp(-z)))
         cost = self.cost(Y, A)
         prediction = np.where(A >= 0.5, 1, 0)
         return (prediction, cost)
