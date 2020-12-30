@@ -173,9 +173,8 @@ class NeuralNetwork:
             the calculated cost
         """
         m = Y.shape[1]
-        term1 = np.matmul(Y, np.log(A).transpose())[0][0]
-        term2 = np.matmul(1 - Y, np.log(1.0000001 - A).transpose())[0][0]
-        cost = (1 / m) * (-(term1 + term2))
+        m_loss = np.sum((Y * np.log(A)) + ((1 - Y) * np.log(1.0000001 - A)))
+        cost = (1 / m) * (-(m_loss))
         return (cost)
 
     def evaluate(self, X, Y):
