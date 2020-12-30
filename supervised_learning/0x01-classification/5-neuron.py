@@ -98,8 +98,7 @@ class Neuron:
             the updated private attribute __A
         """
         z = np.matmul(self.W, X) + self.b
-        e = 2.7182818285
-        self.__A = 1 / (1 + (e ** (-z)))
+        self.__A = 1 / (1 + (np.exp(-z)))
         return (self.A)
 
     def cost(self, Y, A):
