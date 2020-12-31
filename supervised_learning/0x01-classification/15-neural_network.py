@@ -252,13 +252,13 @@ class NeuralNetwork:
         dz2 = (A2 - Y)
         d__W2 = (1 / m) * (np.matmul(dz2, A1.transpose()))
         d__b2 = (1 / m) * (np.sum(dz2, axis=1, keepdims=True))
-        self.__W2 = self.W2 - (alpha * d__W2)
-        self.__b2 = self.b2 - (alpha * d__b2)
         dz1 = (np.matmul(self.W2.transpose(), dz2)) * (A1 * (1 - A1))
         d__W1 = (1 / m) * (np.matmul(dz1, X.transpose()))
         d__b1 = (1 / m) * (np.sum(dz1, axis=1, keepdims=True))
         self.__W1 = self.W1 - (alpha * d__W1)
         self.__b1 = self.b1 - (alpha * d__b1)
+        self.__W2 = self.W2 - (alpha * d__W2)
+        self.__b2 = self.b2 - (alpha * d__b2)
 
     def train(self, X, Y, iterations=5000, alpha=0.05,
               verbose=True, graph=True, step=100):
