@@ -40,7 +40,7 @@ class DeepNeuralNetwork:
                 initialized based on layers
             __cache: a dictionary holding all intermediary values for network,,
                 initialized as an empty dictionary
-            __weights: a dictionary holding all weights & biases of the network,
+            __weights: a dictionary holding all weights/biases of the network,
                 weights initialized using the He et al. method
                     using the key W{l} where {l} is the hidden layer
                 biases initialized to 0s
