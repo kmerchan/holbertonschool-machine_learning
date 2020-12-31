@@ -145,8 +145,6 @@ class Neuron:
             label values should be 1 if the output of the network is >= 0.5,
                 0 if the output of the network is < 0.5
         """
-        # z = np.matmul(self.W, X) + self.b
-        # A = 1 / (1 + (np.exp(-z)))
         A = self.forward_prop(X)
         cost = self.cost(Y, A)
         prediction = np.where(A >= 0.5, 1, 0)
