@@ -40,7 +40,7 @@ class DeepNeuralNetwork:
                 initialized based on layers
             cache: a dictionary holding all intermediary values of the network,
                 initialized as an empty dictionary
-            weights: a dictionary holding all weights and biases of the network,
+            weights: a dictionary holding all weights & biases of the network,
                 weights initialized using the He et al. method
                     using the key W{l} where {l} is the hidden layer
                 biases initialized to 0s
@@ -53,11 +53,14 @@ class DeepNeuralNetwork:
         if type(layers) is not list:
             raise TypeError("layers must be a list of positive integers")
         weights = {}
+        previous = nx
         for index, layer in enumerate(layers, 1):
             if type(layer) is not int or layer < 0:
                 raise TypeError("layers must be a list of positive integers")
             weights["b{}".format(index)] = np.zeros((layer, 1))
-            
+            weights["W{}".format(index)] = (
+                np.random.randn(layer, previous) * np.sqrt(2 / previous))
+            previous = layer
         self.L = len(layers)
         self.cache = {}
         self.weights = weights
