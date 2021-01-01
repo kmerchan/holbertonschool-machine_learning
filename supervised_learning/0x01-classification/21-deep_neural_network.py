@@ -182,7 +182,7 @@ class DeepNeuralNetwork:
         parameters:
             Y [numpy.ndarray with shape (1, m)]:
                 contains correct labels for the input data
-            cache [dictionary]: contains all intermediary values of the network,
+            cache [dictionary]: contains intermediary values of the network,
                 including X as cache[A0]
             alpha [float]: learning rate
 
