@@ -25,5 +25,8 @@ def one_hot_encode(Y, classes):
         return None
     if type(classes) is not int or classes != (np.amax(Y) + 1):
         return None
-    one_hot = np.eye(classes)[Y].transpose()
-    return one_hot
+    try:
+        one_hot = np.eye(classes)[Y].transpose()
+        return one_hot
+    except Exception:
+        return None
