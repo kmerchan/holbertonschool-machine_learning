@@ -25,8 +25,5 @@ def one_hot_encode(Y, classes):
         return None
     if type(classes) is not int:
         return None
-    m = Y.shape[0]
-    one_hot = np.zeros((classes, m))
-    one_hot[np.arange(m), Y] = 1
-    one_hot = one_hot.transpose()
+    one_hot = np.eye(classes)[Y].transpose()
     return one_hot
