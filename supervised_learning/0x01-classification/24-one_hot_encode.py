@@ -22,9 +22,9 @@ def one_hot_encode(Y, classes):
             or None if fails
     """
     # if type(Y) is not np.ndarray or len(Y.shape) != 1 or len(Y) < 1:
-        # return None
+    # return None
     # if type(classes) is not int or classes != (Y.max() + 1):
-        # return None
+    # return None
     # one_hot = np.eye(classes)[Y].transpose()
     # return one_hot
     if type(Y) is not np.ndarray:
