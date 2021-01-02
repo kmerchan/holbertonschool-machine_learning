@@ -21,7 +21,7 @@ def one_hot_encode(Y, classes):
         one-hot encoding of Y with shape (classes, m)
             or None if fails
     """
-    if type(Y) is not np.ndarray or len(Y) < 1:
+    if type(Y) is not np.ndarray or len(Y.shape) != 1 or len(Y) < 1:
         return None
     if type(classes) is not int or classes != (np.amax(Y) + 1):
         return None
