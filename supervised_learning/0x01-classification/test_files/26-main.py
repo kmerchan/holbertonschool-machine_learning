@@ -6,6 +6,9 @@ Deep = __import__('26-deep_neural_network').DeepNeuralNetwork
 one_hot_encode = __import__('24-one_hot_encode').one_hot_encode
 one_hot_decode = __import__('25-one_hot_decode').one_hot_decode
 
+nope = Deep.load("does_not_exist.pkl")
+print(nope)
+
 lib_train = np.load('./data/Binary_Train.npz')
 X_train_3D, Y_train = lib_train['X'], lib_train['Y']
 X_train = X_train_3D.reshape((X_train_3D.shape[0], -1)).T
