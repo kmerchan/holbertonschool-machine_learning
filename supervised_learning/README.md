@@ -32,3 +32,7 @@ This directory contains work to build up skills needed to be able to build your 
 26. [Persistence is Key](/supervised_learning/0x01-classification/26-deep_neural_network.py)
 27. [Update DeepNeuralNetwork](/supervised_learning/0x01-classification/27-deep_neural_network.py)
 28. [All the Activations](/supervised_learning/0x01-classification/28-deep_neural_network.py)
+
+## 0x02-tensorflow
+This directory contains initial work with TensorFlow and building a neural network with TensorFlow:
+0. [Placeholders](/supervised_learning/0x02-tensorflow/0-create_placeholders.py)
