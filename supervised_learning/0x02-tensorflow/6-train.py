@@ -65,6 +65,7 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations,
                 print("\tValidation Cost: {}".format(loss_valid))
                 print("\tValidation Accuracy: {}".format(accuracy_valid))
             sess.run(train_op, feed_dict={x: X_train, y: Y_train})
+        i += 1
         loss_train = sess.run(loss,
                               feed_dict={x: X_train, y: Y_train})
         accuracy_train = sess.run(accuracy,
