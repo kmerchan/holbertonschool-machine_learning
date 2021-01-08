@@ -1,4 +1,4 @@
-#!/usr/bin/env python3 
+#!/usr/bin/env python3
 """
 Defines a function that creates the forward propagation graph
 for the neural network
@@ -11,11 +11,11 @@ import tensorflow as tf
 def forward_prop(x, layer_sizes=[], activations=[]):
     """
     Creates the forward propagation graph for the neural network
- 
+
     parameters:
         x [tf.placeholder]: placeholder for input data
         layer_size [list]: contains number of nodes in each layer of network
-        activations [list]: contains activation functions for each layer 
+        activations [list]: contains activation functions for each layer
 
     returns:
         prediction of the network in tensor form
