@@ -37,3 +37,9 @@ This directory contains work to build up skills needed to be able to build your 
 This directory contains initial work with TensorFlow and building a neural network with TensorFlow:
 0. [Placeholders](/supervised_learning/0x02-tensorflow/0-create_placeholders.py)
 1. [Layers](/supervised_learning/0x02-tensorflow/1-create_layer.py)
+2. [Forward Propagation](/supervised_learning/0x02-tensorflow/2-forward_prop.py)
+3. [Accuracy](/supervised_learning/0x02-tensorflow/3-calculate_accuracy.py)
+4. [Loss](/supervised_learning/0x02-tensorflow/4-calculate_loss.py)
+5. [Train_Op](/supervised_learning/0x02-tensorflow/5-create_train_op.py)
+6. [Train](/supervised_learning/0x02-tensorflow/6-train.py)
+7. [Evaluate](/supervised_learning/0x02-tensorflow/7-evaluate.py)
