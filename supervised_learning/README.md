@@ -43,3 +43,23 @@ This directory contains initial work with TensorFlow and building a neural netwo
 5. [Train_Op](/supervised_learning/0x02-tensorflow/5-create_train_op.py)
 6. [Train](/supervised_learning/0x02-tensorflow/6-train.py)
 7. [Evaluate](/supervised_learning/0x02-tensorflow/7-evaluate.py)
+
+## 0x03-optimization
+This directory contains work with noramlization, optimization, and hyperparameters:
+0. [Normalization Constants](/supervised_learning/0x03-optimization/0-norm_constants.py)
+1. [Normalize](/supervised_learning/0x03-optimization/1-normalize.py)
+2. [Shuffle Data](/supervised_learning/0x03-optimization/2-shuffle_data.py)
+3. [Mini-Batch](/supervised_learning/0x03-optimization/3-mini_batch.py)
+4. [Moving Average](/supervised_learning/0x03-optimization/4-moving_average.py)
+5. [Momentum](/supervised_learning/0x03-optimization/5-momentum.py)
+6. [Momentum Upgraded](/supervised_learning/0x03-optimization/6-momentum.py)
+7. [RMSProp](/supervised_learning/0x03-optimization/7-RMSProp.py)
+8. [RMSProp Upgraded](/supervised_learning/0x03-optimization/8-RMSProp.py)
+9. [Adam](/supervised_learning/0x03-optimization/9-Adam.py)
+10. [Adam Upgraded](/supervised_learning/0x03-optimization/10-Adam.py)
+11. [Learning Rate Decay](/supervised_learning/0x03-optimization/11-learning_rate_decay.py)
+12. [Learning Rate Decay Upgraded](/supervised_learning/0x03-optimization/12-learning_rate_decay.py)
+13. [Batch Normalization](/supervised_learning/0x03-optimization/13-batch_norm.py)
+14. [Batch Normalization Upgraded](/supervised_learning/0x03-optimization/14-batch_norm.py)
+15. [Put it all together and what do you get?](/supervised_learning/0x03-optimization/15-model.py)
+16. [If you can't explain it simply, you don't understand it well enough]()
