@@ -26,14 +26,7 @@ def shuffle_data(X, Y):
         the shuffled X and Y matrices, respectively
     """
     m = X.shape[0]
-    nx = X.shape[1]
-    ny = Y.shape[1]
     shuffle_pattern = np.random.permutation(m)
-    X_shuffled = np.zeros((m, nx)).astype("int")
-    Y_shuffled = np.zeros((m, ny)).astype("int")
-    for i in range(len(shuffle_pattern)):
-        for x in range(nx):
-            X_shuffled[i][x] += X[shuffle_pattern[i]][x]
-        for y in range(ny):
-            Y_shuffled[i][y] += Y[shuffle_pattern[i]][y]
+    X_shuffled = X[shuffle_pattern]
+    Y_shuffled = Y[shuffle_pattern]
     return (X_shuffled, Y_shuffled)
