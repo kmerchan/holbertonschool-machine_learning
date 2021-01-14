@@ -29,8 +29,6 @@ def normalization_constants(X):
     returns:
         the mean and standard deviation of each feature, respectively
     """
-    m = X.shape[0]
-    mu = (1 / m) * sum(X)
-    sigma_squared = (1 / m) * sum((X - mu) ** 2)
-    sigma = sigma_squared ** (1 / 2)
+    mu = X.mean(axis=0)
+    sigma = X.std(axis=0)
     return (mu, sigma)
