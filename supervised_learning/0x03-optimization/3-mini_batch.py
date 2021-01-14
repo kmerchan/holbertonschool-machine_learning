@@ -88,9 +88,9 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
             step_number = 0
             for mini_batch in range(mini_batch_total):
                 low = mini_batch * batch_size
-                high = ((mini_batch + 1) * batch_size) - 1
+                high = ((mini_batch + 1) * batch_size)
                 if high > m:
-                    high = (m - 1)
+                    high = m
                 sess.run(train_op, feed_dict={x: X_train[low:high, :],
                                               y: Y_train[low:high, :]})
                 step_number += 1
