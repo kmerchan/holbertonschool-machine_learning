@@ -7,6 +7,7 @@ learning rate decay, and batch normalization
 
 
 import tensorflow as tf
+import numpy as np
 
 
 def model(Data_train, Data_valid, layers, activations, alpha=0.001,
