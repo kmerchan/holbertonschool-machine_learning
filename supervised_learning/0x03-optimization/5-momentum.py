@@ -20,6 +20,12 @@ def update_variables_momentum(alpha, beta1, var, grad, v):
         v [tf.moment]:
             the previous first moment of var
 
+    v_dW = (beta * v_dW) + ((1 - beta) * dW)
+    W = W - (alpha * v_dW)
+
     returns:
         the updated variable and the new moment, respectively
     """
+    dW_prev = (beta1 * v) + ((1 - beta1) * grad)
+    var -= (alpha * dW_prev)
+    return var, dW_prev
