@@ -17,12 +17,12 @@ def create_RMSProp_op(loss, alpha, beta2, epsilon):
     parameters:
         loss: the loss of the network
         alpha [float]: learning rate
-        beta1 [float]: momentum weight
+        beta2 [float]: RMSProp weight
         epsilon [float]: small number to avoid division by zero
 
     returns:
         the RMSProp optimization operation
     """
     op = tf.train.RMSPropOptimizer(
-        alpha, momentum=beta1, epsilon=epsilon).minimize(loss)
+        alpha, decay=beta2, epsilon=epsilon).minimize(loss)
     return op

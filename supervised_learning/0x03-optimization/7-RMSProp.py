@@ -11,7 +11,7 @@ def update_variables_RMSProp(alpha, beta2, epsilon, var, grad, s):
 
     parameters:
         alpha [float]: learning rate
-        beta1 [float]: momentum weight
+        beta2 [float]: RMSProp weight
         epsilon [float]:
             small number to avoid division by zero
         var [numpy.ndarray]:
