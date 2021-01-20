@@ -63,3 +63,13 @@ This directory contains work with noramlization, optimization, and hyperparamete
 14. [Batch Normalization Upgraded](/supervised_learning/0x03-optimization/14-batch_norm.py)
 15. [Put it all together and what do you get?](/supervised_learning/0x03-optimization/15-model.py)
 16. [If you can't explain it simply, you don't understand it well enough]()
+
+## 0x04-error_analysis
+This directory contains work with error analysis, including bias and variance:
+0. [Create Confusion](/supervised_learning/0x04-error_analysis/0-create_confusion.py)
+1. [Sensitivity](/supervised_learning/0x04-error_analysis/1-sensitivity.py)
+2. [Precision](/supervised_learning/0x04-error_analysis/2-precision.py)
+3. [Specificity](/supervised_learning/0x04-error_analysis/3-specificity)
+4. [F1 Score](/supervised_learning/0x04-error_analysis/4-f1_score.py)
+5. [Dealing with Error](/supervised_learning/0x04-error_analysis/5-error_handling)
+6. [Compare and Contrast](/supervised_learning/0x04-error_analysis/6-compare_and_contrast)
