@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 Defines a function that creates a confusion matrix
-from given labels and predictions
 """
 
 import numpy as np
