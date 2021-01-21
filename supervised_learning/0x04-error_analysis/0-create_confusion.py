@@ -27,4 +27,4 @@ def create_confusion_matrix(labels, logits):
             with row indices representing correct labels
             and column indices representing predicted labels
     """
-    return np.matmul(labels.transpose(), logits)
+    return np.matmul(labels.T, logits)
