@@ -9,7 +9,7 @@ import numpy as np
 
 def create_confusion_matrix(labels, logits):
     """
-    Creates a confusion matrix from given labels and precitions
+    Creates a confusion matrix
 
     parameters:
         labels [numpy.ndarray of shape (m, classes)]:
