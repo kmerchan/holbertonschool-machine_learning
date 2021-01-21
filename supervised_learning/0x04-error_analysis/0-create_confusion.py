@@ -3,8 +3,6 @@
 Defines function that creates a confusion matrix
 from given labels and predictions
 """
-
-
 import numpy as np
 
 
