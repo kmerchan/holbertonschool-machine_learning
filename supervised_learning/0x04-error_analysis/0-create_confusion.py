@@ -5,9 +5,6 @@ from given labels and predictions
 """
 
 
-import numpy as np
-
-
 def create_confusion_matrix(labels, logits):
     """
     Creates a confusion matrix from given labels and prediction
