@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Defines a function that creates a confusion matrix
-from
+from given labels and predictions
 """
 
 import numpy as np
@@ -9,7 +9,7 @@ import numpy as np
 
 def create_confusion_matrix(labels, logits):
     """
-    Creates a confusion matrix
+    Creates a confusion matrix from given labels and precitions
 
     parameters:
         labels [numpy.ndarray of shape (m, classes)]:
