@@ -73,3 +73,15 @@ This directory contains work with error analysis, including bias and variance:
 4. [F1 Score](/supervised_learning/0x04-error_analysis/4-f1_score.py)
 5. [Dealing with Error](/supervised_learning/0x04-error_analysis/5-error_handling)
 6. [Compare and Contrast](/supervised_learning/0x04-error_analysis/6-compare_and_contrast)
+
+## 0x05-regularization
+This directory contains initial work with regularizing a neural network to avoid overfitting:
+0. [L2 Regularization Cost](/supervised_learning/0x05-regularization/0-l2_reg_cost.py)
+1. [Gradient Descent with L2 Regularization](/supervised_learning/0x05-regularization/1-l2_reg_gradient_descent.py)
+2. [L2 Regularization Cost](/supervised_learning/0x05-regularization/2-l2_reg_cost.py)
+3. [Create a Layer with L2 Regularization](/supervised_learning/0x05-regularization/3-l2_reg_create_laayer.py)
+4. [Forward Propagation with Dropout](/supervised_learning/0x05-regularization/4-dropout_forward_prop.py)
+5. [Gradient Descent with Dropout](/supervised_learning/0x05-regularization/5-dropout_gradient_descent.py)
+6. [Create a Layer with Dropout](/supervised_learning/0x05-regularization/6-dropout_create_layer.py)
+7. [Early Stopping](/supervised_learning/0x05-regularization/7-early_stopping.py)
+8. [If you can't explain it to a six year old, you don't understand it yourself]()
