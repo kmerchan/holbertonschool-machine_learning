@@ -9,7 +9,7 @@ import numpy as np
 
 def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
     """
-    Updates the weights and biases using gradient descent with L2 regularization
+    Updates weights and biases using gradient descent with L2 regularization
 
     parameters:
         Y [one-hot numpy.ndarray of shape (classes, m)]:
