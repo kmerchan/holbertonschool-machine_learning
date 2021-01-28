@@ -85,3 +85,20 @@ This directory contains initial work with regularizing a neural network to avoid
 6. [Create a Layer with Dropout](/supervised_learning/0x05-regularization/6-dropout_create_layer.py)
 7. [Early Stopping](/supervised_learning/0x05-regularization/7-early_stopping.py)
 8. [If you can't explain it to a six year old, you don't understand it yourself]()
+
+## 0x06-keras
+This directory contains work with Keras, a TensorFlow module:
+0. [Sequential](/supervised_learning/0x06-keras/0-sequential.py)
+1. [Input](/supervised_learning/0x06-keras/1-input.py)
+2. [Optimize](/supervised_learning/0x06-keras/2-optimize.py)
+3. [One Hot](/supervised_learning/0x06-keras/3-one_hot.py)
+4. [Train](/supervised_learning/0x06-keras/4-train.py)
+5. [Validate](/supervised_learning/0x06-keras/5-train.py)
+6. [Early Stopping](/supervised_learning/0x06-keras/6-train.py)
+7. [Learning Rate Decay](/supervised_learning/0x06-keras/7-train.py)
+8. [Save Only the Best](/supervised_learning/0x06-keras/8-train.py)
+9. [Save and Load Model](/supervised_learning/0x06-keras/9-model.py)
+10. [Save and Load Weights](/supervised_learning/0x06-keras/10-weights.py)
+11. [Save and Load Configuration](/supervised_learning/0x06-keras/11-config.py)
+12. [Test](/supervised_learning/0x06-keras/12-test.py)
+13. [Predict](/supervised_learning/0x06-keras/13-predict.py)

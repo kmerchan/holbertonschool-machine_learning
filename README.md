@@ -7,6 +7,7 @@ This directory contains projects to build up the math skills needed for Machine 
 * [0x01-plotting](/math/0x01-plotting)
 * [0x02-calculus](/math/0x02-calculus)
 * [0x03-probability](/math/0x03-probability)
+* [0x04-convolutions_and_pooling](/math/0x04-convolutions_and_pooling)
 
 ## [supervised_learning](/supervised_learning)
 This directory contains projects for building Machine Learning supervised learning models.
@@ -15,6 +16,7 @@ This directory contains projects for building Machine Learning supervised learni
 * [0x03-optimization](/supervised_learning/0x03-optimization)
 * [0x04-error_analysis](/supervised_learning/0x04-error_analysis)
 * [0x05-regularization](/supervised_learning/0x05-regularization)
+* [0x06-keras](/supervised_learning/0x06-keras)
 
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
