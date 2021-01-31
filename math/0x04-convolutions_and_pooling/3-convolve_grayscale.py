@@ -42,15 +42,10 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     width = images.shape[2]
     kh = kernel.shape[0]
     kw = kernel.shape[1]
+    sh, sw = stride
     if padding is 'same':
-        if (kh % 2) is 1:
-            ph = (kh - 1) // 2
-        else:
-            ph = kh // 2
-        if (kw % 2) is 1:
-            pw = (kw - 1) // 2
-        else:
-            pw = kw // 2
+        ph = ((((height - 1) * sh) + kh - height) // 2) + 1
+        pw = ((((width - 1) * sw) + kw - width) // 2) + 1
     elif padding is 'valid':
         ph = 0
         pw = 0
@@ -58,20 +53,13 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
         ph, pw = padding
     images = np.pad(images, ((0, 0), (ph, ph), (pw, pw)),
                     'constant', constant_values=0)
-    sh, sw = stride
     ch = ((height + (2 * ph) - kh) // sh) + 1
     cw = ((width + (2 * pw) - kw) // sw) + 1
     convoluted = np.zeros((m, ch, cw))
     i = 0
-    range_height = height + (2 * ph) - kh
-    if (sh % 2) is 1:
-        range_height += 1
-    range_width = width + (2 * pw) - kw
-    if (sw % 2) is 1:
-        range_width += 1
-    for h in range(0, range_height, sh):
+    for h in range(0, (height + (2 * ph) - kh + 1), sh):
         j = 0
-        for w in range(0, range_width, sw):
+        for w in range(0, (width + (2 * pw) - kw + 1), sw):
             output = np.sum(images[:, h: h + kh, w: w + kw] * kernel,
                             axis=1).sum(axis=1)
             convoluted[:, i, j] = output
