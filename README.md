@@ -17,6 +17,7 @@ This directory contains projects for building Machine Learning supervised learni
 * [0x04-error_analysis](/supervised_learning/0x04-error_analysis)
 * [0x05-regularization](/supervised_learning/0x05-regularization)
 * [0x06-keras](/supervised_learning/0x06-keras)
+* [0x07-cnn](/supervised_learning/0x07-cnn)
 
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
