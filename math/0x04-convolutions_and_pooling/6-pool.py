@@ -40,9 +40,9 @@ def pool(images, kernel_shape, stride, mode='max'):
     pw = ((width - kw) // sw) + 1
     pooled = np.zeros((m, ph, pw, c))
     i = 0
-    for h in range(0, height, sh):
+    for h in range(0, (height - kh + 1), sh):
         j = 0
-        for w in range(0, width, sw):
+        for w in range(0, (width - kw + 1), sw):
             if mode == 'max':
                 output = np.max(images[:, h:h + kh, w:w + kw, :],
                                 axis=(1, 2))
