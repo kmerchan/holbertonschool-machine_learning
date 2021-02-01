@@ -16,7 +16,7 @@ def convolve(images, kernel, padding='same', stride=(1, 1)):
 
     parameters:
         images [numpy.ndarray with shape (m, h, w, c)]:
-            contains multiple grayscale images
+            contains multiple images
             m: number of images
             h: height in pixels of all images
             w: width in pixels of all images
