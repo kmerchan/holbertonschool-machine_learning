@@ -17,6 +17,7 @@ if __name__ == "__main__":
     def relu(Z):
         return np.maximum(Z, 0)
 
+    print(X_train_c.shape)
     plt.imshow(X_train[0])
     plt.show()
     A = conv_forward(X_train_c, W, b, relu, padding='valid')
@@ -24,4 +25,10 @@ if __name__ == "__main__":
     plt.imshow(A[0, :, :, 0])
     plt.show()
     plt.imshow(A[0, :, :, 1])
+    plt.show()
+    B = conv_forward(X_train_c, W, b, relu, padding='same')
+    print(B.shape)
+    plt.imshow(B[0, :, :, 0])
+    plt.show()
+    plt.imshow(B[0, :, :, 1])
     plt.show()
