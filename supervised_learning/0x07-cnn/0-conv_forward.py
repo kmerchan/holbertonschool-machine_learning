@@ -56,13 +56,13 @@ def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
     cw = ((w_prev + (2 * pw) - kw) // sw) + 1
     convoluted = np.zeros((m, ch, cw, c_new))
     for index in range(c_new):
-        kernal_index = W[:, :, :, index]
+        kernel_index = W[:, :, :, index]
         i = 0
         for h in range(0, (h_prev + (2 * ph) - kh + 1), sh):
             j = 0
             for w in range(0, (w_prev + (2 * pw) - kw + 1), sw):
                 output = np.sum(
-                    images[:, h:h + kh, w:w + kw, :] * kernal_index,
+                    images[:, h:h + kh, w:w + kw, :] * kernel_index,
                     axis=1).sum(axis=1).sum(axis=1)
                 output += b[0, 0, 0, index]
                 convoluted[:, i, j, index] = activation(output)

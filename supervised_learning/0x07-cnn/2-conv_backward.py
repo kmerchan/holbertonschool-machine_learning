@@ -43,7 +43,7 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
 
     returns:
         the partial derivative with respect to the previous layer (dA_prev),
-            the kernals (dW), and the biases (db), respectively
+            the kernels (dW), and the biases (db), respectively
     """
     m, h_new, w_new, c_new = dZ.shape
     m, h_prev, w_prev, c_prev = A_prev.shape
@@ -63,16 +63,16 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
     dA_prev = np.zeros((m, h_prev + (2 * ph), w_prev + (2 * pw), c_prev))
     dW = np.zeros((kh, kw, c_prev, c_new))
     for ex in range(m):
-        for kernal_index in range(c_new):
+        for kernel_index in range(c_new):
             for h in range(h_new):
                 for w in range(w_new):
                     i = h * sh
                     j = w * sw
                     dA_prev[ex, i: i + kh, j: j + kw, :] += (
-                        dZ[ex, h, w, kernal_index] * W[:, :, :, kernal_index])
-                    dW[:, :, :, kernal_index] += (
+                        dZ[ex, h, w, kernel_index] * W[:, :, :, kernel_index])
+                    dW[:, :, :, kernel_index] += (
                         padded[ex, i: i + kh, j: j + kw, :] *
-                        dZ[ex, h, w, kernal_index])
+                        dZ[ex, h, w, kernel_index])
     if padding is 'same':
         dA_prev = dA_prev[:, ph:-ph, pw:-pw, :]
     return dA_prev, dW, db
