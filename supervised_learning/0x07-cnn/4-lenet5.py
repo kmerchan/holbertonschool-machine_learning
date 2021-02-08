@@ -41,7 +41,7 @@ def lenet5(x, y):
     """
     weights_initializer = tf.contrib.layers.variance_scaling_initializer()
     C1 = tf.layers.Conv2D(filters=6,
-                          kernel_size = (5, 5),
+                          kernel_size=(5, 5),
                           padding='same',
                           activation=tf.nn.relu,
                           kernel_initializer=weights_initializer)
@@ -50,7 +50,7 @@ def lenet5(x, y):
                                 strides=(2, 2))
     output_2 = P2(output_1)
     C3 = tf.layers.Conv2D(filters=16,
-                          kernel_size = (5, 5),
+                          kernel_size=(5, 5),
                           padding='valid',
                           activation=tf.nn.relu,
                           kernel_initializer=weights_initializer)
@@ -76,7 +76,7 @@ def lenet5(x, y):
     softmax = tf.nn.softmax(output_7)
     loss = tf.losses.softmax_cross_entropy(y, logits=output_7)
     op = tf.train.AdamOptimizer().minimize(loss)
-    y_pred =tf.math.argmax(output_7, axis=1)
+    y_pred = tf.math.argmax(output_7, axis=1)
     y_out = tf.math.argmax(y, axis=1)
     equality = tf.math.equality(y_pred, y_out)
     accuracy = tf.reduce_mean(tf.case(equality, "float"))
