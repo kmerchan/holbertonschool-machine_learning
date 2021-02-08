@@ -58,7 +58,7 @@ def lenet5(x, y):
     P4 = tf.layers.MaxPooling2D(pool_size=(2, 2),
                                 strides=(2, 2))
     output_4 = P4(output_3)
-    output4 = t.layers.Flatten(output_4)
+    output4 = tf.layers.Flatten()(output_4)
     F5 = tf.layers.Dense(
         120,
         activation=tf.nn.relu,
@@ -71,14 +71,13 @@ def lenet5(x, y):
     output_6 = F6(output_5)
     F7 = tf.layers.Dense(
         10,
-        activation=tf.nn.softmax,
         kernel_initializer=weights_initializer)
     output_7 = F7(output_6)
-    loss = tf.losses.softmax_cross_entropy(output_7,
-                                           logits=y)
+    softmax = tf.nn.softmax(output_7)
+    loss = tf.losses.softmax_cross_entropy(y, logits=output_7)
     op = tf.train.AdamOptimizer().minimize(loss)
-    y_pred =tf.math.argmax(y, axis=1)
-    y_out = tf.math.argmax(output_7, axis=1)
+    y_pred =tf.math.argmax(output_7, axis=1)
+    y_out = tf.math.argmax(y, axis=1)
     equality = tf.math.equality(y_pred, y_out)
     accuracy = tf.reduce_mean(tf.case(equality, "float"))
-    return output_7, op, loss, accuracy
+    return softmax, op, loss, accuracy
