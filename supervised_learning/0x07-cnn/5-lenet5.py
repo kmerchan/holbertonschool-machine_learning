@@ -33,13 +33,13 @@ def lenet5(X):
         K.Model compiled to use Adam optimization (default hyperparameters)
             and accuracy metrics
     """
-    weights_initializer = K.initializers.HeNormal()
+    weights_initializer = K.initializers.he_normal()
     C1 = K.layers.Conv2D(filters=6,
                          kernel_size=(5, 5),
                          padding='same',
                          activation=K.activations.relu,
                          kernel_initializer=weights_initializer)
-    output_1 = C1(x)
+    output_1 = C1(X)
     P2 = K.layers.MaxPooling2D(pool_size=(2, 2),
                                strides=(2, 2))
     output_2 = P2(output_1)
@@ -67,7 +67,7 @@ def lenet5(X):
         10,
         kernel_initializer=weights_initializer)
     output_7 = F7(output_6)
-    softmax = K.layers.softmax(output_7)
+    softmax = K.layers.Softmax()(output_7)
     model = K.Model(inputs=X, outputs=softmax)
     model.compile(optimizer=K.optimizers.Adam(),
                   loss='categorical_crossentropy',
