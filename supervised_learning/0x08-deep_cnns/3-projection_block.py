@@ -39,7 +39,7 @@ def projection_block(A_prev, filters, s=2):
     C11 = K.layers.Conv2D(filters=F11,
                           kernel_size=(1, 1),
                           padding='same',
-                          strides=s
+                          strides=s,
                           kernel_initializer=init)(A_prev)
     Batch_Norm11 = K.layers.BatchNormalization(axis=3)(C11)
     ReLU11 = K.layers.Activation(activation)(Batch_Norm11)
@@ -57,7 +57,7 @@ def projection_block(A_prev, filters, s=2):
     SC = K.layers.Conv2D(filters=F12,
                          kernel_size=(1, 1),
                          padding='same',
-                         strides=s
+                         strides=s,
                          kernel_initializer=init)(A_prev)
     Batch_NormSC = K.layers.BatchNormalization(axis=3)(SC)
     Addition = K.layers.Add()([Batch_Norm12, Batch_NormSC])
