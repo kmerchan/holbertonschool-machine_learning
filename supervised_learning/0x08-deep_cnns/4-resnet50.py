@@ -54,7 +54,7 @@ def resnet50():
     IB13 = identity_block(IB12, [256, 256, 1024])
     IB14 = identity_block(IB13, [256, 256, 1024])
 
-    PB15 = projection_block(IB13, [512, 512, 2048], s=2)
+    PB15 = projection_block(IB14, [512, 512, 2048], s=2)
     IB16 = identity_block(PB15, [512, 512, 2048])
     IB17 = identity_block(IB16, [512, 512, 2048])
 
