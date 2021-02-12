@@ -65,8 +65,8 @@ def inception_network():
                                      strides=(1, 1),
                                      padding='same')(I15)
     Dropout17 = K.layers.Dropout(rate=0.4)(AP16)
-    Dense18 = K.layers.Dense(1000,
-                             kernel_initializer=init)(Dropout17)
-    softmax = K.layers.Softmax()(Dense18)
-    model = K.Model(inputs=input, outputs=softmax)
+    output = K.layers.Dense(1000,
+                            activation='softmax',
+                            kernel_initializer=init)(Dropout17)
+    model = K.Model(inputs=input, outputs=output)
     return model
