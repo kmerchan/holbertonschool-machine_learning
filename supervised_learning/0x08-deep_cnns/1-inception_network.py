@@ -21,13 +21,13 @@ def inception_network():
     """
     init = K.initializers.he_normal()
     activation = K.activations.relu
-    input = K.Input(shape=(224, 224, 3))
+    img_input = K.Input(shape=(224, 224, 3))
     C0 = K.layers.Conv2D(filters=64,
                          kernel_size=(7, 7),
                          padding='same',
                          strides=(2, 2),
                          activation=activation,
-                         kernel_initializer=init)(input)
+                         kernel_initializer=init)(img_input)
     MP1 = K.layers.MaxPooling2D(pool_size=(3, 3),
                                 strides=(2, 2),
                                 padding='same')(C0)
@@ -68,5 +68,5 @@ def inception_network():
     output = K.layers.Dense(1000,
                             activation='softmax',
                             kernel_initializer=init)(Dropout17)
-    model = K.Model(inputs=input, outputs=output)
+    model = K.Model(inputs=img_input, outputs=output)
     return model

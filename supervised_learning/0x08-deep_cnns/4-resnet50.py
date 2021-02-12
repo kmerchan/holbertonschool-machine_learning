@@ -27,12 +27,12 @@ def resnet50():
     """
     init = K.initializers.he_normal()
     activation = K.activations.relu
-    input = K.Input(shape=(224, 224, 3))
+    img_input = K.Input(shape=(224, 224, 3))
     C0 = K.layers.Conv2D(filters=64,
                          kernel_size=(7, 7),
                          padding='same',
                          strides=(2, 2),
-                         kernel_initializer=init)(input)
+                         kernel_initializer=init)(img_input)
     Batch_NormC0 = K.layers.BatchNormalization(axis=3)(C0)
     ReLUC0 = K.layers.Activation(activation)(Batch_NormC0)
     MP1 = K.layers.MaxPooling2D(pool_size=(3, 3),
@@ -64,5 +64,5 @@ def resnet50():
     output = K.layers.Dense(1000,
                             activation='softmax',
                             kernel_initializer=init)(AP18)
-    model = K.Model(inputs=input, outputs=output)
+    model = K.Model(inputs=img_input, outputs=output)
     return model
