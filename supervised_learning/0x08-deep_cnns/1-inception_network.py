@@ -47,7 +47,7 @@ def inception_network():
                                 strides=(2, 2),
                                 padding='same')(C3)
     I5 = inception_block(MP4, [64, 96, 128, 16, 32, 32])
-    I6 = inception_block(I5, [128, 128,192, 32, 96, 64])
+    I6 = inception_block(I5, [128, 128, 192, 32, 96, 64])
     MP7 = K.layers.MaxPooling2D(pool_size=(3, 3),
                                 strides=(2, 2),
                                 padding='same')(I6)
