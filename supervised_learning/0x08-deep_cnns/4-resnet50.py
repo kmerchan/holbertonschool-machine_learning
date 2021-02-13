@@ -60,7 +60,7 @@ def resnet50():
 
     AP18 = K.layers.AveragePooling2D(pool_size=(7, 7),
                                      strides=(1, 1),
-                                     padding='same')(IB17)
+                                     padding='valid')(IB17)
     output = K.layers.Dense(1000,
                             activation='softmax',
                             kernel_initializer=init)(AP18)
