@@ -22,7 +22,7 @@ def transition_layer(X, nb_filters, compression):
     Use compression as used for DenseNet-C
 
     All convolutions inside the dense block should
-    be followed by batch normalization along the channels axis
+    be preceded by batch normalization along the channels axis
     and then ReLU activation, respectively
 
     All weights should be initialized using he normal
@@ -31,4 +31,16 @@ def transition_layer(X, nb_filters, compression):
         the output of transition layer and
             the number of filter within the output
     """
-    return X, nb_filters
+    init = K.initializers.he_normal()
+    activation = K.activations.relu
+    Batch_Norm1 = K.layers.BatchNormalization(axis=3)(X)
+    ReLU1 = K.layers.Activation(activation)(Batch_Norm1)
+    C1 = K.layers.Conv2D(filters=compression,
+                         kernel_size=(1, 1),
+                         padding='same',
+                         kernel_initializer=init)(ReLU1)
+    nb_filters += compression
+    AP1 = K.layers.AveragePooling2D(pool_size=(2, 2),
+                                    strides=(1, 1),
+                                    padding="valid")(C1)
+    return AP1, nb_filters
