@@ -24,6 +24,8 @@ def train_model(network, data, labels, batch_size, epochs,
             size of batch used for mini-batch gradient descent
         epochs [int]:
             number of passes through data for mini-batch gradient descent
+        validation_data:
+            data to be analyzed during model training
         verbose [boolean]:
             determines if output should be printed during training
         shuffle [boolean]:
