@@ -59,14 +59,17 @@ def train_model(network, data, labels, batch_size, epochs,
         callback.append(
             K.callbacks.EarlyStopping(monitor='loss', patience=patience))
 
+    def learning_rate(epoch):
+        """
+        calculates learning rate
+
+        initial_learning_rate / (1 + decay_rate * (step / decay_step))
+        """
+        return (alpha / (1 + decay_rate * epoch))
+
     if learning_rate_decay and validation_data:
-        lr_schedule = K.optimizers.schedules.InverseTimeDecay(
-            initial_learning_rate=alpha,
-            decay_steps=epoch,
-            decay_rate=decay_rate,
-            staircase=True)
         callback.append(
-            K.callbacks.LearningRateScheduler(lr_schedule, verbose=1))
+            K.callbacks.LearningRateScheduler(learning_rate, verbose=1))
 
     if callback == []:
         callback = None
