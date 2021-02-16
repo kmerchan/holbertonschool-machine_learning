@@ -24,7 +24,7 @@ def save_config(network, filename):
     """
     json = network.to_json()
     with open(filename, 'w+') as f:
-        f.write(dumps(json))
+        f.write(json)
     return None
 
 
@@ -40,9 +40,7 @@ def load_config(filename):
     returns:
         the loaded model
     """
-    if exists(filename) is False:
-        return None
     with open(filename, 'r') as f:
-        json_string = loads(f.read())
+        json_string = f.read()
     model = K.models.model_from_json(json_string)
     return model
