@@ -15,13 +15,13 @@ def save_model(network, filename):
 
     parameters:
         network [keras model]: model to save
-        filepath [str]:
-            file path where the model should be saved
+        filename [str]:
+            file name where the model should be saved
 
     returns:
         None
     """
-    network.save(filepath)
+    network.save(filename)
     return None
 
 
@@ -30,11 +30,11 @@ def load_model(filename):
     Loads an entire model
 
     parameters:
-        filepath [str]:
-            file path where the model should be loaded from
+        filename [str]:
+            file name where the model should be loaded from
 
     returns:
         the loaded model
     """
-    model = K.models.load_model(filepath)
+    model = K.models.load_model(filename)
     return model
