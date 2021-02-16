@@ -16,7 +16,7 @@ def save_weights(network, filename, save_format='h5'):
     parameters:
         network [keras model]: model to save weights from
         filename [str]:
-            file name where the model should be saved
+            file name where the weights should be saved
         save_format [str]:
             format in which the weights should be saved
 
@@ -34,7 +34,7 @@ def load_weights(network, filename):
     parameters:
         network [keras model]: model to load weights to
         filename [str]:
-            file name where the model should be loaded from
+            file name where the weights should be loaded from
 
     returns:
         None
