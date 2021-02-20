@@ -123,3 +123,8 @@ This directory contains work with Deep Convolutional Neural Networks, including 
 5. [Dense Block](/supervised_learning/0x08-deep_cnns/5-dense_block.py)
 6. [Transition Layer](/supervised_learning/0x08-deep_cnns/6-transition_layer.py)
 7. [DenseNet-121](/supervised_learning/0x08-deep_cnns/7-densenet121.py)
+
+## 0x09-transfer_learning
+This directory contains work with Transfer Learning and Fine Tuning:
+0. [Transfer Knowledge](/supervised_learning/0x09-transfer_learning/0-transfer.py)
+1. [\"Research is what I'm doing when I don't know what I'm doing.\" - Wernher von Braun]()
