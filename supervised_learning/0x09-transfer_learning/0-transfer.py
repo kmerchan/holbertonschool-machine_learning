@@ -43,17 +43,19 @@ if __name__ == '__main__':
     # print("TYPES:  ", type(X_train), type(Y_train))
 
     inputs = K.Input(shape=(32, 32, 3))
-    inputs_p = K.layers.Lambda(
+    inputs_resized = K.layers.Lambda(
         lambda x: K.backend.resize_images(x,
                                           height_factor=(224 // 32),
                                           width_factor=(224 // 32),
                                           data_format="channels_last"))(inputs)
+
     ResNet50 = K.applications.ResNet50(include_top=False,
                                        weights="imagenet",
                                        input_shape=(224, 224, 3))
-    X = ResNet50(inputs_p, training=False)
-    X = K.layers.Flatten()(X)
     activation = K.activations.relu
+
+    X = ResNet50(inputs_resized, training=False)
+    X = K.layers.Flatten()(X)
     X = K.layers.Dense(500, activation=activation)(X)
     X = K.layers.Dropout(0.2)(X)
     outputs = K.layers.Dense(10, activation='softmax')(X)
