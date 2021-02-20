@@ -66,7 +66,9 @@ if __name__ == '__main__':
                   optimizer=K.optimizers.Adam(),
                   metrics=['accuracy'])
 
-    
+    history = model.fit(x=X_train, y=Y_train,
+                        validation_data=(X_test, Y_test),
+                        batch_size=300,
+                        epochs=5, verbose=True)
 
-    loss, accuracy = model.evaluate(x=X_test_p, y=Y_test_p, verbose=True)
-    print(loss, accuracy)
+    model.save('cifar10.h5')
