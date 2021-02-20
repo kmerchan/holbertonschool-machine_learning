@@ -39,15 +39,15 @@ if __name__ == '__main__':
     Saves model to cifar10.h5
     """
     (X_train, Y_train), (X_test, Y_test) = K.datasets.cifar10.load_data()
-    X_train, Y_train = preprocess_data(X_train, Y_train)
-    X_test, Y_test = preprocess_data(X_test, Y_test)
+    X_train_p, Y_train_p = preprocess_data(X_train, Y_train)
+    X_test_p, Y_test_p = preprocess_data(X_test, Y_test)
 
     inputs = K.Input(shape=(32, 32, 3))
     inputs_p = K.layers.Lambda(
         lambda x: K.backend.resize_images(x,
                                           height_factor=(224 // 32),
                                           width_factor=(224 // 32),
-                                          data_format="channels_last")))(inputs)
+                                          data_format="channels_last"))(inputs)
     ResNet50 = K.applications.ResNet50(include_top=False,
                                        weights="imagenet",
                                        input_shape=(224, 224, 3))
@@ -58,12 +58,15 @@ if __name__ == '__main__':
     X = K.layers.Dropout(0.2)(X)
     outputs = K.layers.Dense(10, activation='softmax')(X)
 
-    model = K.model(inputs=inputs, outputs=outputs)
+    model = K.Model(inputs=inputs, outputs=outputs)
 
     ResNet50.trainable = False
 
     model.compile(loss='categorical_crossentropy',
-                  optimizer=K.optimizer.Adam(),
+                  optimizer=K.optimizers.Adam(),
                   metrics=['accuracy'])
 
-    loss, accuracy = model.evaluate(x=X_test, y=Y_test, verbose=True)
+    
+
+    loss, accuracy = model.evaluate(x=X_test_p, y=Y_test_p, verbose=True)
+    print(loss, accuracy)
