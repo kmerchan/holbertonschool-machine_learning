@@ -23,11 +23,10 @@ def preprocess_data(X, Y):
     """
     # print(X.shape)
     # print(Y.shape)
-    # ResNet-50 requires input shape to be (224, 224, 3)
-    height_factor = 224 // 32
-    width_factor = 224 // 32
-    X_p = K.backend.resize_images(X, height_factor, width_factor,
-                                  data_format="channels_last")
+    # scale pixels between 0 and 1
+    # each channel normalized with respect to ImageNet data
+    X_p = K.applications.densenet.preprocess_input(X,
+                                                   data_format="channels_last")
     Y_p = K.utils.to_categorical(Y, 10)
     # print(X_p.shape)
     # print(Y_p.shape)
@@ -39,8 +38,9 @@ if __name__ == '__main__':
     Saves model to cifar10.h5
     """
     (X_train, Y_train), (X_test, Y_test) = K.datasets.cifar10.load_data()
-    X_train_p, Y_train_p = preprocess_data(X_train, Y_train)
-    X_test_p, Y_test_p = preprocess_data(X_test, Y_test)
+    X_train, Y_train = preprocess_data(X_train, Y_train)
+    X_test, Y_test = preprocess_data(X_test, Y_test)
+    # print("TYPES:  ", type(X_train), type(Y_train))
 
     inputs = K.Input(shape=(32, 32, 3))
     inputs_p = K.layers.Lambda(
