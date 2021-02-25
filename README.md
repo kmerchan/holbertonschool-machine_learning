@@ -21,6 +21,7 @@ This directory contains projects for building Machine Learning supervised learni
 * [0x08-deep_cnns](/supervised_learning/0x08-deep_cnns)
 * [0x09-transfer_learning](/supervised_learning/0x09-transfer_learning)
 * [0x0A-object_detection](/supervised_learning/0x0A-object_detection)
+* [0x0C-neural_style_transfer](/supervised_learning/0x0C-neural_style_transfer)
 
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
