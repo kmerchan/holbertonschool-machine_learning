@@ -13,3 +13,6 @@ This directory contains work with neural style transfer:
 8. [Compute Gradients](/supervised_learning/0x0C-neural_style_transfer/8-neural_style.py)
 9. [Generate Image](/supervised_learning/0x0C-neural_style_transfer/9-neural_style.py)
 10. [Variational Cost](/supervised_learning/0x0C-neural_style_transfer/10-neural_style.py)
+
+### test_files directory
+The test_files directory contains all files used to test output locally.
