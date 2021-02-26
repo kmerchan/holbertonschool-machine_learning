@@ -40,7 +40,6 @@ if __name__ == '__main__':
     (X_train, Y_train), (X_test, Y_test) = K.datasets.cifar10.load_data()
     X_train, Y_train = preprocess_data(X_train, Y_train)
     X_test, Y_test = preprocess_data(X_test, Y_test)
-    # print("TYPES:  ", type(X_train), type(Y_train))
 
     inputs = K.Input(shape=(32, 32, 3))
     inputs_resized = K.layers.Lambda(
@@ -49,12 +48,12 @@ if __name__ == '__main__':
                                           width_factor=(224 // 32),
                                           data_format="channels_last"))(inputs)
 
-    ResNet50 = K.applications.ResNet50(include_top=False,
-                                       weights="imagenet",
-                                       input_shape=(224, 224, 3))
+    DenseNet121 = K.applications.DenseNet121(include_top=False,
+                                             weights='imagenet',
+                                             input_shape=(224, 224, 3))
     activation = K.activations.relu
 
-    X = ResNet50(inputs_resized, training=False)
+    X = DenseNet121(inputs_resized, training=False)
     X = K.layers.Flatten()(X)
     X = K.layers.Dense(500, activation=activation)(X)
     X = K.layers.Dropout(0.2)(X)
@@ -62,7 +61,7 @@ if __name__ == '__main__':
 
     model = K.Model(inputs=inputs, outputs=outputs)
 
-    ResNet50.trainable = False
+    DenseNet121.trainable = False
 
     model.compile(loss='categorical_crossentropy',
                   optimizer=K.optimizers.Adam(),
