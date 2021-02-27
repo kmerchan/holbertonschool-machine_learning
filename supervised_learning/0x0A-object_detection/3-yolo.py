@@ -27,6 +27,8 @@ class Yolo:
             calculates scaled coordinates of boundary boxes from outputs
         def filter_boxes(self, boxes, box_confidences, box_class_probs):
             returns all filtered bounding boxes from processed outputs
+        def non_max_suppression(self, filtered_boxes, box_classes, box_scores):
+            suppresses non-max filter boxes to return predicted bounding box
     """
 
     def __init__(self, model_path, classes_path, class_t, nms_t, anchors):
@@ -129,5 +131,33 @@ class Yolo:
                 box_scores [numpy.ndarray of shape (?)]:
                     contains the box scores for each box
                         in filtered boxes
+        """
+        return None
+
+    def non_max_suppression(self, filtered_boxes, box_classes, box_scores):
+        """
+        Suppresses all non-max filter boxes to return predicted bounding box
+
+        parameters:
+            filtered boxes [numpy.ndarray of shape (?, 4)]:
+                contains all filtered bounding boxes
+            box_classes [numpy.ndarray of shape (?,)]:
+                contains the class number that each box
+                    in filtered boxes predicts
+            box_score [numpy.ndarray of shape (?)]:
+                contains the box scores for each box
+                    in filtered boxes
+
+        returns:
+            tuple of (box_predictions, predicted_box_classes,
+                        predicted_box_scores):
+                box_predictions [numpy.ndarray of shape (?, 4)]:
+                    contains all predicted bounding boxes
+                predicted_box_classes [numpy.ndarray of shape (?,)]:
+                    contains the class number that each box
+                        in box predictions
+                predicted_box_score [numpy.ndarray of shape (?)]:
+                    contains the box scores for each box
+                        in box predictions
         """
         return None
