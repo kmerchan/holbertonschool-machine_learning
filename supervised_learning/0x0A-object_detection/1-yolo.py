@@ -5,6 +5,7 @@ Defines class Yolo that uses the Yolo v3 algorithm to perform object detection
 
 
 import tensorflow.keras as K
+import numpy as np
 
 
 class Yolo:
@@ -53,6 +54,14 @@ class Yolo:
         self.nms_t = nms_t
         self.anchors = anchors
 
+    @staticmethod
+    def sigmoid(x):
+        """
+        Returns the output after passing through Sigmoid function
+        output will be between 0 and 1
+        """
+        return (1. / (1. + np.exp(-x)))
+
     def process_outputs(self, outputs, image_size):
         """
         Processes the outputs
@@ -87,4 +96,4 @@ class Yolo:
                     (grid_height, grid_width, anchor_boxes, classes)]:
                     contains box's class probabilities for each output
         """
-        print(outputs.shape)
+        pass
