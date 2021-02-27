@@ -91,9 +91,9 @@ class Yolo:
                             relative to original image
                 box_confidences [list of numpy.ndarray of shape
                     (grid_height, grid_width, anchor_boxes, 1)]:
-                    contains box confidences for eacb output
+                    contains box confidences for each output
                 box_class_probs [list of numpy.ndarrays of shape
                     (grid_height, grid_width, anchor_boxes, classes)]:
                     contains box's class probabilities for each output
         """
-        pass
+        return None
