@@ -101,7 +101,7 @@ class Yolo:
         box_class_probs = []
         for i, output in enumerate(outputs):
             anchors = self.anchors[i]
-            grid_height, grid_weight = output.shape[:2]
+            grid_height, grid_width = output.shape[:2]
 
             t_xy = output[..., :2]
             t_wh = output[..., 2:4]
@@ -110,7 +110,7 @@ class Yolo:
             sigmoid_prob = self.sigmoid(output[..., 5:])
 
             box_conf = np.expand_dims(sigmoid_conf, axis=-1)
-            box_class_prob = sigmoid_probs
+            box_class_prob = sigmoid_prob
 
             box_confidences.append(box_conf)
             box_class_probs.append(box_class_prob)
@@ -118,9 +118,9 @@ class Yolo:
             b_wh = anchors * np.exp(t_wh)
             b_wh /= self.model.inputs[0].shape.as_list()[1:3]
 
-            grid = np.tile(np.indices((grid_weight, grid_height)).T,
+            grid = np.tile(np.indices((grid_width, grid_height)).T,
                            anchors.shape[0]).reshape(
-                               (grid_height, grid_weight) + anchors.shape)
+                               (grid_height, grid_width) + anchors.shape)
 
             b_xy = (self.sigmoid(t_xy) + grid) / [grid_width, grid_height]
 
