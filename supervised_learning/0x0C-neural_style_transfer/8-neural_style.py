@@ -47,6 +47,10 @@ class NST:
             calculates the style cost for generated image
         def content_cost(self, content_output):
             calculates the content cost for the generated image
+        def total cost(self, generated_image):
+            calculates the total cost for the generated image
+        def compute_grads(self, generated_image):
+            calculates the gradients for the generated image
     """
     style_layers = ['block1_conv1', 'block2_conv1', 'block3_conv1',
                     'block4_conv1', 'block5_conv1']
@@ -242,12 +246,41 @@ class NST:
 
     def total_cost(self, generated_image):
         """
-        Calculates the total cost
+        Calculates the total cost for the generated image
+
+        parameters:
+            generated_image [tf.Tensor of shape (1, nh, nw, 3)]:
+                contains the generated image
+
+        returns:
+            (J, J_content, J_style) [tuple]:
+                J: total cost
+                J_content: content cost
+                J_style: style cost
         """
-        pass
+        shape = self.content_image.shape
+        if not is_instance(generated_image, (tf.Tensor, tf.Variable)) or \
+           generated_image.shape != shape:
+            raise TypeError(
+                "generated_image must be a tensor of shape {}".format(shape))
 
     def compute_grads(self, generated_image):
         """
         Calculates the gradients for the generated image
+
+        parameters:
+            generated_image [tf.Tensor of shape (1, nh, nw, 3)]:
+                contains the generated image
+
+        returns:
+            gradients, J_total, J_content, J_style
+                gradients [tf.Tensor]: contatins gradients for generated image
+                J_total: total cost for the generated image
+                J_content: content cost
+                J_style: style cost
         """
-        pass
+        shape = self.content_image.shape
+        if not is_instance(generated_image, (tf.Tensor, tf.Variable)) or \
+           generated_image.shape != shape:
+            raise TypeError(
+                "generated_image must be a tensor of shape {}".format(shape))

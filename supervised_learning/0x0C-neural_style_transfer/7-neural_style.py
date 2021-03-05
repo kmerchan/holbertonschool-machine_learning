@@ -254,7 +254,7 @@ class NST:
             (J, J_content, J_style) [tuple]:
                 J: total cost
                 J_content: content cost
-                J_style?: style cost
+                J_style: style cost
         """
         shape = self.content_image.shape
         if not is_instance(generated_image, (tf.Tensor, tf.Variable)) or \
