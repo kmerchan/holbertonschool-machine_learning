@@ -115,8 +115,5 @@ class NST:
         resized = tf.image.resize_bicubic(np.expand_dims(image, axis=0),
                                           size=(h_new, w_new))
         rescaled = resized / 255
-        rescaled = tf.div(tf.subtract(rescaled,
-                                      tf.reduce_min(rescaled)),
-                          tf.subtract(tf.reduce_max(rescaled),
-                                      tf.reduce_min(rescaled)))
+        rescaled = tf.clip_by_value(rescaled, 0, 1)
         return (rescaled)
