@@ -6,6 +6,8 @@ Defines class Yolo that uses the Yolo v3 algorithm to perform object detection
 
 import tensorflow.keras as K
 import numpy as np
+import cv2
+import glob
 
 
 class Yolo:
@@ -183,7 +185,11 @@ class Yolo:
                 images [list]: images as numpy.ndarrays
                 image_paths [list]: paths to the individual images
         """
-        return None
+        image_paths = glob.glob(folder_path + "/*")
+        images = []
+        for image in image_paths:
+            images.append(cv2.imread(image))
+        return (images, image_paths)
 
     def preprocess_images(self, images):
         """
@@ -208,4 +214,15 @@ class Yolo:
                     ni: number of images preprocessed
                     2: (image_height, image_width)
         """
-        return None
+        pimages = []
+        image_shapes = []
+        input_h = self.model.input.shape[2].value
+        input_w = self.model.input.shape[1].value
+
+        for image in images:
+            image_shapes.append(image.shape[:2])
+            pimages.append(cv2.resize(image, interpolation=INTER_CUBIC))
+        pimages = np.array(pimages)
+        image_shapes = np.array(image_shapes)
+
+        return (pimages, image_shapes)
