@@ -221,7 +221,9 @@ class Yolo:
 
         for image in images:
             image_shapes.append(image.shape[:2])
-            pimages.append(cv2.resize(image, interpolation=INTER_CUBIC))
+            resized = cv2.resize(image, interpolation=INTER_CUBIC)
+            rescaled = resized / 255
+            pimages.append(rescaled)
         pimages = np.array(pimages)
         image_shapes = np.array(image_shapes)
 
