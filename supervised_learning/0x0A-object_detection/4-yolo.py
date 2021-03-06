@@ -6,6 +6,7 @@ Defines class Yolo that uses the Yolo v3 algorithm to perform object detection
 
 import tensorflow.keras as K
 import numpy as np
+import cv2
 
 
 class Yolo:
