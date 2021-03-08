@@ -85,7 +85,7 @@ class NST:
         self.content_image = self.scale_image(content_image)
         self.alpha = alpha
         self.beta = beta
-        self.model = self.load_model()
+        self.load_model()
 
     @staticmethod
     def scale_image(image):
@@ -139,8 +139,28 @@ class NST:
 
         Saves the model in the instance attribute model
         """
-        model = tf.keras.applications.VGG19(include_top=False,
-                                            weights='imagenet')
+        VGG19_model = tf.keras.applications.VGG19(include_top=False,
+                                                  weights='imagenet')
+        VGG19_model.save("VGG19_base_model")
+        custom_objects = {'MaxPooling2D': tf.keras.layers.AveragePooling2D}
+
+        vgg = tf.keras.models.load_model("VGG19_base_model",
+                                         custom_objects=custom_objects)
+
+        style_outputs = []
+        content_output = None
+
+        for layer in vgg.layers:
+            if layer.name in self.style_layers:
+                style_outputs.append(layer.output)
+            if layer.name in self.content_layer:
+                content_output = layer.output
+
+            layer.trainable = False
+
+        outputs = style_outputs + [content_output]
+
+        model = tf.keras.models.Model(vgg.input, outputs)
         self.model = model
 
     @staticmethod
@@ -156,8 +176,14 @@ class NST:
         returns:
             tf.Tensor of shape (1, c, c) containing gram matrix of input_layer
         """
-        if not is_instance(input_layer, (tf.Tensor, tf.Variable)):
+        if not isinstance(input_layer, (tf.Tensor, tf.Variable)):
             raise TypeError("input_layer must be a tensor of rank 4")
         if len(input_layer.shape) is not 4:
             raise TypeError("input_layer must be a tensor of rank 4")
-        return (input_layer)
+        _, h, w, c = input_layer.shape
+        product = h * w
+        features = tf.reshape(input_layer, (1, product, c))
+        gram = tf.matmul(features, features, transpose_a=True)
+        gram = tf.expand_dims(gram, axis=0)
+        gram /= tf.cast(product, tf.float32)
+        return (gram)
