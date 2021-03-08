@@ -42,7 +42,7 @@ class NST:
         def generate_features(self):
             extracts the features used to calculate neural style cost
         def layer_style_cost(self, style_output, gram_target):
-            calculates the style cost for a single layer
+            Calculates the style cost for a single layer
         def style_cost(self, style_outputs):
             calculates the style cost for generated image
     """
@@ -261,8 +261,8 @@ class NST:
                     length))
         weight = 1 / length
         style_cost = 0
-        for i in range(len(self.style_layers)):
+        for i in range(length):
             style_cost += (
-                weight * self.layer_style_cost(style_outputs[i],
-                                               self.gram_style_features[i]))
+                self.layer_style_cost(style_outputs[i],
+                                      self.gram_style_features[i]) * weight)
         return style_cost
