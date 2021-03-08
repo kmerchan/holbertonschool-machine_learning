@@ -237,3 +237,6 @@ class NST:
             raise TypeError(
                 "gram_target must be a tensor of shape [1, {}, {}]".format(
                     c, c))
+        gram_style = self.gram_matrix(style_output)
+        diff = tf.reduce_mean(tf.square(gram_style - gram_target))
+        return diff
