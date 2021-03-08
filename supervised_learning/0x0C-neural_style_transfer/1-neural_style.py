@@ -137,6 +137,30 @@ class NST:
 
         Saves the model in the instance attribute model
         """
-        model = tf.keras.applications.VGG19(include_top=False,
-                                            weights='imagenet')
+        VGG19_model = tf.keras.applications.VGG19(include_top=False,
+                                                  weights='imagenet')
+        x = vgg.input
+        style_outputs = []
+        content_output = None
+
+        for layer in vgg.layers[1:]:
+            if isinstance(layer, tf.keras.layers.MaxPooling2D):
+                layer - tf.keras.layers.AveragePooling2D(
+                    pool_size=layer.pool_size,
+                    strides=layer.strides,
+                    padding=layer.padding,
+                    name=layer.name)
+                x = layer(x)
+            else:
+                x = layer(x)
+                if layer.name in self.style_layers:
+                    style_outputs.append(x)
+                if layer.name in self.content_layer:
+                    content_output = x
+
+                layer.trainable = False
+
+        outputs = style_outputs + [content_output]
+
+        model = tf.keras.models.Model(vgg.input, outputs)
         self.model = model
