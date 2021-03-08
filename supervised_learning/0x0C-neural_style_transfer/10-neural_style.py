@@ -62,7 +62,7 @@ class NST:
                     'block4_conv1', 'block5_conv1']
     content_layer = 'block5_conv2'
 
-    def __init__(self, style_image, content_image, alpha=1e4, beta=1):
+    def __init__(self, style_image, content_image, alpha=1e4, beta=1, var=10):
         """
         Class constructor for Neural Style Transfer class
 
