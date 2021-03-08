@@ -263,5 +263,6 @@ class NST:
         style_cost = 0
         for i, layer in enumerate(self.style_layers):
             style_cost += (
-                weight * self.layer_style_cost(style_outputs[i], layer))
+                weight * self.layer_style_cost(style_outputs[i],
+                                               self.gram_style_features[i]))
         return style_cost
