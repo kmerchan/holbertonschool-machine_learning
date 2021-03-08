@@ -201,8 +201,10 @@ class NST:
             gram_style_features and content_feature
         """
         VGG19_model = tf.keras.applications.vgg19
-        preprocess_style = VGG19_model.preprocess_input(self.style_image * 255)
-        preprocess_content = VGG19_model.preprocess_input(self.content_image * 255)
+        preprocess_style = VGG19_model.preprocess_input(
+            self.style_image * 255)
+        preprocess_content = VGG19_model.preprocess_input(
+            self.content_image * 255)
 
         style_features = self.model(preprocess_style)[:-1]
         content_feature = self.model(preprocess_content)[-1]
