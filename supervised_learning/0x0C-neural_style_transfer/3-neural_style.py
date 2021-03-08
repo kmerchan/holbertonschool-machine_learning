@@ -200,18 +200,14 @@ class NST:
         Sets public instance attribute:
             gram_style_features and content_feature
         """
-        VGG19_model = tf.keras.applications.vgg19
-        preprocess_style = VGG19_model.preprocess_input(
-            self.style_image * 255)
-        preprocess_content = VGG19_model.preprocess_input(
-            self.content_image * 255)
+        preprocess_style = tf.keras.applications.\
+            vgg19.preprocess_input(self.style_image * 255)
+        preprocess_content = tf.keras.applications.\
+            vgg19.preprocess_input(self.content_image * 255)
 
         style_features = self.model(preprocess_style)[:-1]
         content_feature = self.model(preprocess_content)[-1]
 
-        gram_style_features = []
-        for feature in style_features:
-            gram_style_features.append(self.gram_matrix(feature))
-
-        self.gram_style_features = gram_style_features
+        self.gram_style_features = [self.gram_matrix(i)
+                                    for i in style_features]
         self.content_feature = content_feature
