@@ -235,10 +235,13 @@ class NST:
             raise TypeError("style_output must be a tensor of rank 4")
         one, h, w, c = style_output.shape
         if not isinstance(gram_target, (tf.Tensor, tf.Variable)) or \
-           len(gram_target.shape) is not 3:
+           len(gram_target.shape) is not 3 or gram_target.shape != (1, c, c):
             raise TypeError(
                 "gram_target must be a tensor of shape [1, {}, {}]".format(
                     c, c))
+        gram_style = self.gram_matrix(style_output)
+        diff = tf.reduce_mean(tf.square(gram_style - gram_target))
+        return diff
 
     def style_cost(self, style_outputs):
         """
@@ -256,3 +259,9 @@ class NST:
             raise TypeError(
                 "style_outputs must be a list with a length of {}".format(
                     length))
+        weight = 1 / length
+        style_cost = 0
+        for i, layer in enumerate(self.style_layers):
+            style_cost += (
+                weight * self.layer_style_cost(style_output[i], layer))
+        return style_cost
