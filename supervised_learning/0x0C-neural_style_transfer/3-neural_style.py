@@ -90,7 +90,6 @@ class NST:
         self.alpha = alpha
         self.beta = beta
         self.load_model()
-        self.generate_features()
 
     @staticmethod
     def scale_image(image):
@@ -144,8 +143,28 @@ class NST:
 
         Saves the model in the instance attribute model
         """
-        model = tf.keras.applications.VGG19(include_top=False,
-                                            weights='imagenet')
+        VGG19_model = tf.keras.applications.VGG19(include_top=False,
+                                                  weights='imagenet')
+        VGG19_model.save("VGG19_base_model")
+        custom_objects = {'MaxPooling2D': tf.keras.layers.AveragePooling2D}
+
+        vgg = tf.keras.models.load_model("VGG19_base_model",
+                                         custom_objects=custom_objects)
+
+        style_outputs = []
+        content_output = None
+
+        for layer in vgg.layers:
+            if layer.name in self.style_layers:
+                style_outputs.append(layer.output)
+            if layer.name in self.content_layer:
+                content_output = layer.output
+
+            layer.trainable = False
+
+        outputs = style_outputs + [content_output]
+
+        model = tf.keras.models.Model(vgg.input, outputs)
         self.model = model
 
     @staticmethod
@@ -161,11 +180,17 @@ class NST:
         returns:
             tf.Tensor of shape (1, c, c) containing gram matrix of input_layer
         """
-        if not is_instance(input_layer, (tf.Tensor, tf.Variable)):
+        if not isinstance(input_layer, (tf.Tensor, tf.Variable)):
             raise TypeError("input_layer must be a tensor of rank 4")
         if len(input_layer.shape) is not 4:
             raise TypeError("input_layer must be a tensor of rank 4")
-        return (input_layer)
+        _, h, w, c = input_layer.shape
+        product = h * w
+        features = tf.reshape(input_layer, (product, c))
+        gram = tf.matmul(features, features, transpose_a=True)
+        gram = tf.expand_dims(gram, axis=0)
+        gram /= tf.cast(product, tf.float32)
+        return (gram)
 
     def generate_features(self):
         """
@@ -174,5 +199,15 @@ class NST:
         Sets public instance attribute:
             gram_style_features and content_feature
         """
+        preprocess_style = tf.keras.applications.VGG19.preprocess_input(
+            self.style_image * 255)
+        preprocess_content = tf.keras.applications.VGG19.preprocess_input(
+            self.content_image * 255)
+
+        style_features = self.model(preprocess_style)[:-1]
+        content_feature = self.model(preprocess_content)[-1]
+
         self.gram_style_features = []
-        self.content_feature = []
+        for feature in style_features:
+            self.gram_style_features.append(self.gram_matrix(feature))
+        self.content_feature = content_feature
