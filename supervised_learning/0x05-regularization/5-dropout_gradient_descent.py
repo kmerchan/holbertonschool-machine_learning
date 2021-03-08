@@ -39,7 +39,7 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
         if index == L:
             back["dz{}".format(index)] = (cache["A{}".format(index)] - Y)
             dz = back["dz{}".format(index)]
-            
+
         else:
             dz_prev = back["dz{}".format(index + 1)]
             A_current = cache["A{}".format(index)]
