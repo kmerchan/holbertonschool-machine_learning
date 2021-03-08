@@ -44,7 +44,7 @@ class NST:
         def layer_style_cost(self, style_output, gram_target):
             calculates the style cost for a single layer
         def style_cost(self, style_outputs):
-            calculates the style cose for generated image
+            calculates the style cost for generated image
     """
     style_layers = ['block1_conv1', 'block2_conv1', 'block3_conv1',
                     'block4_conv1', 'block5_conv1']
@@ -148,8 +148,28 @@ class NST:
 
         Saves the model in the instance attribute model
         """
-        model = tf.keras.applications.VGG19(include_top=False,
-                                            weights='imagenet')
+        VGG19_model = tf.keras.applications.VGG19(include_top=False,
+                                                  weights='imagenet')
+        VGG19_model.save("VGG19_base_model")
+        custom_objects = {'MaxPooling2D': tf.keras.layers.AveragePooling2D}
+
+        vgg = tf.keras.models.load_model("VGG19_base_model",
+                                         custom_objects=custom_objects)
+
+        style_outputs = []
+        content_output = None
+
+        for layer in vgg.layers:
+            if layer.name in self.style_layers:
+                style_outputs.append(layer.output)
+            if layer.name in self.content_layer:
+                content_output = layer.output
+
+            layer.trainable = False
+
+        outputs = style_outputs + [content_output]
+
+        model = tf.keras.models.Model(vgg.input, outputs)
         self.model = model
 
     @staticmethod
@@ -165,11 +185,17 @@ class NST:
         returns:
             tf.Tensor of shape (1, c, c) containing gram matrix of input_layer
         """
-        if not is_instance(input_layer, (tf.Tensor, tf.Variable)):
+        if not isinstance(input_layer, (tf.Tensor, tf.Variable)):
             raise TypeError("input_layer must be a tensor of rank 4")
         if len(input_layer.shape) is not 4:
             raise TypeError("input_layer must be a tensor of rank 4")
-        return (input_layer)
+        _, h, w, c = input_layer.shape
+        product = h * w
+        features = tf.reshape(input_layer, (product, c))
+        gram = tf.matmul(features, features, transpose_a=True)
+        gram = tf.expand_dims(gram, axis=0)
+        gram /= tf.cast(product, tf.float32)
+        return (gram)
 
     def generate_features(self):
         """
@@ -178,8 +204,21 @@ class NST:
         Sets public instance attribute:
             gram_style_features and content_feature
         """
-        self.gram_style_features = []
-        self.content_feature = []
+        VGG19_model = tf.keras.applications.vgg19
+        preprocess_style = VGG19_model.preprocess_input(
+            self.style_image * 255)
+        preprocess_content = VGG19_model.preprocess_input(
+            self.content_image * 255)
+
+        style_features = self.model(preprocess_style)[:-1]
+        content_feature = self.model(preprocess_content)[-1]
+
+        gram_style_features = []
+        for feature in style_features:
+            gram_style_features.append(self.gram_matrix(feature))
+
+        self.gram_style_features = gram_style_features
+        self.content_feature = content_feature
 
     def layer_style_cost(self, style_output, gram_target):
         """
@@ -194,11 +233,11 @@ class NST:
         returns:
             the layer's style cost
         """
-        if not is_instance(style_output, (tf.Tensor, tf.Variable)) or \
+        if not isinstance(style_output, (tf.Tensor, tf.Variable)) or \
            len(style_output.shape) is not 4:
             raise TypeError("style_output must be a tensor of rank 4")
         one, h, w, c = style_output.shape
-        if not is_instance(gram_target, (tf.Tensor, tf.Variable)) or \
+        if not isinstance(gram_target, (tf.Tensor, tf.Variable)) or \
            len(gram_target.shape) is not 3:
             raise TypeError(
                 "gram_target must be a tensor of shape [1, {}, {}]".format(
