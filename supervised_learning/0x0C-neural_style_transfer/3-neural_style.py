@@ -186,7 +186,7 @@ class NST:
         if len(input_layer.shape) is not 4:
             raise TypeError("input_layer must be a tensor of rank 4")
         _, h, w, c = input_layer.shape
-        product = h * w
+        product = int(h * w)
         features = tf.reshape(input_layer, (product, c))
         gram = tf.matmul(features, features, transpose_a=True)
         gram = tf.expand_dims(gram, axis=0)
@@ -200,13 +200,13 @@ class NST:
         Sets public instance attribute:
             gram_style_features and content_feature
         """
-        preprocess_style = tf.keras.applications.\
+        pre_style = tf.keras.applications.\
             vgg19.preprocess_input(self.style_image * 255)
-        preprocess_content = tf.keras.applications.\
+        pre_content = tf.keras.applications.\
             vgg19.preprocess_input(self.content_image * 255)
 
-        style_features = self.model(preprocess_style)[:-1]
-        content_feature = self.model(preprocess_content)[-1]
+        style_features = self.model(pre_style)[:-1]
+        content_feature = self.model(pre_content)[-1]
 
         self.gram_style_features = [self.gram_matrix(i)
                                     for i in style_features]
