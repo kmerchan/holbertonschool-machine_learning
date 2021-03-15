@@ -88,3 +88,13 @@ This directory contains work with convolutions and pooling:
 4. [Convolution with Channels](/math/0x04-convolutions_and_pooling/4-convolve_channels.py)
 5. [Multiple Kernels](/math/0x04-convolutions_and_pooling/5-convolve.py)
 6. [Pooling](/math/0x04-convolutions_and_pooling/6-pool.py)
+
+## 0x05-advanced_linear_algebra
+This directory contains work on Advanced Linear Algebra:
+
+0. [Determinant](/math/0x05-advanced_linear_algebra/0-determinant.py)
+1. [Minor](/math/0x05-advanced_linear_algebra/1-minor.py)
+2. [Cofactor](/math/0x05-advanced_linear_algebra/2-cofactor.py)
+3. [Adjugate](/math/0x05-advanced_linear_algebra/3-adjugate.py)
+4. [Inverse](/math/0x05-advanced_linear_algebra/4-inverse.py)
+5. [Definiteness](/math/0x05-advanced_linear_algebra/5-definiteness.py)
