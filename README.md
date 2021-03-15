@@ -8,6 +8,7 @@ This directory contains projects to build up the math skills needed for Machine 
 * [0x02-calculus](/math/0x02-calculus)
 * [0x03-probability](/math/0x03-probability)
 * [0x04-convolutions_and_pooling](/math/0x04-convolutions_and_pooling)
+* [0x05-advanced_linear_algebra](/math/0x05-advanced_linear_algebra)
 
 ## [supervised_learning](/supervised_learning)
 This directory contains projects for building Machine Learning supervised learning models.
