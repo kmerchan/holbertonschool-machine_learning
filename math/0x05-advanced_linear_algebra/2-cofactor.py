@@ -44,7 +44,7 @@ def cofactor(matrix):
                 sub_matrix.append(new_row)
             cofactor_row.append(multiplier * determinant(sub_matrix))
             multiplier *= -1
-        cofactor_matrix.append(minor_row)
+        cofactor_matrix.append(cofactor_row)
         if height % 2 is 0:
             multiplier *= -1
     return cofactor_matrix
