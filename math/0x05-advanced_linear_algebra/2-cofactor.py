@@ -28,9 +28,9 @@ def cofactor(matrix):
     if height is 1:
         return [[1]]
     multiplier = 1
-    minor_matrix = []
+    cofactor_matrix = []
     for row_i in range(height):
-        minor_row = []
+        cofactor_row = []
         for column_i in range(height):
             sub_matrix = []
             for row in range(height):
@@ -42,12 +42,12 @@ def cofactor(matrix):
                         continue
                     new_row.append(matrix[row][column])
                 sub_matrix.append(new_row)
-            minor_row.append(multiplier * determinant(sub_matrix))
+            cofactor_row.append(multiplier * determinant(sub_matrix))
             multiplier *= -1
-        minor_matrix.append(minor_row)
+        cofactor_matrix.append(minor_row)
         if height % 2 is 0:
             multiplier *= -1
-    return minor_matrix
+    return cofactor_matrix
 
 
 def determinant(matrix):
