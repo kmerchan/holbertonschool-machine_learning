@@ -19,6 +19,10 @@ class MultiNormal:
             contains the mean of data
         cov [numpy.ndarray of shape (d, d)]:
             contains the covariance matrix of data
+
+    public instance method:
+        def pdf(self, x):
+            calculates the PDF at a data point
     """
     def __init__(self, data):
         """
@@ -35,3 +39,23 @@ class MultiNormal:
         d, n = data.shape
         if n < 2:
             raise ValueError("data must contain multiple data points")
+
+    def pdf(self, x):
+        """
+        Calculates the PDF at a data point
+
+        parameters:
+            x [numpy.ndarray of shape (d, 1)]:
+                contains the data point whose PDF should be calculated
+                d: number of dimensions of the instance
+
+        returns:
+            value of the PDF
+        """
+        if type(x) is not np.ndarray:
+            raise TypeError("x must be a numpy.ndarray")
+        if len(x.shape) != 2:
+            raise ValueError("x must have the shape ({d}, 1)")
+        d, one = x.shape
+        if d < 0 or one != 1:
+            raise ValueError("x must have the shape ({d}, 1)")
