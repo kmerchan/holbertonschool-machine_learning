@@ -26,3 +26,7 @@ def correlation(C):
     d, d_2 = C.shape
     if d != d_2:
         raise ValueError("C must be a 2D square matrix")
+    D = np.sqrt(np.diag(C))
+    D_inverse = 1 / np.outer(D, D)
+    corr = D_inverse * C
+    return corr
