@@ -30,3 +30,6 @@ def mean_cov(X):
     n, d = X.shape
     if n < 2:
         raise ValueError("X must contain multiple data points")
+    mean = np.mean(X, axis=0, keepdims=True)
+    cov = (1 / (n - 1)) * np.matmul(X.T - mean.T, X - mean)
+    return (mean, cov)
