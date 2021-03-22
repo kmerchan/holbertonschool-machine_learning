@@ -39,6 +39,10 @@ class MultiNormal:
         d, n = data.shape
         if n < 2:
             raise ValueError("data must contain multiple data points")
+        mean = np.mean(data, axis=1, keepdims=True)
+        self.mean = mean
+        cov = (1 / (n - 1)) * np.matmul(data - mean, data.T - mean.T)
+        self.cov = cov
 
     def pdf(self, x):
         """
