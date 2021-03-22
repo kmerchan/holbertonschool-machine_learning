@@ -98,3 +98,11 @@ This directory contains work on Advanced Linear Algebra:
 3. [Adjugate](/math/0x05-advanced_linear_algebra/3-adjugate.py)
 4. [Inverse](/math/0x05-advanced_linear_algebra/4-inverse.py)
 5. [Definiteness](/math/0x05-advanced_linear_algebra/5-definiteness.py)
+
+## 0x06-multivariate_prob
+This directory contains work with Multivariate Probability:
+
+0. [Mean and Covariance](/math/0x06-multivariate_prob/0-mean_cov.py)
+1. [Correlation](/math/0x06-multivariate_prob/1-correlation.py)
+2. [Initialize](/math/0x06-multivariate_prob/multinormal.py)
+3. [PDF](/math/0x06-multivariate_prob/multinormal.py)
