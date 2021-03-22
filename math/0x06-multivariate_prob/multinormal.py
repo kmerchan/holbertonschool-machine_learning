@@ -58,8 +58,10 @@ class MultiNormal:
         """
         if type(x) is not np.ndarray:
             raise TypeError("x must be a numpy.ndarray")
+        d = x.shape[0]
         if len(x.shape) != 2:
-            raise ValueError("x must have the shape ({d}, 1)")
+            raise ValueError("x must have the shape ({}, 1)".format(d))
         d, one = x.shape
         if d < 0 or one != 1:
-            raise ValueError("x must have the shape ({d}, 1)")
+            raise ValueError("x must have the shape ({}, 1)".format(d))
+        return None
