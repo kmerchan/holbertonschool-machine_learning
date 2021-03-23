@@ -64,4 +64,10 @@ class MultiNormal:
         d, one = x.shape
         if d < 0 or one != 1:
             raise ValueError("x must have the shape ({}, 1)".format(d))
-        return None
+        det = np.linalg.det(self.cov)
+        inv = np.linalg.inv(self.cov)
+        pdf = 1 / np.sqrt(((2 * np.pi) ** d) * det)
+        mult = np.matmul(np.matmul((x - self.mean).T, inv), (x - self.mean))
+        pdf *= np.exp(-0.5 * mult)
+        pdf = pdf[0][0]
+        return pdf
