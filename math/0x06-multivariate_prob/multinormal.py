@@ -66,8 +66,8 @@ class MultiNormal:
             raise ValueError("x must have the shape ({}, 1)".format(real_d))
         det = np.linalg.det(self.cov)
         inv = np.linalg.inv(self.cov)
-        pdf = 1.0 / (((2 * np.pi) ** (d / 2)) * np.sqrt(det))
+        pdf_calc = 1.0 / (((2 * np.pi) ** (d / 2)) * np.sqrt(det))
         mult = np.matmul(np.matmul((x - self.mean).T, inv), (x - self.mean))
-        pdf *= np.exp(-0.5 * mult)
-        pdf = pdf[0][0]
+        pdf_calc *= np.exp(-0.5 * mult)
+        pdf = pdf_calc[0][0]
         return pdf
