@@ -60,10 +60,10 @@ class MultiNormal:
             raise TypeError("x must be a numpy.ndarray")
         real_d = self.cov.shape[0]
         if len(x.shape) != 2:
-            raise ValueError("x must have the shape ({}, 1)".format(real_d))
+            raise ValueError("x must have the shape ({}, 1)!".format(real_d))
         d, one = x.shape
         if d != real_d or one != 1:
-            raise ValueError("x must have the shape ({}, 1)".format(real_d))
+            raise ValueError("x must have the shape ({}, 1)!".format(real_d))
         det = np.linalg.det(self.cov)
         inv = np.linalg.inv(self.cov)
         pdf = 1.0 / np.sqrt(((2 * np.pi) ** d) * det)
