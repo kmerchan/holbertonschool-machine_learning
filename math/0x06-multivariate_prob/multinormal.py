@@ -58,12 +58,12 @@ class MultiNormal:
         """
         if type(x) is not np.ndarray:
             raise TypeError("x must be a numpy.ndarray")
-        d = self.cov.shape[0]
+        real_d = self.cov.shape[0]
         if len(x.shape) != 2:
-            raise ValueError("x must have the shape ({}, 1)".format(d))
+            raise ValueError("x must have the shape ({}, 1)".format(real_d))
         d, one = x.shape
-        if d < 0 or one != 1:
-            raise ValueError("x must have the shape ({}, 1)".format(d))
+        if d != real_d or one != 1:
+            raise ValueError("x must have the shape ({}, 1)".format(real_d))
         det = np.linalg.det(self.cov)
         inv = np.linalg.inv(self.cov)
         pdf = 1 / np.sqrt(((2 * np.pi) ** d) * det)
