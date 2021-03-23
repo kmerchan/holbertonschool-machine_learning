@@ -11,7 +11,7 @@ This directory contains projects to build up the math skills needed for Machine 
 * [0x05. Advanced Linear Algebra](/math/0x05-advanced_linear_algebra)
 * [0x06. Multivariate Probability](/math/0x06-multivariate_prob)
 
-## [supervised_learning](/supervised_learning)
+## [supervised learning](/supervised_learning)
 This directory contains projects for building Machine Learning supervised learning models.
 * [0x01. Classification](/supervised_learning/0x01-classification)
 * [0x02. TensorFlow](/supervised_learning/0x02-tensorflow)
@@ -24,6 +24,10 @@ This directory contains projects for building Machine Learning supervised learni
 * [0x09. Transfer Learning](/supervised_learning/0x09-transfer_learning)
 * [0x0A. Object Detection](/supervised_learning/0x0A-object_detection)
 * [0x0C. Neural Style Transfer](/supervised_learning/0x0C-neural_style_transfer)
+
+## [unsupervised learning](/unsupervised_learning)
+This directory contains projects for building Machine Learning unsupervised learning models.
+* [0x00. Dimensionality Reduction](/unsupervised_learning/0x00-dimensionality_reduction)
 
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
