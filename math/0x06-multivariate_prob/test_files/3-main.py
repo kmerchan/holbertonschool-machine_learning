@@ -10,3 +10,6 @@ if __name__ == '__main__':
     x = np.random.multivariate_normal([12, 30, 10], [[36, -30, 15], [-30, 100, -20], [15, -20, 25]], 1).T
     print(x)
     print(mn.pdf(x))
+    # x = x[:-2, :]
+    # print(x)
+    # print(mn.pdf(x))
