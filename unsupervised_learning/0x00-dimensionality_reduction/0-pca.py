@@ -29,12 +29,12 @@ def pca(X, var=0.95):
     # mean = np.mean(X, axis=0, keepdims=True)
     # A = X - mean
     u, s, v = np.linalg.svd(X)
-    print(s)
+    # print(s)
     idx = s.argsort()[::-1]
     s = s[idx]
-    print(s)
+    # print(s)
     ratios = list(x / np.sum(s) for x in s)
-    print(ratios)
+    # print(ratios)
     variance = np.cumsum(ratios)
     nd = np.argwhere(variance >= var)[0, 0]
     W = v.T[:, :(nd + 1)]
