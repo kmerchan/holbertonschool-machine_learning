@@ -25,4 +25,17 @@ def pca(X, var=0.95):
             d: number of dimensions of each data point
             nd: new dimensionality of the transformed X
     """
-    return None
+    # n, d = X.shape
+    # mean = np.mean(X, axis=0, keepdims=True)
+    # A = X - mean
+    u, s, v = np.linalg.svd(X)
+    print(s)
+    idx = s.argsort()[::-1]
+    s = s[idx]
+    print(s)
+    ratios = list(x / np.sum(s) for x in s)
+    print(ratios)
+    variance = np.cumsum(ratios)
+    nd = np.argwhere(variance >= var)[0, 0]
+    W = v.T[:, :(nd + 1)]
+    return (W)
