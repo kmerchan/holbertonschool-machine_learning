@@ -35,4 +35,8 @@ def likelihood(x, n, P):
     for value in P:
         if value > 1 or value < 0:
             raise ValueError("All values in P must be in the range [0, 1]")
-    return (P)
+    # likelihood calculated as binomial distribution
+    factorial = np.math.factorial
+    fact_coefficient = factorial(n) / (factorial(n - x) * factorial(x))
+    likelihood = fact_coefficient * (P ** x) * ((1 - P) ** (n - x))
+    return likelihood
