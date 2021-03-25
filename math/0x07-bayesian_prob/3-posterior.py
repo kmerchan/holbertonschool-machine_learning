@@ -43,4 +43,14 @@ def posterior(x, n, P, Pr):
             raise ValueError("All values in Pr must be in the range [0, 1]")
     if np.isclose([np.sum(Pr)], [1]) == [False]:
         raise ValueError("Pr must sum to 1")
-    return (P)
+    # likelihood calculated as binomial distribution
+    factorial = np.math.factorial
+    fact_coefficient = factorial(n) / (factorial(n - x) * factorial(x))
+    likelihood = fact_coefficient * (P ** x) * ((1 - P) ** (n - x))
+    # intersection is the likelihood times priors
+    intersection = likelihood * Pr
+    # marginal probability is the sum over all probabilities of events
+    marginal = np.sum(intersection)
+    # posterior probability is the intersection divided by marginal probability
+    posterior = intersection / marginal
+    return posterior
