@@ -23,4 +23,10 @@ def pca(X, ndim):
             n: number of data points
             ndim: the new dimensionality of the transformed X
     """
-    return None
+    # n, d = X.shape
+    mean = np.mean(X, axis=0, keepdims=True)
+    A = X - mean
+    u, s, v = np.linalg.svd(A)
+    W = v.T[:, :ndim]
+    T = np.matmul(A, W)
+    return (T)
