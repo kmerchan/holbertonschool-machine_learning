@@ -26,9 +26,9 @@ def pca(X, var=0.95):
             nd: new dimensionality of the transformed X
     """
     # n, d = X.shape
-    # mean = np.mean(X, axis=0, keepdims=True)
-    # A = X - mean
-    u, s, v = np.linalg.svd(X)
+    mean = np.mean(X, axis=0, keepdims=True)
+    A = X - mean
+    u, s, v = np.linalg.svd(A)
     # print(s)
     idx = s.argsort()[::-1]
     s = s[idx]
