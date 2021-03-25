@@ -1,6 +1,9 @@
 # 0x07-bayesian_prob
 This directory contains work with Bayesian Probability:
 
+You are conducting a study on a revolutionary cancer drug and are looking to find the probability that a patient who takes this drug will develop severe side effects. During your trials, n patients take the drug and x patients develop severe side effects. You can assume that x follows a binomial distribution.
+
+
 ## Mandatory Tasks:
 0. [Likelihood](/math/0x07-bayesian_prob/0-likelihood.py)
 * Write a function that calculates the likelihood of obtainin the data given various hypothetical probabilities of severe side effects from cancer drug study.
