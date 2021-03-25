@@ -20,4 +20,7 @@ def cost(P, Q):
     returns:
         c: the cost of the transformation
     """
-    return None
+    Q = np.where(Q == 0, 1e-12, Q)
+    P = np.where(P == 0, 1e-12, P)
+    c = np.sum(P * np.log(P / Q))
+    return c
