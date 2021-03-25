@@ -10,6 +10,7 @@ This directory contains projects to build up the math skills needed for Machine 
 * [0x04. Convolutions and Pooling](/math/0x04-convolutions_and_pooling)
 * [0x05. Advanced Linear Algebra](/math/0x05-advanced_linear_algebra)
 * [0x06. Multivariate Probability](/math/0x06-multivariate_prob)
+* [0x07. Bayesian Probability](/math/0x07-bayesian_prob)
 
 ## [supervised learning](/supervised_learning)
 This directory contains projects for building Machine Learning supervised learning models.
