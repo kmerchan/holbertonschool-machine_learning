@@ -26,4 +26,8 @@ def HP(Di, beta):
         Pi [numpy.ndarray of shape (n - 1,)]:
             contatining the P affinities of the points
     """
-    return None
+    prob = np.exp(-Di * beta)
+    total = np.sum(prob)
+    Pi = prob / total
+    Hi = -np.sum(Pi * np.log2(Pi))
+    return (Hi, Pi)
