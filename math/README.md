@@ -114,3 +114,4 @@ This directory contains work with Bayesian Probability:
 1. [Intersection](/math/0x07-bayesian_prob/1-intersection.py)
 2. [Marginal Probability](/math/0x07-bayesian_prob/2-marginal.py)
 3. [Posterior](/math/0x07-bayesian_prob/3-posterior.py)
+4. [Continuous Posterior](/math/0x07-bayesian_prob/100-continuous.py)
