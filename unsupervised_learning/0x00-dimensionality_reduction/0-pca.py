@@ -26,9 +26,7 @@ def pca(X, var=0.95):
             nd: new dimensionality of the transformed X
     """
     # n, d = X.shape
-    mean = np.mean(X, axis=0, keepdims=True)
-    A = X - mean
-    u, s, v = np.linalg.svd(A)
+    u, s, v = np.linalg.svd(X)
     ratios = list(x / np.sum(s) for x in s)
     variance = np.cumsum(ratios)
     nd = np.argwhere(variance >= var)[0, 0]
