@@ -14,6 +14,9 @@ You are conducting a study on a revolutionary cancer drug and are looking to fin
 3. [Posterior](/math/0x07-bayesian_prob/3-posterior.py)
 * Write a function that calculates the posterior probability for the various hypothetical probabilities of developing severe side effects given the data.
 
+## Advanced Tasks:
+4. [Continuous Posterior](/math/0x07-bayesian_prob/100-continuous.py)
+* Write a function that calculates the posterior probability for the various hypothetical probabilities of developing severe side effects falls within a specific range given the data.
 
 ### test_files directory
 The test_files directory contains all files used to test output locally.
