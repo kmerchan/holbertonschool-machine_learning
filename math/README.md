@@ -106,3 +106,11 @@ This directory contains work with Multivariate Probability:
 1. [Correlation](/math/0x06-multivariate_prob/1-correlation.py)
 2. [Initialize](/math/0x06-multivariate_prob/multinormal.py)
 3. [PDF](/math/0x06-multivariate_prob/multinormal.py)
+
+## 0x07-bayesian_prob
+This directory contains work with Bayesian Probability:
+
+0. [Likelihood](/math/0x07-bayesian_prob/0-likelihood.py)
+1. [Intersection](/math/0x07-bayesian_prob/1-intersection.py)
+2. [Marginal Probability](/math/0x07-bayesian_prob/2-marginal.py)
+3. [Posterior](/math/0x07-bayesian_prob/3-posterior.py)
