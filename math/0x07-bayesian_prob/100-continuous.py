@@ -39,4 +39,7 @@ def posterior(x, n, p1, p2):
         raise ValueError("p2 must be a float in the range [0, 1]")
     if p2 <= p1:
         raise ValueError("p2 must be greater than p1")
-    return p1
+    beta_dist1 = special.btdtr(x, n - x, p1)
+    beta_dist2 = special.btdtr(x, n - x, p2)
+    posterior = beta_dist2 - beta_dist1
+    return posterior
