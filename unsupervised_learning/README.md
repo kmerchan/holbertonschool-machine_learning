@@ -12,3 +12,19 @@ This directory contains work with decomposition and reducing dimensions:
 6. [Gradients](/unsupervised_learning/0x00-dimensionality_reduction/6-grads.py)
 7. [Cost](/unsupervised_learning/0x00-dimensionality_reduction/7-cost.py)
 8. [t-SNE](/unsupervised_learning/0x00-dimensionality_reduction/8-tsne.py)
+
+## 0x01-clustering
+This directory contains work with unsupervised learning clustering with scikit-learn and scipy:
+0. [Initialize K-means](/unsupervised_learning/0x01-clustering/0-initialize.py)
+1. [K-means](/unsupervised_learning/0x01-clustering/1-kmeans.py)
+2. [Variance](/unsupervised_learning/0x01-clustering/2-variance.py)
+3. [Optimize k](/unsupervised_learning/0x01-clustering/3-optimum.py)
+4. [Initialize GMM](/unsupervised_learning/0x01-clustering/4-initialize.py)
+5. [PDF](/unsupervised_learning/0x01-clustering/5-pdf.py)
+6. [Expectation](/unsupervised_learning/0x01-clustering/6-expectation.py)
+7. [Maximization](/unsupervised_learning/0x01-clustering/7-maximization.py)
+8. [EM](/unsupervised_learning/0x01-clustering/8-EM.py)
+9. [BIC](/unsupervised_learning/0x01-clustering/9-BIC.py)
+10. [Hello, sklearn!](/unsupervised_learning/0x01-clustering/10-kmeans.py)
+11. [GMM](/unsupervised_learning/0x01-clustering/11-gmm.py)
+12. [Agglomerative](/unsupervised_learning/0x01-clustering/12-agglomerative.py)
