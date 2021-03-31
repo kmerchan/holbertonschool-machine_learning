@@ -5,6 +5,7 @@ the Bayesian Information Criterion (BIC)
 """
 
 
+import numpy as np
 expectation_maximization = __import__('7-EM').expectation_maximization
 
 
