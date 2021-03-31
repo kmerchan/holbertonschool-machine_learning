@@ -27,11 +27,21 @@ def initialize(X, k):
             along each dimension in d
         - should only use numpy.random.uniform exactly once
 
-    should not use any loops
-
     returns:
         [numpy.ndarray of shape (k, d)]:
             containing the initialized centroids for each cluster
         or None on failure
     """
-    return None
+    # type checks to avoid failure
+    if type(X) is not np.ndarray or len(X.shape) != 2:
+        return None
+    if type(k) is not int or k <= 0:
+        return None
+    n, d = X.shape
+    # min values of X along each dimension in d
+    low = np.min(X, axis=0)
+    # max values of X along each dimension in d
+    high = np.max(X, axis=0)
+    # initialize cluster centroids with multivariate uniform distribution
+    centroids = np.random.uniform(low, high, size=(k, d))
+    return centroids
