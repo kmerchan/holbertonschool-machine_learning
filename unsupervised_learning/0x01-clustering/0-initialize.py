@@ -32,7 +32,7 @@ def initialize(X, k):
             containing the initialized centroids for each cluster
         or None on failure
     """
-    # type checks to avoid failure
+    # type checks to catch failure
     if type(X) is not np.ndarray or len(X.shape) != 2:
         return None
     if type(k) is not int or k <= 0:
