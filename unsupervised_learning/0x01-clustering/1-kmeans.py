@@ -40,6 +40,6 @@ def kmeans(X, k, iterations=1000):
             clss [numpy.ndarray of shape (n,)]:
                 containting the index of the cluster in c
                     that each data point belongs to
-        or None on failure
+        or None, None on failure
     """
-    return None
+    return None, None
