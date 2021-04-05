@@ -30,6 +30,7 @@ This directory contains projects for building Machine Learning supervised learni
 This directory contains projects for building Machine Learning unsupervised learning models.
 * [0x00. Dimensionality Reduction](/unsupervised_learning/0x00-dimensionality_reduction)
 * [0x01. Clustering](/unsupervised_learning/0x01-clustering)
+* [0x02. Hidden Markov Models](/unsupervised_learning/0x02-hmm)
 
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
