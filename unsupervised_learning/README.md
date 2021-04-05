@@ -28,3 +28,13 @@ This directory contains work with unsupervised learning clustering with scikit-l
 10. [Hello, sklearn!](/unsupervised_learning/0x01-clustering/10-kmeans.py)
 11. [GMM](/unsupervised_learning/0x01-clustering/11-gmm.py)
 12. [Agglomerative](/unsupervised_learning/0x01-clustering/12-agglomerative.py)
+
+## 0x02-hmm
+This directory contains work with Markov chains and Hidden Markov Models:
+0. [Markov Chain](/unsupervised_learning/0x02-hmm/0-markov_chain.py)
+1. [Regular Chains](/unsupervised_learning/0x02-hmm/1-regular.py)
+2. [Absorbing Chains](/unsupervised_learning/0x02-hmm/2-absorbing.py)
+3. [The Forward Algorithm](/unsupervised_learning/0x02-hmm/3-forward.py)
+4. [The Viretbi Algorithm](/unsupervised_learning/0x02-hmm/4-viterbi.py)
+5. [The Backward Algorithm](/unsupervised_learning/0x02-hmm/5-backward.py)
+6. [The Baum-Welch Algorithm](/unsupervised_learning/0x02-hmm/6-baum-welch.py)
