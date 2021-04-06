@@ -20,7 +20,7 @@ def markov_chain(P, s, t=1):
         s [numpy.ndarray of shape (1, n)]:
             represents the probability of starting in each state
         t [int]:
-            the number of iterations the Markov CHain has been through
+            the number of iterations the Markov Chain has been through
 
     returns:
         [a numpy.ndarray of shape (1, n)]:
@@ -45,4 +45,7 @@ def markov_chain(P, s, t=1):
     # check that t is the correct type and is non-negative
     if type(t) is not int or t < 0:
         return None
-    return None
+    result = s
+    for i in range(t):
+        result = np.matmul(result, P)
+    return result
