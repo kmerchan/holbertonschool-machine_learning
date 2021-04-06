@@ -14,7 +14,7 @@ def forward(Observation, Emission, Transition, Initial):
     parameters:
         Observation [numpy.ndarray of shape (T,)]:
             contains the index of the observation
-            t: number of observations
+            T: number of observations
         Emission [numpy.ndarray of shape (N, M)]:
             contains the emission probability of a specific observation
                 given a hidden state
