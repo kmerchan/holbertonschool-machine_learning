@@ -30,4 +30,13 @@ def regular(P):
     n, n_check = P.shape
     if n != n_check:
         return None
-    return None
+    if not (P > 0).all():
+        return None
+    Identity = np.identity(n)
+    Q = P - Identity
+    e = np.ones((n,))
+    Qe = np.c_[Q, e]
+    QTQ = np.matmul(Qe, Qe.T)
+    QbT = np.ones((n,))
+    result = np.linalg.solve(QTQ, QbT)
+    return result
