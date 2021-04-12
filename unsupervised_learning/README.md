@@ -38,3 +38,13 @@ This directory contains work with Markov chains and Hidden Markov Models:
 4. [The Viretbi Algorithm](/unsupervised_learning/0x02-hmm/4-viterbi.py)
 5. [The Backward Algorithm](/unsupervised_learning/0x02-hmm/5-backward.py)
 6. [The Baum-Welch Algorithm](/unsupervised_learning/0x02-hmm/6-baum-welch.py)
+
+## 0x03-hyperparameter_tuning
+This directory contains work with tuning hyperparameters using Gaussian process and Bayesian optimization:
+0. [Initialize Gaussian Process](/unsupervised_learning/0x03-hyperparameter_tuning/0-gp.py)
+1. [Gaussian Process Prediction](/unsupervised_learning/0x03-hyperparameter_tuning/1-gp.py)
+2. [Update Gaussian Process](/unsupervised_learning/0x03-hyperparameter_tuning/2-gp.py)
+3. [Initialize Bayesian Optimization](/unsupervised_learning/0x03-hyperparameter_tuning/3-bayes_opt.py)
+4. [Bayesian Optimization - Acquisition](/unsupervised_learning/0x03-hyperparameter_tuning/4-bayes_opt.py)
+5. [Bayesian Optimization](/unsupervised_learning/0x03-hyperparameter_tuning/5-bayes_opt.py)
+6. [Bayesian Optimization with GPyOpt]()
