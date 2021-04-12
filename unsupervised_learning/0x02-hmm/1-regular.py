@@ -39,4 +39,4 @@ def regular(P):
     QTQ = np.matmul(Qe, Qe.T)
     QbT = np.ones((n,))
     result = np.linalg.solve(QTQ, QbT)
-    return result
+    return np.expand_dims(result, axis=0)
