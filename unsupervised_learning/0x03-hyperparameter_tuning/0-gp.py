@@ -84,12 +84,12 @@ class GaussianProcess:
             [numpy.ndarray of shape (m, n)]:
                 the covariance kernal matrix between X1 and X2
         """
-        if type(X1) is not np.ndarray or len(X1) != 2:
+        if type(X1) is not np.ndarray or len(X1.shape) != 2:
             raise TypeError("X1 must be numpy.ndarray of shape (m, 1)")
         m, one = X1.shape
         if one != 1:
             raise TypeError("X1 must be numpy.ndarray of shape (m, 1)")
-        if type(X2) is not np.ndarray or len(X2) != 2:
+        if type(X2) is not np.ndarray or len(X2.shape) != 2:
             raise TypeError("X2 must be numpy.ndarray of shape (n, 1)")
         n, one = X2.shape
         if one != 1:
