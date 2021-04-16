@@ -94,12 +94,8 @@ class GaussianProcess:
         n, one = X2.shape
         if one != 1:
             raise TypeError("X2 must be numpy.ndarray of shape (n, 1)")
-        X1_sum = np.sum(X1 ** 2, 1)
+        X1_sum = np.sum(X1 ** 2, 1).reshape(-1, 1)
         X2_sum = np.sum(X2 ** 2, 1)
-        coef = X1_sum.reshape(-1, 1) + X2_sum - 2
-        cov = coef * np.matmul(X1, X2.T)
-        sigma_squared = (self.sigma_f ** 2)
-        l_squared = self.l ** 2
-        exp = np.exp(-0.5 / l_squared * cov)
-        cov_kernel = sigma_squared * exp
-        return cov_kernel
+        sqdist = X1_sum + X2_sum - 2 * np.matmul(X1, X2.T)
+        cov = (self.sigma_f ** 2) * np.exp(-0.5 / (self.l ** 2) * sqdist)
+        return cov
