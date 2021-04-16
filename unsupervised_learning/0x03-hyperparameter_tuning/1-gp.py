@@ -128,6 +128,8 @@ class GaussianProcess:
         K_s = self.kernel(self.X, X_s)
         K_inv = np.linalg.inv(K)
         K_ss = self.kernel(X_s, X_s)
-        mu = K_s.T.dot(K_inv).dot(self.Y)
-        sigma = K_ss - K_s.T.dot(K_inv).dot(K_s)
+        mu_s = K_s.T.dot(K_inv).dot(self.Y)
+        mu = mu_s.reshape(-1)
+        cov_s = K_ss - K_s.T.dot(K_inv).dot(K_s)
+        sigma = np.diag(cov_s)
         return mu, sigma
