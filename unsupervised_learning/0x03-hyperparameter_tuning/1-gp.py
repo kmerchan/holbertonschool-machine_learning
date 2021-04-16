@@ -45,7 +45,7 @@ class GaussianProcess:
                 representing outputs of the black-box function for each input
             l [int or float]:
                 length parameter for the kernel
-            sigma_F [int or float]:
+            sigma_f [int or float]:
                 standard deviation given to output of the black-box function
         """
         if type(X_init) is not np.ndarray or len(X_init.shape) != 2:
@@ -68,7 +68,7 @@ class GaussianProcess:
         self.Y = Y_init
         self.l = l
         self.sigma_f = sigma_f
-        self.K = self.kernel(None, None)
+        self.K = self.kernel(X_init, X_init)
 
     def kernel(self, X1, X2):
         """
@@ -84,7 +84,7 @@ class GaussianProcess:
 
         returns:
             [numpy.ndarray of shape (m, n)]:
-                the covariance kernal matrix between X1 and X2
+                the covariance kernel matrix between X1 and X2
         """
         if type(X1) is not np.ndarray or len(X1.shape) != 2:
             raise TypeError("X1 must be numpy.ndarray of shape (m, 1)")
@@ -96,7 +96,11 @@ class GaussianProcess:
         n, one = X2.shape
         if one != 1:
             raise TypeError("X2 must be numpy.ndarray of shape (n, 1)")
-        return None
+        X1_sum = np.sum(X1 ** 2, 1).reshape(-1, 1)
+        X2_sum = np.sum(X2 ** 2, 1)
+        sqdist = X1_sum + X2_sum - 2 * np.matmul(X1, X2.T)
+        cov = (self.sigma_f ** 2) * np.exp(-0.5 / (self.l ** 2) * sqdist)
+        return cov
 
     def predict(self, X_s):
         """
@@ -120,4 +124,10 @@ class GaussianProcess:
         s, one = X_s.shape
         if one != 1:
             raise TypeError("X_s must be numpy.ndarray of shape (s, 1)")
-        return None, None
+        K = self.K
+        K_s = self.kernel(self.X, X_s)
+        K_inv = np.linalg.inv(K)
+        K_ss = self.kernel(X_s, X_s)
+        mu = K_s.T.dot(K_inv).dot(self.Y)
+        sigma = K_ss - K_s.T.dot(K_inv).dot(K_s)
+        return mu, sigma
