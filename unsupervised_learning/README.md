@@ -48,3 +48,10 @@ This directory contains work with tuning hyperparameters using Gaussian process 
 4. [Bayesian Optimization - Acquisition](/unsupervised_learning/0x03-hyperparameter_tuning/4-bayes_opt.py)
 5. [Bayesian Optimization](/unsupervised_learning/0x03-hyperparameter_tuning/5-bayes_opt.py)
 6. [Bayesian Optimization with GPyOpt]()
+
+## 0x04-autoencoders
+This directory contains work with unsupervised models trained to encode and decode:
+0. [Vanilla Autoencoder](/unsupervised_learning/0x04-autoencoders/0-vanilla.py)
+1. [Sparse Autoencoder](/unsupervised_learning/0x04-autoencoders/1-sparse.py)
+2. [Convolutional Autoencoder](/unsupervised_learning/0x04-autoencoders/2-convolutional.py)
+3. [Variational Autoencoder](/unsupervised_learning/0x04-autoencoders/3-variational.py)
