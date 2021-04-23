@@ -45,4 +45,16 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
     if type(latent_dims) is not int:
         raise TypeError("latent_dims must be an int containing dimensions of \
         latent space representation")
-    return None, None, None
+
+    encoder_inputs = keras.Input(shape=(input_dims,))
+    encoder_value = encoder_inputs
+    for i in range(0, len(hidden_layers)):
+        encoder_layer = keras.layers.Dense(units=hidden_layers[i],
+                                           activation='relu')
+        encoder_value = encoder_layer(encoder_value)
+    encoder_latent_layer = keras.layers.Dense(units=latent_dims,
+                                              activation='relu')
+    encoder_outputs = encoder_latent_layer(encoder_value)
+    encoder = keras.Model(inputs=encoder_inputs, outputs=encoder_outputs)
+
+    return encoder, None, None
