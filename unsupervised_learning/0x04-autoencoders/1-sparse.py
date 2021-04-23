@@ -9,7 +9,7 @@ import tensorflow.keras as keras
 
 def autoencoder(input_dims, hidden_layers, latent_dims, lambtha):
     """
-    Creates a sparse encoder
+    Creates a sparse autoencoder
 
     parameters:
         input_dims [int]:

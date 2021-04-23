@@ -9,7 +9,7 @@ import tensorflow.keras as keras
 
 def autoencoder(input_dims, hidden_layers, latent_dims):
     """
-    Creates a "vanilla" encoder
+    Creates a "vanilla" autoencoder
 
     parameters:
         input_dims [int]:
