@@ -46,15 +46,33 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
         raise TypeError("latent_dims must be an int containing dimensions of \
         latent space representation")
 
+    # encoder
     encoder_inputs = keras.Input(shape=(input_dims,))
     encoder_value = encoder_inputs
-    for i in range(0, len(hidden_layers)):
+    for i in range(len(hidden_layers)):
         encoder_layer = keras.layers.Dense(units=hidden_layers[i],
                                            activation='relu')
         encoder_value = encoder_layer(encoder_value)
-    encoder_latent_layer = keras.layers.Dense(units=latent_dims,
+    encoder_output_layer = keras.layers.Dense(units=latent_dims,
                                               activation='relu')
-    encoder_outputs = encoder_latent_layer(encoder_value)
+    encoder_outputs = encoder_output_layer(encoder_value)
     encoder = keras.Model(inputs=encoder_inputs, outputs=encoder_outputs)
 
-    return encoder, None, None
+    # decoder
+    decoder_inputs = keras.Input(shape=(latent_dims,))
+    decoder_value = decoder_inputs
+    for i in range(len(hidden_layers), -1, -1):
+        decoder_layer = keras.layers.Dense(units=hidden_layers[i],
+                                           activation='relu')
+        decoder_value = decoder_layer(decoder_value)
+    decoder_output_layer = keras.layers.Dense(units=input_dims,
+                                              activation='sigmoid')
+    decoder_outputs = decoder_output_layer(decoder_value)
+    decoder = keras.Model(inputs=decoder_inputs, outputs=decoder_outputs)
+
+    # autoencoder
+    inputs = encoder_inputs
+    auto = keras.Model(inputs=inputs, outputs=decoder(encoder(inputs)))
+    auto.compile(optimizer='adam',
+                 loss='binary_crossentropy')
+    return encoder, decoder, auto
