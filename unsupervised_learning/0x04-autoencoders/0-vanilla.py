@@ -61,7 +61,7 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
     # decoder
     decoder_inputs = keras.Input(shape=(latent_dims,))
     decoder_value = decoder_inputs
-    for i in range(len(hidden_layers), -1, -1):
+    for i in range(len(hidden_layers) - 1, -1, -1):
         decoder_layer = keras.layers.Dense(units=hidden_layers[i],
                                            activation='relu')
         decoder_value = decoder_layer(decoder_value)
