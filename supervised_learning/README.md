@@ -153,3 +153,7 @@ This directory contains work with neural style transfer:
 8. [Compute Gradients](/supervised_learning/0x0C-neural_style_transfer/8-neural_style.py)
 9. [Generate Image](/supervised_learning/0x0C-neural_style_transfer/9-neural_style.py)
 10. [Variational Cost](/supervised_learning/0x0C-neural_style_transfer/10-neural_style.py)
+
+## 0x0D-RNNs
+This directory contains work with recurrent neural networks:
+0. [RNN Cell](/supervised_learning/0x0D-RNNs/0-rnn_cell.py)
