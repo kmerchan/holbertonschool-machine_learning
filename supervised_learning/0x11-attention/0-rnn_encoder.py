@@ -64,8 +64,12 @@ class RNNEncoder(tf.keras.layers.Layer):
                 "batch must be int representing the batch size")
         self.batch = batch
         self.units = units
-        self.embedding = None
-        self.gru = None
+        self.embedding = tf.keras.layers.Embedding(input_dim=vocab,
+                                                   output_dim=embedding)
+        self.gru = tf.kera.layers.GRU(units=units,
+                                      return_state=True,
+                                      return_sequences=True,
+                                      recurrent_initializer="glorot_uniform")
 
     def initialize_hidden_state(self):
         """
@@ -75,7 +79,8 @@ class RNNEncoder(tf.keras.layers.Layer):
             [tensor of shape (batch, units)]:
                 containing the initialized hidden states
         """
-        return None
+        hidden_states = tf.zeros(shape=(self.batch, self.units))
+        return hidden_states
 
     def call(self, x, initial):
         """
@@ -95,4 +100,6 @@ class RNNEncoder(tf.keras.layers.Layer):
                 hidden [tensor of shape (batch, units)]:
                     contains the last hidden state of the encoder
         """
-        return None, None
+        x = self.embedding(x)
+        outputs, hidden = self.GRU(x, initial_state=initial)
+        return outputs, hidden
