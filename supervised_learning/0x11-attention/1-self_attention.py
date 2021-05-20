@@ -50,8 +50,7 @@ class SelfAttention(tf.keras.layers.Layer):
         super(SelfAttention, self).__init__()
         self.W = tf.keras.layers.Dense(units=units)
         self.U = tf.keras.layers.Dense(units=units)
-        self.V = tf.keras.layers.Dense(units=1,
-                                       activation='tanh')
+        self.V = tf.keras.layers.Dense(units=1)
 
     def call(self, s_prev, hidden_states):
         """
@@ -74,8 +73,6 @@ class SelfAttention(tf.keras.layers.Layer):
         W = self.W(tf.expand_dims(s_prev, 1))
         U = self.U(hidden_states)
         V = self.V(tf.nn.tanh(W + U))
-        weights = tf.cast(tf.nn.softmax(V, axis=1),
-                          dtype='float64')
-        context = tf.cast(tf.reduce_sum(weights * hidden_states, axis=1),
-                          dtype='float64')
+        weights = tf.nn.softmax(V, axis=1)
+        context = tf.reduce_sum(weights * hidden_states, axis=1)
         return context, weights
