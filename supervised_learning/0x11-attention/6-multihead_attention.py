@@ -5,10 +5,11 @@ to perform multi head attention
 """
 
 
+import tensorflow as tf
 sdp_attention = __import__('5-sdp_attention').sdp_attention
 
 
-class MultiHeadAttention(tensorflow.keras.layers.Layer):
+class MultiHeadAttention(tf.keras.layers.Layer):
     """
     Class to perform multi-head attention
 

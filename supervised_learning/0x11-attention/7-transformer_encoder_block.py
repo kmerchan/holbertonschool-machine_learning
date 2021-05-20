@@ -5,10 +5,11 @@ to create an encoder block for a transformer
 """
 
 
+import tensorflow as tf
 MultiHeadAttention = __import__('6-multihead_attention').MultiHeadAttention
 
 
-class EncoderBlock(tensorflow.keras.layers.Layer):
+class EncoderBlock(tf.keras.layers.Layer):
     """
     Class to create an encoder block for a transformer
 

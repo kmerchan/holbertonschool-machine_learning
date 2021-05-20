@@ -5,6 +5,7 @@ to create a decoder block for a transformer
 """
 
 
+import tensorflow as tf
 MultiHeadAttention = __import__('6-multihead_attention').MultiHeadAttention
 
 

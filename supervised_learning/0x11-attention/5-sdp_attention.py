@@ -4,6 +4,9 @@ Defines a function that calculates the scaled dot product attention
 """
 
 
+import tensorflow as tf
+
+
 def sdp_attention(Q, K, V, mask=None):
     """
     Calculates the scaled dot product attention
