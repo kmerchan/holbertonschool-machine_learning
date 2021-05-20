@@ -62,11 +62,12 @@ class RNNEncoder(tf.keras.layers.Layer):
         if type(batch) is not int:
             raise TypeError(
                 "batch must be int representing the batch size")
+        super(RNNEncoder, self).__init__()
         self.batch = batch
         self.units = units
         self.embedding = tf.keras.layers.Embedding(input_dim=vocab,
                                                    output_dim=embedding)
-        self.gru = tf.kera.layers.GRU(units=units,
+        self.gru = tf.keras.layers.GRU(units=units,
                                       return_state=True,
                                       return_sequences=True,
                                       recurrent_initializer="glorot_uniform")
@@ -101,5 +102,5 @@ class RNNEncoder(tf.keras.layers.Layer):
                     contains the last hidden state of the encoder
         """
         x = self.embedding(x)
-        outputs, hidden = self.GRU(x, initial_state=initial)
+        outputs, hidden = self.gru(x, initial_state=initial)
         return outputs, hidden
