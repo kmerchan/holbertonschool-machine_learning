@@ -26,6 +26,7 @@ This directory contains projects for building Machine Learning supervised learni
 * [0x0A. Object Detection](/supervised_learning/0x0A-object_detection)
 * [0x0C. Neural Style Transfer](/supervised_learning/0x0C-neural_style_transfer)
 * [0x0D. Recurrent Neural Networks (RNNs)](/supervised_learning/0x0D-RNNs)
+* [0x11. Attention](/supervised_learning/0x11-attention)
 
 ## [unsupervised learning](/unsupervised_learning)
 This directory contains projects for building Machine Learning unsupervised learning models.
