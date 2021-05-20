@@ -5,7 +5,10 @@ to encode for machine translation
 """
 
 
-class RNNEncoder(tensorflow.keras.layers.Layer):
+import tensorflow as tf
+
+
+class RNNEncoder(tf.keras.layers.Layer):
     """
     Class to encode for machine translation
 

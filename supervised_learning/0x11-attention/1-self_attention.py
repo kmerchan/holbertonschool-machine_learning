@@ -5,7 +5,10 @@ to calculate the attention for machine translation
 """
 
 
-class SelfAttention(tensorflow.keras.layers.Layer):
+import tensorflow as tf
+
+
+class SelfAttention(tf.keras.layers.Layer):
     """
     Class to calculate the attention for machine translation
 
