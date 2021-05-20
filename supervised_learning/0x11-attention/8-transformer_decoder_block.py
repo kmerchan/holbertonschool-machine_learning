@@ -9,7 +9,7 @@ import tensorflow as tf
 MultiHeadAttention = __import__('6-multihead_attention').MultiHeadAttention
 
 
-class DecoderBlock(tensorflow.keras.layers.Layer):
+class DecoderBlock(tf.keras.layers.Layer):
     """
     Class to create a decoder block for a transformer
 
