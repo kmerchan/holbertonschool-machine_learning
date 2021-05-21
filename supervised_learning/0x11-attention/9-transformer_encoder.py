@@ -90,7 +90,8 @@ class Encoder(tf.keras.layers.Layer):
         self.embedding = tf.keras.layers.Embedding(input_dim=vocab,
                                                    output_dim=dm)
         self.positional_encoding = positional_encoding(max_seq_len, dm)
-        self.blocks = None
+        self.blocks = [EncoderBlock(dm, h, hidden, drop_rate)
+                       for block in range(N)]
         self.dropout = dropout
 
     def call(self, x, training, mask):
@@ -109,4 +110,13 @@ class Encoder(tf.keras.layers.Layer):
             [tensor of shape (batch, input_seq_len, dm)]:
                 contains the encoder output
         """
-        return None
+        seq_len = x.get_shape().as_list()[1]
+        x = self.embedding(x)
+        x *= tf.math.sqrt(tf.cast(self.dm, tf.float32))
+        x += self.positional_encoding[:, :seq_len, :]
+        x = self.dropout(x, training=training)
+
+        for i in range(self.N):
+            x = self.blocks[i](x, training, mask)
+
+        return x
