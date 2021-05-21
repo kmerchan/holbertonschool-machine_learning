@@ -84,9 +84,11 @@ class Encoder(tf.keras.layers.Layer):
         if type(drop_rate) is not float:
             raise TypeError(
                 "drop_rate must be float representing dropout rate")
+        super(Encoder, self).__init__()
         self.N = N
         self.dm = dm
-        self.embedding = None
+        self.embedding = tf.keras.layers.Embedding(input_dim=vocab,
+                                                   output_dim=dm)
         self.positional_encoding = positional_encoding(max_seq_len, dm)
         self.blocks = None
         self.dropout = dropout
