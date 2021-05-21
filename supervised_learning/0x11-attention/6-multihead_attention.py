@@ -69,7 +69,7 @@ class MultiHeadAttention(tf.keras.layers.Layer):
         Splits the last dimension of tensor into (h, dm) and
             transposes the result so the shape is (batch, h, seq_len, dm)
         """
-        x = tf.reshape(x, (batch, -1, self.h, self.dm))
+        x = tf.reshape(x, (batch, -1, self.h, self.depth))
         x = tf.transpose(x, perm=[0, 2, 1, 3])
         return x
 
