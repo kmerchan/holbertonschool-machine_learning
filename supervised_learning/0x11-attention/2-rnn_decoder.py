@@ -59,9 +59,14 @@ class RNNDecoder(tf.keras.layers.Layer):
         if type(batch) is not int:
             raise TypeError(
                 "batch must be int representing the batch size")
-        self.embedding = None
-        self.gru = None
-        self.F = None
+        super(RNNDecoder, self).__init__()
+        self.embedding = tf.keras.layers.Embedding(input_dim=vocab,
+                                                   output_dim=embedding)
+        self.gru = tf.keras.layers.GRU(units=units,
+                                       return_state=True,
+                                       return_sequences=True,
+                                       recurrent_initializer="glorot_uniform")
+        self.F = tf.keras.layers.Dense(units=vocab)
 
     def call(self, x, s_prev, hidden_states):
         """
@@ -85,4 +90,10 @@ class RNNDecoder(tf.keras.layers.Layer):
                 s [tensor of shape (batch, units)]:
                     contains the new decoder hidden state
         """
-        return None, None
+        attention = SelfAttention(s_prev.get_shape()[1])
+        x = self.embedding(x)
+        context, weights = attention(s_prev, hidden_states)
+        x = tf.concat([context, x], axis=-1)
+        y, s = self.gru(x)
+        y = self.F(y)
+        return y, s
