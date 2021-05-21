@@ -58,11 +58,20 @@ class MultiHeadAttention(tf.keras.layers.Layer):
                 "h must be int representing number of heads")
         self.h = h
         self.dm = dm
-        self.depth = None
-        self.Wq = None
-        self.Wk = None
-        self.Wv = None
-        self.linear = None
+        self.depth = dm // h
+        self.Wq = tf.keras.layers.Dense(units=dm)
+        self.Wk = tf.keras.layers.Dense(units=dm)
+        self.Wv = tf.keras.layers.Dense(units=dm)
+        self.linear = tf.keras.layers.Dense(units=dm)
+
+    def split_heads(self, x, batch):
+        """
+        Splits the last dimension of tensor into (h, dm) and
+            transposes the result so the shape is (batch, h, seq_len, dm)
+        """
+        x = tf.reshape(x, (batch, -1, self.h, self.dm))
+        x = tf.transpose(x, perm=[0, 2, 1, 3])
+        return x
 
     def call(self, Q, K, V, mask):
         """
@@ -86,4 +95,20 @@ class MultiHeadAttention(tf.keras.layers.Layer):
                         (..., h, seq_len_q, seq_len_v)]:
                     contains the attention weights
         """
-        return None, None
+        q = self.Wq(Q)
+        k = self.Wk(K)
+        v = self.Wv(V)
+
+        batch = Q.get_shape().as_list()[0]
+
+        q = self.split_heads(q, batch)
+        k = self.split_heads(k, batch)
+        v = self.split_heads(v, batch)
+
+        attention, weights = sdp_attention(q, k, v, mask)
+
+        attention = tf.transpose(attention, perm=[0, 2, 1, 3])
+        concat_attention = tf.reshape(attention, (batch, -1, self.dm))
+        outputs = self.linear(concat_attention)
+
+        return outputs, weights
