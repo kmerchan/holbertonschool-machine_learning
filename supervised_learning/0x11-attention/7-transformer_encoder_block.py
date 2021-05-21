@@ -64,13 +64,15 @@ class EncoderBlock(tf.keras.layers.Layer):
         if type(drop_rate) is not float:
             raise TypeError(
                 "drop_rate must be float representing dropout rate")
+        super(EncoderBlock, self).__init__()
         self.mha = MultiHeadAttention(dm, h)
-        self.dense_hidden = None
-        self.dense_output = None
-        self.layernorm1 = None
-        self.layernorm2 = None
-        self.dropout1 = None
-        self.dropout2 = None
+        self.dense_hidden = tf.keras.layers.Dense(units=hidden,
+                                                  activation='relu')
+        self.dense_output = tf.keras.layers.Dense(units=dm)
+        self.layernorm1 = tf.keras.layers.LayerNormalization(epsilon=1e-6)
+        self.layernorm2 = tf.keras.layers.LayerNormalization(epsilon=1e-6)
+        self.dropout1 = tf.keras.layers.Dropout(drop_rate)
+        self.dropout2 = tf.keras.layers.Dropout(drop_rate)
 
     def call(self, x, training, mask=None):
         """
@@ -88,4 +90,13 @@ class EncoderBlock(tf.keras.layers.Layer):
             [tensor of shape (batch, input_seq_len, dm)]:
                 contains the block's output
         """
-        return None
+        attention_output, _ = self.mha(x, x, x, mask)
+        attention_output = self.dropout1(attention_output, training=training)
+        output1 = self.layernorm1(x + attention_output)
+
+        dense_output = self.dense_hidden(output1)
+        ffn_output = self.dense_output(dense_output)
+        ffn_output = self.dropout2(ffn_output, training=training)
+        output2 = self.layernorm2(output1 + ffn_output)
+
+        return output2
