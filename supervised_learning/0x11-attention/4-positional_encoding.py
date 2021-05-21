@@ -31,13 +31,13 @@ def positional_encoding(max_seq_len, dm):
         [numpy.ndarray of shape (max_seq_len, dm)]:
             contains the positional encoding vectors
     """
-    angle_rads = get_angles(np.arrange(max_len_seq)[:, np.newaxis],
-                            np.arrange(dm)[np.newaxis, :],
+    angle_rads = get_angles(np.arange(max_seq_len)[:, np.newaxis],
+                            np.arange(dm)[np.newaxis, :],
                             dm)
     # apply sin to every 2i, even indices of angle_rads
     angle_rads[:, 0::2] = np.sin(angle_rads[:, 0::2])
     # apply cos to every 2i + 1, odd indices of angle_rads
     angle_rads[:, 1::2] = np.cos(angle_rads[:, 1::2])
-    positional_encoding = tf.cast(angle_rads[np.newaxis, ...],
-                                  dtype=tf.float32)
+    positional_encoding = angle_rads[np.newaxis, ...]
+    positional_encoding = positional_encoding.reshape(max_seq_len, dm)
     return positional_encoding
