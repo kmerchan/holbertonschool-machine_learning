@@ -56,6 +56,7 @@ class MultiHeadAttention(tf.keras.layers.Layer):
         if type(h) is not int:
             raise TypeError(
                 "h must be int representing number of heads")
+        super(MultiHeadAttention, self).__init__()
         self.h = h
         self.dm = dm
         self.depth = dm // h
