@@ -65,15 +65,6 @@ class MultiHeadAttention(tf.keras.layers.Layer):
         self.Wv = tf.keras.layers.Dense(units=dm)
         self.linear = tf.keras.layers.Dense(units=dm)
 
-    def split_heads(self, x, batch):
-        """
-        Splits the last dimension of tensor into (h, dm) and
-            transposes the result so the shape is (batch, h, seq_len, dm)
-        """
-        x = tf.reshape(x, (batch, -1, self.h, self.depth))
-        x = tf.transpose(x, perm=[0, 2, 1, 3])
-        return x
-
     def call(self, Q, K, V, mask):
         """
         Generates the query, key, and value matrices and
@@ -96,15 +87,24 @@ class MultiHeadAttention(tf.keras.layers.Layer):
                         (..., h, seq_len_q, seq_len_v)]:
                     contains the attention weights
         """
+        def split_heads(x, batch):
+            """
+            Splits the last dimension of tensor into (h, dm) and
+                transposes the result so the shape is (batch, h, seq_len, dm)
+            """
+            x = tf.reshape(x, (batch, -1, self.h, self.depth))
+            x = tf.transpose(x, perm=[0, 2, 1, 3])
+            return x
+
         batch = Q.get_shape().as_list()[0]
 
         q = self.Wq(Q)
         k = self.Wk(K)
         v = self.Wv(V)
 
-        q = self.split_heads(q, batch)
-        k = self.split_heads(k, batch)
-        v = self.split_heads(v, batch)
+        q = split_heads(q, batch)
+        k = split_heads(k, batch)
+        v = split_heads(v, batch)
 
         attention, weights = sdp_attention(q, k, v, mask)
 
