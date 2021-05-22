@@ -92,7 +92,7 @@ class Encoder(tf.keras.layers.Layer):
         self.positional_encoding = positional_encoding(max_seq_len, dm)
         self.blocks = [EncoderBlock(dm, h, hidden, drop_rate)
                        for block in range(N)]
-        self.dropout = dropout
+        self.dropout = tf.keras.layers.Dropout(drop_rate)
 
     def call(self, x, training, mask):
         """
