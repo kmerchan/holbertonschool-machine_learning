@@ -96,11 +96,11 @@ class MultiHeadAttention(tf.keras.layers.Layer):
                         (..., h, seq_len_q, seq_len_v)]:
                     contains the attention weights
         """
+        batch = Q.get_shape().as_list()[0]
+
         q = self.Wq(Q)
         k = self.Wk(K)
         v = self.Wv(V)
-
-        batch = Q.get_shape().as_list()[0]
 
         q = self.split_heads(q, batch)
         k = self.split_heads(k, batch)
