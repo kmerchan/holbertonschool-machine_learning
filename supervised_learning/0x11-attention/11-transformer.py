@@ -85,11 +85,12 @@ class Transformer(tf.keras.layers.Layer):
         if type(drop_rate) is not float:
             raise TypeError(
                 "drop_rate must be float representing dropout rate")
+        super(Transformer, self).__init__()
         self.encoder = Encoder(
             N, dm, h, hidden, input_vocab, max_seq_input, drop_rate)
         self.decoder = Decoder(
             N, dm, h, hidden, target_vocab, max_seq_target, drop_rate)
-        self.linear = None
+        self.linear = tf.keras.layers.Dense(units=target_vocab)
 
     def call(self, inputs, target, training, encoder_mask, look_ahead_mask,
              decoder_mask):

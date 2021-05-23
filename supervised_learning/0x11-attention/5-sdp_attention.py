@@ -29,15 +29,13 @@ def sdp_attention(Q, K, V, mask=None):
                     (..., seq_len_q, seq_len_v)]:
                 contains the attention weights
     """
-    if mask is not None:
-        mask *= -1e9
     matmul_qk = tf.matmul(Q, K, transpose_b=True)
     # scale matmul_qk
     dk = tf.cast(tf.shape(K)[-1], tf.float32)
     scaled_attention_logits = matmul_qk / tf.math.sqrt(dk)
     # add mask to scaled tensor
     if mask is not None:
-        scaled_attention_logits += mask
+        scaled_attention_logits += (mask * -1e9)
     # normalize softmax on last axis so all scores add up to 1
     weights = tf.nn.softmax(scaled_attention_logits, axis=-1)
     # calculate outputs

@@ -86,12 +86,15 @@ class Decoder(tf.keras.layers.Layer):
         if type(drop_rate) is not float:
             raise TypeError(
                 "drop_rate must be float representing dropout rate")
+        super(Decoder, self).__init__()
         self.N = N
         self.dm = dm
-        self.embedding = None
+        self.embedding = tf.keras.layers.Embedding(input_dim=target_vocab,
+                                                   output_dim=dm)
         self.positional_encoding = positional_encoding(max_seq_len, dm)
-        self.blocks = None
-        self.dropout = dropout
+        self.blocks = [DecoderBlock(dm, h, hidden, drop_rate)
+                       for block in range(N)]
+        self.dropout = tf.keras.layers.Dropout(drop_rate)
 
     def call(self, x, encoder_output, training, look_ahead_mask, padding_mask):
         """
@@ -113,4 +116,16 @@ class Decoder(tf.keras.layers.Layer):
             [tensor of shape (batch, target_seq_len, dm)]:
                 contains the decoder output
         """
-        return None
+        seq_len = x.get_shape().as_list()[1]
+
+        x = self.embedding(x)
+        x *= tf.math.sqrt(tf.cast(self.dm, tf.float32))
+        x += tf.cast(self.positional_encoding,
+                     dtype=tf.float32)[:seq_len]
+
+        x = self.dropout(x, training=training)
+
+        for i in range(self.N):
+            x, block1, block2 = self.blocks[i](x, encoder_output, training,
+                                               look_ahead_mask, padding_mask)
+        return x
