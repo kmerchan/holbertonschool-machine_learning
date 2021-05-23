@@ -158,6 +158,15 @@ This directory contains work with neural style transfer:
 This directory contains work with recurrent neural networks:
 0. [RNN Cell](/supervised_learning/0x0D-RNNs/0-rnn_cell.py)
 
+## 0x0F-word_embeddings
+This directory contains work with word embeddings as part of natural language processing (NLP):
+0. [Bag of Words](/supervised_learning/0x0F-word_embeddings/0-bag_of_words.py)
+1. [TF-IDF](/supervised_learning/0x0F-word_embeddings/1-tf_idf.py)
+2. [Train Word2Vec](/supervised_learning/0x0F-word_embeddings/2-word2vec.py)
+3. [Extract Word2Vec](/supervised_learning/0x0F-word_embeddings/3-gensim_to_keras.py)
+4. [FastText](/supervised_learning/0x0F-word_embeddings/4-fasttext.py)
+5. [ELMo](/supervised_learning/0x0F-word_embeddings/5-elmo.py)
+
 ## 0x11-attention
 This directory contains work with attention mechanism, including transormers and self attention.
 0. [RNN Encoder](/supervised_learning/0x11-attention/0-rnn_encoder.py)
