@@ -116,7 +116,7 @@ class Decoder(tf.keras.layers.Layer):
             [tensor of shape (batch, target_seq_len, dm)]:
                 contains the decoder output
         """
-        seq_len = tf.shape(x)[1]
+        seq_len = x.get_shape().as_list()[1]
 
         x = self.embedding(x)
         x *= tf.math.sqrt(tf.cast(self.dm, tf.float32))
