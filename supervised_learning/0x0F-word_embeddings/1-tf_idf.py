@@ -4,7 +4,7 @@ Defines function that creates a TF-IDF embedding
 """
 
 
-from sklearn.feature_extraction.text import TfidVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 def tf_idf(sentences, vocab=None):
@@ -28,7 +28,7 @@ def tf_idf(sentences, vocab=None):
             features [list]:
                 list of features used for embeddings
     """
-    vectorizer = TfidVectorizer(vocabulary=vocab)
+    vectorizer = TfidfVectorizer(vocabulary=vocab)
     x = vectorizer.fit_transform(sentences)
     embeddings = x.toarray()
     features = vectorizer.get_feature_names()
