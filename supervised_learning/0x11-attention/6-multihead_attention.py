@@ -96,7 +96,8 @@ class MultiHeadAttention(tf.keras.layers.Layer):
                         (..., h, seq_len_q, seq_len_v)]:
                     contains the attention weights
         """
-        batch = Q.get_shape().as_list()[0]
+        # batch = Q.get_shape().as_list()[0]
+        batch = tf.shape(Q)[0]
 
         q = self.Wq(Q)
         k = self.Wk(K)
