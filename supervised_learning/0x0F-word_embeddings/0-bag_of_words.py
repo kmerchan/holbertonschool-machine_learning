@@ -31,5 +31,5 @@ def bag_of_words(sentences, vocab=None):
     vectorizer = CountVectorizer(vocabulary=vocab)
     X_train_counts = vectorizer.fit_transform(sentences)
     embeddings = X_train_counts.toarray()
-    features = vertorizer.get_feature_names()
+    features = vectorizer.get_feature_names()
     return embeddings, features
