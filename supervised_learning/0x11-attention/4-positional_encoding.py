@@ -7,14 +7,14 @@ Defines a function that calculates the positional encoding for a transformer
 import numpy as np
 
 
-def get_angles(pos, i, dm):
+def get_angle(pos, i, dm):
     """
     Calculates the angles for the following formulas for positional encoding:
 
     PE(pos, 2i) = sin(pos / 10000^(2i / dm))
     PE(pos, 2i + 1) = cos(pos / 10000^(2i / dm))
     """
-    angle_rates = 1 / np.power(10000, (2 * (i // 2)) / np.float32(dm))
+    angle_rates = 1 / (10000 ** (i / dm))
     return pos * angle_rates
 
 
@@ -31,13 +31,12 @@ def positional_encoding(max_seq_len, dm):
         [numpy.ndarray of shape (max_seq_len, dm)]:
             contains the positional encoding vectors
     """
-    angle_rads = get_angles(np.arange(max_seq_len)[:, np.newaxis],
-                            np.arange(dm)[np.newaxis, :],
-                            dm)
-    # apply sin to every 2i, even indices of angle_rads
-    angle_rads[:, 0::2] = np.sin(angle_rads[:, 0::2])
-    # apply cos to every 2i + 1, odd indices of angle_rads
-    angle_rads[:, 1::2] = np.cos(angle_rads[:, 1::2])
-    positional_encoding = angle_rads[np.newaxis, ...]
-    positional_encoding = positional_encoding.reshape(max_seq_len, dm)
+    positional_encoding = np.zeros([max_seq_len, dm])
+
+    for pos in range(max_seq_len):
+        for i in range(0, dm, 2):
+            # sin for even indices of positional_encoding
+            positional_encoding[pos, i] = np.sin(get_angle(pos, i, dm))
+            # cos for odd indices of positional_encoding
+            positional_encoding[pos, i + 1] = np.cos(get_angle(pos, i, dm))
     return positional_encoding
