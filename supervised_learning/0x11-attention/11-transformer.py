@@ -115,4 +115,8 @@ class Transformer(tf.keras.layers.Layer):
             [tensor of shape (batch, target_seq_len, target_vocab)]:
                 contains the transformer output
         """
-        return None
+        encoder_output = self.encoder(inputs, training, encoder_mask)
+        decoder_output = self.decoder(target, encoder_output, training,
+                                      look_ahead_mask, decoder_mask)
+        final_output = self.linear(decoder_output)
+        return final_output
