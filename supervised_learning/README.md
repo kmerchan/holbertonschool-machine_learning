@@ -167,6 +167,12 @@ This directory contains work with word embeddings as part of natural language pr
 4. [FastText](/supervised_learning/0x0F-word_embeddings/4-fasttext.py)
 5. [ELMo](/supervised_learning/0x0F-word_embeddings/5-elmo.py)
 
+## 0x10-nlp_metrics
+This directory continues work with natural language processing (NLP) by looking at metrics used to evaluate NLPs:
+0. [Unigram BLEU score](/supervised_learning/0x10-nlp_metrics/0-uni_bleu.py)
+1. [N-gram BLEU score](/supervised_learning/0x10-nlp_metrics/1-ngram_bleu.py)
+2. [Cumulative N-gram BLEU score](/supervised_learning/0x10-nlp_metrics/2-cumulative_bleu.py)
+
 ## 0x11-attention
 This directory contains work with attention mechanism, including transormers and self attention.
 0. [RNN Encoder](/supervised_learning/0x11-attention/0-rnn_encoder.py)
