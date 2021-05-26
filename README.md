@@ -29,6 +29,7 @@ This directory contains projects for building Machine Learning supervised learni
 * [0x0F. Natural Language Processing (NLP) Word Embeddings](/supervised_learning/0x0F-word_embeddings)
 * [0x10. Natural Language Processing (NLP) Evaluation Metrics](/supervised_learning/0x10-nlp_metrics)
 * [0x11. Attention](/supervised_learning/0x11-attention)
+* [0x12. Transformer Applications](/supervised_learning/0x12-transformer_apps)
 
 ## [unsupervised learning](/unsupervised_learning)
 This directory contains projects for building Machine Learning unsupervised learning models.
