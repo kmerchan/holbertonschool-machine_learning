@@ -186,3 +186,12 @@ This directory contains work with attention mechanism, including transormers and
 8. [Transformer Encoder](/supervised_learning/0x11-attention/9-transformer_encoder.py)
 9. [Transformer Decoder](/supervised_learning/0x11-attention/10-transformer_decoder.py)
 10. [Transformer Network](/supervised_learning/0x11-attention/11-transformer.py)
+
+## 0x12-transformer_apps
+This directory contains work with transformer applications and TensorFlow Datasets:
+0. [Dataset](/supervised_learning/0x12-transformer_apps/0-dataset.py)
+1. [Encode Tokens](/supervised_learning/0x12-transformer_apps/1-dataset.py)
+2. [TF Encode](/supervised_learning/0x12-transformer_apps/2-dataset.py)
+3. [Pipeline](/supervised_learning/0x12-transformer_apps/3-dataset.py)
+4. [Create Masks](/supervised_learning/0x12-transformer_apps/4-create_masks.py)
+5. [Train](/supervised_learning/0x12-transformer_apps/5-train.py)
