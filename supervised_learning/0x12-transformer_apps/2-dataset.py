@@ -130,5 +130,5 @@ class Dataset:
                                                 [pt, en],
                                                 [tf.int64, tf.int64])
         pt_encoded.set_shape([None])
-        ed_encoded.set_shape([None])
+        en_encoded.set_shape([None])
         return pt_encoded, en_encoded
