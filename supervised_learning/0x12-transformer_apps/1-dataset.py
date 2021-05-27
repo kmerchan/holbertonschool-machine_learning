@@ -101,10 +101,8 @@ class Dataset:
         pt_end_index = pt_start_index + 1
         en_start_index = self.tokenizer_en.vocab_size
         en_end_index = en_start_index + 1
-        pt_tokens = [pt_start_index] + \\
-            self.tokenizer_pt.encode(pt.numpy()) + \\
-            [pt_end_index]
-        en_tokens = [en_start_index] + \\
-            self.tokenizer_en.encode(en.numpy()) + \\
-            [en_end_index]
+        pt_tokens = [pt_start_index] + self.tokenizer_pt.encode(
+            pt.numpy()) + [pt_end_index]
+        en_tokens = [en_start_index] + self.tokenizer_en.encode(
+            en.numpy()) + [en_end_index]
         return pt_tokens, en_tokens
