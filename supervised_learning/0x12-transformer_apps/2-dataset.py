@@ -51,16 +51,16 @@ class Dataset:
             tokenizer_en:
                 the English tokenizer created from the training set
         """
-        self.data_train = tfds.load("ted_hrlr_translate/pt_to_en",
-                                    split="train",
-                                    as_supervised=True)
-        self.data_valid = tfds.load("ted_hrlr_translate/pt_to_en",
-                                    split="validation",
-                                    as_supervised=True)
+        data_train = tfds.load("ted_hrlr_translate/pt_to_en",
+                               split="train",
+                               as_supervised=True)
+        data_valid = tfds.load("ted_hrlr_translate/pt_to_en",
+                               split="validation",
+                               as_supervised=True)
         self.tokenizer_pt, self.tokenizer_en = self.tokenize_dataset(
-            self.data_train)
-        self.data_train = self.data_train.map(self.tf_encode)
-        self.data_valid = self.data_valid.map(self.tf_encode)
+            data_train)
+        self.data_train = data_train.map(self.tf_encode)
+        self.data_valid = data_valid.map(self.tf_encode)
 
     def tokenize_dataset(self, data):
         """
@@ -126,9 +126,9 @@ class Dataset:
             pt [tf.Tensor]: encoded Portuguese sentence
             en [tf.Tensor]: encoded English sentence
         """
-        pt_encoded, en_encoded = tf.py_function(self.encode,
-                                                [pt, en],
-                                                [tf.int64, tf.int64])
+        pt_encoded, en_encoded = tf.py_function(func=self.encode,
+                                                inp=[pt, en],
+                                                Tout=[tf.int64, tf.int64])
         pt_encoded.set_shape([None])
         en_encoded.set_shape([None])
         return pt_encoded, en_encoded
