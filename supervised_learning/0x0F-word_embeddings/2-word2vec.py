@@ -39,7 +39,7 @@ def word2vec_model(sentences, size=100, min_count=5, window=5, negative=5,
         the trained model
     """
     model = Word2Vec(sentences=sentences,
-                     vector_size=size,
+                     size=size,
                      min_count=min_count,
                      window=window,
                      negative=negative,
@@ -47,5 +47,7 @@ def word2vec_model(sentences, size=100, min_count=5, window=5, negative=5,
                      iter=iterations,
                      seed=seed,
                      workers=workers)
-    model.train(sentences)
+    model.train(sentences,
+                total_examples=model.corpus_count,
+                epochs=model.epochs)
     return model
