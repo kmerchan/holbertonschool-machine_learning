@@ -158,6 +158,11 @@ This directory contains work with neural style transfer:
 This directory contains work with recurrent neural networks:
 0. [RNN Cell](/supervised_learning/0x0D-RNNs/0-rnn_cell.py)
 
+## 0x0E-time_series
+This directory applies knowledge of RNNs to predict the value of Bitcoin with Time Series Forecasting:
+0. [When to Invest](/supervised_learning/0x0D-RNNs/forecast_btc.py)
+1. [Everyone Wants to Know](/supervised_learning/0x0D-RNNs/forecast_btc.py)
+
 ## 0x0F-word_embeddings
 This directory contains work with word embeddings as part of natural language processing (NLP):
 0. [Bag of Words](/supervised_learning/0x0F-word_embeddings/0-bag_of_words.py)
