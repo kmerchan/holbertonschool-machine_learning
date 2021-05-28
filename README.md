@@ -26,6 +26,7 @@ This directory contains projects for building Machine Learning supervised learni
 * [0x0A. Object Detection](/supervised_learning/0x0A-object_detection)
 * [0x0C. Neural Style Transfer](/supervised_learning/0x0C-neural_style_transfer)
 * [0x0D. Recurrent Neural Networks (RNNs)](/supervised_learning/0x0D-RNNs)
+* [0x0E. Time Series Forecasting](/supervised_learning/0x0E-time_series)
 * [0x0F. Natural Language Processing (NLP) Word Embeddings](/supervised_learning/0x0F-word_embeddings)
 * [0x10. Natural Language Processing (NLP) Evaluation Metrics](/supervised_learning/0x10-nlp_metrics)
 * [0x11. Attention](/supervised_learning/0x11-attention)
