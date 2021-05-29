@@ -5,7 +5,6 @@ to create transformer network
 """
 
 
-import numpy as np
 import tensorflow as tf
 
 
