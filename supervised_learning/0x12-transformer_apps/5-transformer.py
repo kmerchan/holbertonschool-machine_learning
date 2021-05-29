@@ -6,8 +6,6 @@ to create transformer network
 
 
 import tensorflow as tf
-Encoder = __import__('9-transformer_encoder').Encoder
-Decoder = __import__('10-transformer_decoder').Decoder
 
 
 class Transformer(tf.keras.layers.Layer):
@@ -16,7 +14,8 @@ class Transformer(tf.keras.layers.Layer):
 
     class constructor:
         def __init__(self, N, dm, h, hidden, input_vocab, target_vocab,
-                     max_seq_input, max_seq_target, drop_rate=0.1)
+                     max_seq_input, max_seq_target, encoder, decoder,
+                     drop_rate=0.1)
 
     public instance attributes:
         encoder: the encoder layer
@@ -29,7 +28,8 @@ class Transformer(tf.keras.layers.Layer):
             calls the transformer network and returns the transformer output
     """
     def __init__(self, N, dm, h, hidden, input_vocab, target_vocab,
-                 max_seq_input, max_seq_target, drop_rate=0.1):
+                 max_seq_input, max_seq_target, encoder, decoder,
+                 drop_rate=0.1):
         """
         Class constructor
 
@@ -50,6 +50,10 @@ class Transformer(tf.keras.layers.Layer):
                 represents the maximum sequence length possible for input
             max_seq_target [int]:
                 represents the maximum sequence length possible for target
+            encoder:
+                the encoder for the transformer
+            decoder:
+                the decoder for the transformer
             drop_rate [float]:
                 the dropout rate
 
@@ -86,10 +90,8 @@ class Transformer(tf.keras.layers.Layer):
             raise TypeError(
                 "drop_rate must be float representing dropout rate")
         super(Transformer, self).__init__()
-        self.encoder = Encoder(
-            N, dm, h, hidden, input_vocab, max_seq_input, drop_rate)
-        self.decoder = Decoder(
-            N, dm, h, hidden, target_vocab, max_seq_target, drop_rate)
+        self.encoder = encoder
+        self.decoder = decoder
         self.linear = tf.keras.layers.Dense(units=target_vocab)
 
     def call(self, inputs, target, training, encoder_mask, look_ahead_mask,
