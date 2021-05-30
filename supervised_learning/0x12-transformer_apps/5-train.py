@@ -84,7 +84,6 @@ def train_transformer(N, dm, h, hidden, max_len, batch_size, epochs):
                                          beta_1=0.9,
                                          beta_2=0.98,
                                          epsilon=1e-9)
-
     losses = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True,
                                                            reduction='none')
 
@@ -110,7 +109,8 @@ def train_transformer(N, dm, h, hidden, max_len, batch_size, epochs):
         return tf.reduce_sum(accuracies) / tf.reduce_sum(mask)
 
     train_loss = tf.keras.metrics.Mean(name='train_loss')
-    train_accuracy = tf.keras.metrics.Mean(name='train_accuracy')
+    train_accuracy = tf.keras.metrics.SparseCategoricalAccuracy(
+        name='train_accuracy')
 
     for epoch in range(epochs):
         batch = 0
@@ -127,12 +127,12 @@ def train_transformer(N, dm, h, hidden, max_len, batch_size, epochs):
             gradients = tape.gradient(loss, transformer.trainable_variables)
             optimizer.apply_gradients(zip(
                 gradients, transformer.trainable_variables))
-            train_loss(loss)
-            train_accuracy(target_actual, prediction)
-
+            t_loss = train_loss(loss)
+            t_accuracy = train_accuracy(target_actual, prediction)
             if batch % 50 is 0:
                 print("Epoch {}, batch {}: loss {} accuracy {}".format(
-                    epoch, batch, train_loss, train_accuracy))
+                    epoch, batch, t_loss, t_accuracy))
+            batch += 1
         print("Epoch {}: loss {} accuracy {}".format(
-            epoch, train_loss, train_accuracy))
+            epoch, t_loss, t_accuracy))
     return transformer
