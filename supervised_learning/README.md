@@ -155,8 +155,16 @@ This directory contains work with neural style transfer:
 10. [Variational Cost](/supervised_learning/0x0C-neural_style_transfer/10-neural_style.py)
 
 ## 0x0D-RNNs
-This directory contains work with recurrent neural networks:
+This directory contains work with recurrent neural networks (RNNs):
 0. [RNN Cell](/supervised_learning/0x0D-RNNs/0-rnn_cell.py)
+1. [RNN](/supervised_learning/0x0D-RNNs/1-rnn.py)
+2. [GRU Cell](/supervised_learning/0x0D-RNNs/2-gru_cell.py)
+3. [LSTM Cell](/supervised_learning/0x0D-RNNs/3-lstm_cell.py)
+4. [Deep RNN](/supervised_learning/0x0D-RNNs/4-deep_rnn.py)
+5. [Bidirectional Cell Forward](/supervised_learning/0x0D-RNNs/5-bi_forward.py)
+6. [Bidirectional Cell Backward](/supervised_learning/0x0D-RNNs/6-bi_backward.py)
+7. [Bidirectional Output](/supervised_learning/0x0D-RNNs/7-bi_output.py)
+8. [Bidirectional RNN](/supervised_learning/0x0D-RNNs/8-bi_rnn.py)
 
 ## 0x0E-time_series
 This directory applies knowledge of RNNs to predict the value of Bitcoin with Time Series Forecasting:
