@@ -41,7 +41,7 @@ class LearningSchedule(tf.keras.optimizers.schedules.LearningRateSchedule):
         rsqrt_dm = tf.math.rsqrt(self.dm)
         rsqrt_step_arg = tf.math.rsqrt(step)
         warmup_step_arg = step * (self.warmup_steps ** -1.5)
-        l_rate = rsqrt_dm * tf.math.minumum(rsqrt_step_arg, warmup_step_arg)
+        l_rate = rsqrt_dm * tf.math.minimum(rsqrt_step_arg, warmup_step_arg)
         return l_rate
 
 
