@@ -208,3 +208,11 @@ This directory contains work with transformer applications and TensorFlow Datase
 3. [Pipeline](/supervised_learning/0x12-transformer_apps/3-dataset.py)
 4. [Create Masks](/supervised_learning/0x12-transformer_apps/4-create_masks.py)
 5. [Train](/supervised_learning/0x12-transformer_apps/5-train.py)
+
+## 0x13-qa_bot
+This directory contains work with QA Bot, Semantic Search, and BERT architecture:
+0. [Question Answering](/supervised_learning/0x13-qa_bot/0-qa.py)
+1. [Create the Loop](/supervised_learning/0x13-qa_bot/1-loop.py)
+2. [Answer Questions](/supervised_learning/0x13-qa_bot/2-qa.py)
+3. [Semantic Search](/supervised_learning/0x13-qa_bot/3-semantic_search.py)
+4. [Multi-Reference Question Answering](/supervised_learning/0x13-qa_bot/4-qa.py)
