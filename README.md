@@ -31,6 +31,7 @@ This directory contains projects for building Machine Learning supervised learni
 * [0x10. Natural Language Processing (NLP) Evaluation Metrics](/supervised_learning/0x10-nlp_metrics)
 * [0x11. Attention](/supervised_learning/0x11-attention)
 * [0x12. Transformer Applications](/supervised_learning/0x12-transformer_apps)
+* [0x13. QA Bot](/supervised_learning/0x13-qa_bot)
 
 ## [unsupervised learning](/unsupervised_learning)
 This directory contains projects for building Machine Learning unsupervised learning models.
