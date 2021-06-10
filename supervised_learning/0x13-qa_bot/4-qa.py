@@ -4,28 +4,20 @@ Defines function that answers questions from multiple reference texts on loop
 """
 
 
+import numpy as np
+import os
 import tensorflow as tf
 import tensorflow_hub as hub
 from transformers import BertTokenizer
 
 
-def question_answer(coprus_path):
+def question_answer(corpus_path):
     """
     Answers questions from multiple reference texts
 
     parameters:
         corpus_path [string]:
             the path to the corpus of reference documents
-    """
-
-
-def answer_loop(reference):
-    """
-    Answers questions from a reference text on loop (based on 1-loop.py)
-
-    parameters:
-        reference [string]:
-            the reference document from which to find the answer
     """
     while (1):
         user_input = input("Q: ")
@@ -34,14 +26,49 @@ def answer_loop(reference):
            or user_input == 'goodbye' or user_input == 'bye':
             print("A: Goodbye")
             break
-        answer = question_answer(user_input, reference)
+        reference = semantic_search(corpus_path, user_input)
+        answer = specific_question_answer(user_input, reference)
         if answer is None:
             print("A: Sorry, I do not understand your question.")
         else:
             print("A: ", answer)
 
 
-def question_answer(question, reference):
+def semantic_search(corpus_path, sentence):
+    """
+    Performs semantic search on a corpus of documents
+
+    parameters:
+        corpus_path [string]:
+            the path to the corpus of reference documents on which
+                to perform semantic search
+        sentence [string]:
+            the sentence from which to perform semantic search
+
+    returns:
+        [string]:
+            the reference text of the document most similar to given sentence
+    """
+    documents = [sentence]
+
+    for filename in os.listdir(corpus_path):
+        if filename.endswith(".md") is False:
+            continue
+        with open(corpus_path + "/" + filename, "r", encoding="utf-8") as f:
+            documents.append(f.read())
+
+    model = hub.load(
+        "https://tfhub.dev/google/universal-sentence-encoder-large/5")
+
+    embeddings = model(documents)
+    correlation = np.inner(embeddings, embeddings)
+    closest = np.argmax(correlation[0, 1:])
+    similar = documents[closest + 1]
+
+    return similar
+
+
+def specific_question_answer(question, reference):
     """
     Finds a snippet of text within a reference document to answer a question
 
