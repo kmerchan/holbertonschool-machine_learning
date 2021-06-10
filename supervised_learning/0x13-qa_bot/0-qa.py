@@ -51,7 +51,6 @@ def question_answer(question, reference):
     answer_tokens = tokens[short_start: short_end + 1]
     answer = tokenizer.convert_tokens_to_string(answer_tokens)
 
-
     if answer is None or answer is "" or question in answer:
         return None
 
