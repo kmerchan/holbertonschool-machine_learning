@@ -35,10 +35,12 @@ class BidirectionalCell:
         weights will be used on the right side for matrix multiplication
         biases should be initiliazed as zeros
         """
-        self.bh = np.zeros((1, h))
+        self.bhf = np.zeros((1, h))
+        self.bhb = np.zeros((1, h))
         self.by = np.zeros((1, o))
-        self.Wh = np.random.normal(size=(h + i, h))
-        self.Wy = np.random.normal(size=(h, o))
+        self.Whf = np.random.normal(size=(h + i, h))
+        self.Whb = np.random.normal(size=(h + i, h))
+        self.Wy = np.random.normal(size=((2 * h), o))
 
     def forward(self, h_prev, x_t):
         """
@@ -54,9 +56,10 @@ class BidirectionalCell:
                 m: the batch size for the data
                 i: dimensionality of the data
 
-        output of the cell should use softmax activation function
-
         returns:
             h_next: the next hidden state
         """
-        return None
+        h_x = np.concatenate((h_prev, x_t), axis=1)
+        h_next = np.tanh(np.matmul(h_x, self.Whf) + self.bhf)
+
+        return h_next
