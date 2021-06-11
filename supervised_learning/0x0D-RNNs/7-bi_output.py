@@ -39,10 +39,12 @@ class BidirectionalCell:
         weights will be used on the right side for matrix multiplication
         biases should be initiliazed as zeros
         """
-        self.bh = np.zeros((1, h))
+        self.bhf = np.zeros((1, h))
+        self.bhb = np.zeros((1, h))
         self.by = np.zeros((1, o))
-        self.Wh = np.random.normal(size=(h + i, h))
-        self.Wy = np.random.normal(size=(h, o))
+        self.Whf = np.random.normal(size=(h + i, h))
+        self.Whb = np.random.normal(size=(h + i, h))
+        self.Wy = np.random.normal(size=((2 * h), o))
 
     def forward(self, h_prev, x_t):
         """
@@ -58,21 +60,71 @@ class BidirectionalCell:
                 m: the batch size for the data
                 i: dimensionality of the data
 
-        output of the cell should use softmax activation function
-
         returns:
             h_next: the next hidden state
         """
-        return None
+        h_x = np.concatenate((h_prev, x_t), axis=1)
+        h_next = np.tanh(np.matmul(h_x, self.Whf) + self.bhf)
+
+        return h_next
 
     def backward(self, h_next, x_t):
         """
-        calculates the hidden state in the backward direction for one time step
+        Calculates the hidden state in the backward direction for one time step
+
+        parameters:
+            h_next [numpy.ndarray of shape (m, h)]:
+                contains the next hidden state
+                m: the batch size for the data
+                h: dimensionality of hidden state
+            x_t [numpy.ndarray of shape (m, i)]:
+                contains data input for the cell
+                m: the batch size for the data
+                i: dimensionality of the data
+
+        returns:
+            h_prev: the previous hidden state
         """
-        return None
+        h_x = np.concatenate((h_next, x_t), axis=1)
+        h_prev = np.tanh(np.matmul(h_x, self.Whb) + self.bhb)
+
+        return h_prev
+
+    def softmax(self, x):
+        """
+        Performs the softmax function
+
+        parameters:
+            x: the value to perform softmax on to generate output of cell
+
+        return:
+            softmax of x
+        """
+        e_x = np.exp(x - np.max(x, axis=1, keepdims=True))
+        softmax = e_x / e_x.sum(axis=1, keepdims=True)
+        return softmax
 
     def output(self, H):
         """
-        calculates all outputs for the RNN
+        Calculates all outputs for the RNN
+
+        parameters:
+            H [numpy.ndarray of shape (t, m, 2 * h)]:
+                contains the concatenated hidden states from both directions,
+                    excluding their initialized states
+                t: number of time steps
+                m: the batch size for the data
+                h: the dimensionality of the hidden states
+
+        returns:
+            Y: the outputs
         """
-        return None
+        t, m, h = H.shape
+
+        Y = []
+
+        for step in range(t):
+            y = self.softmax(np.matmul(H[step], self.Wy) + self.by)
+            Y.append(y)
+
+        return np.array(Y)
