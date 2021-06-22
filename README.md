@@ -41,5 +41,9 @@ This directory contains projects for building Machine Learning unsupervised lear
 * [0x03. Hyperparameter Tuning](/unsupervised_learning/0x03-hyperparameter_tuning)
 * [0x04. Autoencoders](/unsupervised_learning/0x04-autoencoders)
 
+## [reinforcement learning](/reinforcement_learning)
+This directory contains projects for building Machine Learning reinforcement learning models.
+* [0x00. Q Learning](/reinforcement_learning/0x00-q_learning)
+
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
