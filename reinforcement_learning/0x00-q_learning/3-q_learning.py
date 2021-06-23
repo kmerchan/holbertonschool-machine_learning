@@ -32,11 +32,15 @@ def train(env, Q, episodes=5000, max_steps=100, alpha=0.1, gamma=0.99,
             else:
                 # exploiting
                 action = np.argmax(Q[current_state, :])
+
             next_state, reward, done, _ = env.step(action)
 
+            if done and reward == 0:
+                reward = -1
+
             Q[current_state, action] = (
-                Q[current_state, action] * (1 - alpha) + alpha *
-                (reward + gamma * np.max(Q[current_state, :])))
+                Q[current_state, action] * (1 - alpha) + alpha * (
+                    reward + gamma * np.max(Q[next_state, :])))
             total_episode_reward += reward
 
             if done:
