@@ -15,7 +15,7 @@ This directory contains projects to build up the math skills needed for Machine 
 
 ## [supervised learning](/supervised_learning)
 This directory contains projects for building Machine Learning supervised learning models.
-* Notable Project: [0x01. Classification](/supervised_learning/0x01-classification)
+* [0x01. Classification](/supervised_learning/0x01-classification)
 * [0x02. TensorFlow](/supervised_learning/0x02-tensorflow)
 * [0x03. Optimization](/supervised_learning/0x03-optimization)
 * [0x04. Error Analysis](/supervised_learning/0x04-error_analysis)
