@@ -5,7 +5,7 @@ This repository contains work on projects for the Holberton Machine Learning Spe
 This directory contains projects to build up the math skills needed for Machine Learning.
 * [0x00. Linear Algebra](/math/0x00-linear_algebra)
 * Notable Project: [0x01. Plotting](/math/0x01-plotting)
-  * This project highlights plotting with Matplotlib to visually show data.
+  * This project highlights plotting with Matplotlib to visually show data. <img src="https://i.ibb.co/M8SVLpF/Screenshot-2021-06-27-10-57-48-PM.png" alt="multiple graphs" border="0"><img src="https://i.ibb.co/F3c8Tcv/Screenshot-2021-06-27-10-55-34-PM.png" alt="graph of elevation with color spectrum" border="0">
 * [0x02. Calculus](/math/0x02-calculus)
 * [0x03. Probability](/math/0x03-probability)
 * [0x04. Convolutions and Pooling](/math/0x04-convolutions_and_pooling)
