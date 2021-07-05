@@ -47,7 +47,8 @@ This directory contains projects for building Machine Learning unsupervised lear
 ## [reinforcement learning](/reinforcement_learning)
 This directory contains projects for building Machine Learning reinforcement learning models.
 * [0x00. Q-Learning](/reinforcement_learning/0x00-q_learning)
-* Current Project: [0x01. Deep Q-Learning](/reinforcement_learning/0x01-deep_q_learning)
+* [0x01. Deep Q-Learning](/reinforcement_learning/0x01-deep_q_learning)
+* Current Project: [0x02. Temporal Difference](/reinforcement_learning/0x02-temporal_difference)
 
 ### Author
 Kelsie Merchant:
