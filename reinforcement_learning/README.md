@@ -19,5 +19,5 @@ This directory contains expands on Q-learning with neural networks to allow for 
 This directory contains work with temporal difference:
 
 0. [Monte Carlo](/reinforcement_learning/0x02-temporal_difference/0-monte_carlo.py)
-1. [TD($\lambda$)](/reinforcement_learning/0x02-temporal_difference/1-td_lambtha.py)
-2. [SARSA($\lambda$)](/reinforcement_learning/0x02-temporal_difference/2-sarsa_lambtha.py)
+1. [TD(&lambda)](/reinforcement_learning/0x02-temporal_difference/1-td_lambtha.py)
+2. [SARSA(&lambda)](/reinforcement_learning/0x02-temporal_difference/2-sarsa_lambtha.py)
