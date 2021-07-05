@@ -14,3 +14,10 @@ This directory contains initial work with reinforcement learning through Q-learn
 This directory contains expands on Q-learning with neural networks to allow for deep reinforcement learning:
 
 0. [Breakout](/reinforcement_learning/0x01-deep_q_learning/train.py)
+
+## 0x02-temporal_difference
+This directory contains work with temporal difference:
+
+0. [Monte Carlo](/reinforcement_learning/0x02-temporal_difference/0-monte_carlo.py)
+1. [TD(\lamba)](/reinforcement_learning/0x02-temporal_difference/1-td_lambtha.py)
+2. [SARSA(\lambda)](/reinforcement_learning/0x02-temporal_difference/2-sarsa_lambtha.py)
