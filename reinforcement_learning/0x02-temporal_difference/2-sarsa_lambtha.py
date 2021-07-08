@@ -87,7 +87,7 @@ def sarsa_lambtha(env, Q, lambtha, episodes=5000, max_steps=100, alpha=0.1,
             # upddate Q table
             # Q(st) = Q(st) + alpha * delta_t * Et(St)
             Q[state, action] = Q[state, action] + (
-                alpha * delta_a * Et[state, action])
+                alpha * delta_t * Et[state, action])
             # if done, break out of episode
             if done:
                 break
@@ -97,6 +97,6 @@ def sarsa_lambtha(env, Q, lambtha, episodes=5000, max_steps=100, alpha=0.1,
         # after each epsiode, update epsilon to decay
         # epsilon will now favor slightly more exploitation than exploration
         epsilon = min_epsilon + (
-            (max_epsilon - min_epsilon) * np.exp(-epsilon_decay * i))
+            (max_epsilon - min_epsilon) * np.exp(-epsilon_decay * ep))
     # when all episodes completed, return updated Q table
     return Q
