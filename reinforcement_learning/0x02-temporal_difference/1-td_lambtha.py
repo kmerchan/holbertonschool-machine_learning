@@ -4,6 +4,10 @@ Defines function to perform the TD(λ) algorithm
 """
 
 
+import gym
+import numpy as np
+
+
 def td_lambtha(env, V, policy, lambtha, episodes=5000, max_steps=100,
                alpha=0.1, gamma=0.99):
     """
@@ -21,4 +25,28 @@ def td_lambtha(env, V, policy, lambtha, episodes=5000, max_steps=100,
     returns:
         V: the updated value estimate
     """
-    return None
+    episode = [[], []]
+    Et = [0 for i in range(env.observation_space.n)]
+    for ep in range(episodes):
+        state = env.reset()
+        for step in range(max_steps):
+            Et = list(np.array(Et) * lambtha * gamma)
+            Et[state] += 1
+
+            action = policy(state)
+            next_state, reward, done, info = env.step(action)
+
+            if env.desc.reshape(env.observation_space.n)[next_state] == b'H':
+                reward = -1
+
+            if env.desc.reshape(env.observation_space.n)[next_state] == b'G':
+                reward = 1
+
+            delta_t = reward + gamma * V[next_state] - V[state]
+
+            V[state] = V[state] + alpha * delta_t * Et[state]
+
+            if done:
+                break
+            state = next_state
+    return np.array(V)
