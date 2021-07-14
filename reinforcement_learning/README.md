@@ -21,3 +21,11 @@ This directory contains work with temporal difference:
 0. [Monte Carlo](/reinforcement_learning/0x02-temporal_difference/0-monte_carlo.py)
 1. [TD(λ)](/reinforcement_learning/0x02-temporal_difference/1-td_lambtha.py)
 2. [SARSA(λ)](/reinforcement_learning/0x02-temporal_difference/2-sarsa_lambtha.py)
+
+## 0x03-policy_gradients
+This directory contains work with policy gradients:
+
+0. [Simple Policy Function](/reinforcement_learning/0x03-policy_gradients/policy_gradient.py)
+1. [Compute the Monte Carlo Policy Gradient](/reinforcement_learning/0x03-policy_gradients/policy_gradient.py)
+2. [Implement the Training](/reinforcement_learning/0x03-policy_gradients/train.py)
+3. [Animate Iteration](/reinforcement_learning/0x03-policy_gradients/train.py)
