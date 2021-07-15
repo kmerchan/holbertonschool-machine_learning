@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Defines function to compute policy with a weight of a matrix
+Defines function to compute Monte Carlo policy gradient based on
+state and weight matrices
 """
 
 
@@ -12,8 +13,8 @@ def policy(matrix, weight):
     Computes policy with a weight of a matrix
 
     parameters:
-        matrix [np.ndarray]: the matrix to compute policy from
-        weight [np.ndarray]: the weights to compute policy from
+        matrix [numpy.ndarray]: the matrix to compute policy from
+        weight [numpy.ndarray]: the weights applied to the matrix
 
     returns:
         the policy
@@ -25,3 +26,22 @@ def policy(matrix, weight):
     # policy is exp / sum(exp)
     policy = exp / np.sum(exp)
     return policy
+
+
+def policy_gradient(state, weight):
+    """
+    Computes the Monte Carlo policy gradient based on the policy
+        calculated from the above policy() function
+
+    parameters:
+        state [numpy.ndarray]:
+            matrix representing the current observation of the environment
+        weight [numpy.ndarray]:
+            matrix of random weight
+
+    returns:
+        the action and the gradient
+    """
+    # first calculate policy using the policy function above
+    policy = policy(state, weight)
+    return None, None
