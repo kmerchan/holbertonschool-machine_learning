@@ -43,5 +43,16 @@ def policy_gradient(state, weight):
         the action and the gradient
     """
     # first calculate policy using the policy function above
-    policy = policy(state, weight)
-    return None, None
+    Policy = policy(state, weight)
+    # get action from policy
+    action = np.random.choice(len(Policy[0]), p=Policy[0])
+    # reshape single feature from policy
+    s = Policy.reshape(-1, 1)
+    # apply softmax function to s and access value at action
+    softmax = (np.diagflat(s) - np.dot(s, s.T))[action, :]
+    # calculate the dlog as softmax / policy at action
+    dlog = softmax / Policy[0, action]
+    # find gradient from input state matrix using dlog
+    gradient = state.T.dot(dlog[None, :])
+    # return action and the policy gradient
+    return action, gradient
