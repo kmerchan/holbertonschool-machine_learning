@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+New code transposes the rows and columns and then sorts the data
+    in reverse chronological order
+"""
 
 import pandas as pd
 from_file = __import__('2-from_file').from_file

@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+New code fills in the missing data points in the DataFrame
+"""
 
 import pandas as pd
 from_file = __import__('2-from_file').from_file

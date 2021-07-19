@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+"""
+New code updates Pandas DataFrame script to:
+- rename the column Timestamp to Datetime
+- convert the timestamp values into datetime values
+- display only the Datetime and Close columns
+"""
 
 import pandas as pd
 from_file = __import__('2-from_file').from_file

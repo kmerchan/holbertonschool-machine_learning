@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+New code slices the DataFrame along the columns High, Low, Close, & Volume_BTC,
+   taking every 60th row
+"""
 
 import pandas as pd
 from_file = __import__('2-from_file').from_file

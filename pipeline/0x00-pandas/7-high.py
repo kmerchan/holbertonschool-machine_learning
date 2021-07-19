@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+New code sorts the DataFrame by the High price in descending order
+"""
 
 import pandas as pd
 from_file = __import__('2-from_file').from_file
