@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+New code rearranges the MultiIndex levels such that the timestamp is first
+"""
 
 import pandas as pd
 from_file = __import__('2-from_file').from_file
