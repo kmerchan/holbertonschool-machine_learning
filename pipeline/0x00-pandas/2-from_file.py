@@ -18,4 +18,5 @@ def from_file(filename, delimiter):
     returns:
         the newly created pd.DataFrame
     """
-    return None
+    df = pd.read_csv(filename, delimiter=delimiter)
+    return df
