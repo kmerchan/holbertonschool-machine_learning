@@ -20,4 +20,11 @@ def from_numpy(array):
     returns:
         the newly created pd.DataFrame
     """
-    return None
+    alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I",
+                "J", "K", "L", "M", "N", "O", "P", "Q", "R",
+                "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    column_labels = []
+    for i in range(len(array[0])):
+        column_labels.append(alphabet[i])
+    df = pd.DataFrame(array, columns=column_labels)
+    return df
