@@ -30,7 +30,6 @@ df['Open'].fillna(df.Close, inplace=True)
 # Missing values in Volume_(BTC) and Volume_(Currency) should be set to 0
 df['Volume_(BTC)'].fillna(value=0, inplace=True)
 df['Volume_(Currency)'].fillna(value=0, inplace=True)
-print('checkpoint')
 # Group values of the same day such that:
 #   High: max
 #   Low: min
@@ -40,17 +39,11 @@ print('checkpoint')
 #   Volume_(Currency): sum
 df_plot = pd.DataFrame()
 df_plot['High'] = df['High'].resample('d').max()
-print('checkpoint High')
 df_plot['Low'] = df['Low'].resample('d').min()
-print('checkpoint Low')
 df_plot['Open'] = df['Open'].resample('d').mean()
-print('checkpoint Open')
 df_plot['Close'] = df['Close'].resample('d').mean()
-print('checkpoint Close')
 df_plot['Volume_(BTC)'] = df['Volume_(BTC)'].resample('d').sum()
-print('checkpoint Volume_(BTC)')
 df_plot['Volume_(Currency)'] = df['Volume_(Currency)'].resample('d').sum()
-print('checkpoint Volume_(Currency)')
 # Plot the data from 2017 and beyond at daily intervals
 df_plot.plot()
 plt.show()
