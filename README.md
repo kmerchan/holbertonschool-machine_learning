@@ -53,7 +53,8 @@ This directory contains projects for building Machine Learning reinforcement lea
 
 ## [pipeline](/pipeline)
 This directory contains work with better data pipeline management.
-* Current Project: [0x00. Pandas](/pipeline/0x00-pandas)
+* [0x00. Pandas](/pipeline/0x00-pandas)
+* Current Project: [0x01. Data Collection - APIs](/pipeline/0x01-apis)
 
 ### Author
 Kelsie Merchant:
