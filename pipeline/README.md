@@ -19,3 +19,12 @@ This directory contains initial work with Pandas:
 12. [Hierarchy](/pipeline/0x00-pandas/12-hierarchy.py)
 13. [Analyze](/pipeline/0x00-pandas/13-analyze.py)
 14. [Visualize](/pipeline/0x00-pandas/14-visualize.py)
+
+## 0x01-apis
+This directory contains work with obtaining data from APIs:
+
+0. [Can I join?](/pipeline/0x01-apis/0-passengers.py)
+1. [Where am I?](/pipeline/0x01-apis/1-sentience.py)
+2. [Rate me is you can!](/pipeline/0x01-apis/2-user_location.py)
+3. [What will be next?](/pipeline/0x01-apis/3-upcoming.py)
+4. [How many by rocket?](/pipeline/0x01-apis/4-rocket_frequency.py)
