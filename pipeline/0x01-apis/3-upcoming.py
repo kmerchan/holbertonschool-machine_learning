@@ -15,4 +15,4 @@ if __name__ == "__main__":
     launchPad = None
     location = None
     print("{} ({}) {} - {} ({})".format(
-        launchName, date, rocket, launchPad, location)
+        launchName, date, rocket, launchPad, location))
