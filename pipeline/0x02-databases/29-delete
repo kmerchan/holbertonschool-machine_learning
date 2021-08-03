@@ -1,0 +1,3 @@
+// deletes all documents with name='Holberton school'
+// in the collection school in MongoDB
+db.school.delete({name: "Holberton school"})
