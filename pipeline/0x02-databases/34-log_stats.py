@@ -10,7 +10,7 @@ from pymongo import MongoClient
 if __name__ is "__main__":
     client = MongoClient('mongodb://127.0.0.1:27017')
     logs = client.logs.nginx
-    doc_count = logs.count_documents()
+    doc_count = logs.count_documents({})
     print(doc_count, " logs")
     print("Methods:")
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
