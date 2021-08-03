@@ -9,14 +9,13 @@
 DELIMITER //
 
 CREATE FUNCTION SafeDiv (a INT, b INT)
-RETURNS DECIMAL
+RETURNS FLOAT
 DETERMINISTIC
 BEGIN
-	IF b = 0 THEN
-	   RETURN 0;
-	END IF;
-	DECLARE quotient DECIMAL;
-	SET quotient = (a / b);
-	RETURN quotient;
-END; //
+        IF b = 0 THEN
+           RETURN 0;
+        ELSE
+                RETURN (a / b);
+        END IF;
+END //
 DELIMITER ;
