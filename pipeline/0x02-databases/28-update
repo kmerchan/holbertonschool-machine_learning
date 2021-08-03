@@ -1,0 +1,2 @@
+// adds new attribute to a document in the collection school in MongoDB
+db.school.update({name: "Holberton school"}, {address: "972 Mission street"})
