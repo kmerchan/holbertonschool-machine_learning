@@ -10,6 +10,6 @@ BEGIN
 	SELECT SUM(score * weight) / SUM(weight) FROM corrections
 	JOIN projects
 	ON corrections.project_id=projects.id
-	WHERE user_id=user_id_new)
+	WHERE user_id=user_id_new);
 END; //
 DELIMITER ;
