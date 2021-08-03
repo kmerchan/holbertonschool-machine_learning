@@ -1,0 +1,3 @@
+// lists all documents with name starting with Holberton
+// in the collection school in MongoDB
+db.school.find({'name': "Holberton%"})
