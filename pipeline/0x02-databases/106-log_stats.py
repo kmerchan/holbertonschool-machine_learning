@@ -8,7 +8,7 @@ in the collection nginx of the database logs
 from pymongo import MongoClient
 
 
-if __name__ is "__main__":
+if __name__ == "__main__":
     """
     Provides stats about Nginx logs stored in MongoDB
     """
