@@ -9,9 +9,9 @@ from pymongo import MongoClient
 
 if __name__ is "__main__":
     print("The program is running")
-    client = MongoClient('mongodb://127.0.0.1:27017')
-    logs_coll = client.logs.nginx
-    print("got collection")
+    # client = MongoClient('mongodb://127.0.0.1:27017')
+    # logs_coll = client.logs.nginx
+    # print("got collection")
     # doc_count = logs_coll.count_documents({})
     # print("{} logs".format(doc_count))
     # print("Methods:")
