@@ -13,7 +13,7 @@ def rotate_image(image):
 
     parameters:
         image [3D td.Tensor]:
-            contains the image to crop
+            contains the image to rotate
 
     returns:
         the rotated image
