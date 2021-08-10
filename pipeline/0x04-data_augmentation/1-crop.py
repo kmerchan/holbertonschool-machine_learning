@@ -20,4 +20,4 @@ def crop_image(image, size):
     returns:
         the cropped image
     """
-    return (tf.image.crop_and_resize(image, crop_size=size))
+    return (tf.image.random_crop(image, crop_size=size))
