@@ -55,7 +55,9 @@ This directory contains projects for building Machine Learning reinforcement lea
 This directory contains work with better data pipeline management.
 * [0x00. Pandas](/pipeline/0x00-pandas)
 * [0x01. Data Collection - APIs](/pipeline/0x01-apis)
-* Current Project: [0x02. Databases](/pipeline/0x02-databases)
+* [0x02. Databases](/pipeline/0x02-databases)
+* [0x03. Data Preprocessing](https://docs.google.com/document/d/1-lJEjpgRPVwBTZ1bFC9lf22cQUQpPma8i7bjPHo96kI/edit?usp=sharing)
+* Current Project: [0x04. Data Augementation](/pipeline/0x04-data_augmentation)
 
 ### Author
 Kelsie Merchant:
