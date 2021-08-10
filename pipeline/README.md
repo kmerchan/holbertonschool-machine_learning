@@ -67,3 +67,17 @@ This directory contains work with relational database (SQL) and non-relational d
 32. [Change School Topics](/pipeline/0x02-databases/32-update_topics.py)
 33. [Where Can I Learn Python?](/pipeline/0x02-databases/33-schools_by_topic.py)
 34. [Log Stats](/pipeline/0x02-databases/34-log_stats.py)
+
+## 0x03-data_preprocessing
+This document focuses on how data will be preprocessed for the final portfolio project, including data exploration, data transformation, and initial data analysis.  You can find my data preprocessing plan [here](https://docs.google.com/document/d/1-lJEjpgRPVwBTZ1bFC9lf22cQUQpPma8i7bjPHo96kI/edit?usp=sharing).
+
+## 0x04-data_augmentation
+This directory contains work with data augmentation:
+
+0. [Flip](/pipeline/0x04-data_augmentation/0-flip.py)
+1. [Crop](/pipeline/0x04-data_augmentation/1-crop.py)
+2. [Rotate](/pipeline/0x04-data_augmentation/2-rotate.py)
+3. [Shear](/pipeline/0x04-data_augmentation/3-shear.py)
+4. [Brightness](/pipeline/0x04-data_augmentation/4-brightness.py)
+5. [Hue](/pipeline/0x04-data_augmentation/5-hue.py)
+6. [Automation]()
